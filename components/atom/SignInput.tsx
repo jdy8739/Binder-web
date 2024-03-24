@@ -4,7 +4,7 @@ const SignInput = ({
   label,
   required = false,
 }: {
-  label: string;
+  label?: string;
   required?: boolean;
 }) => {
   const inputId = useId();
