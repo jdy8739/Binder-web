@@ -1,0 +1,23 @@
+.wrapper {
+    label, small {
+        display: block;
+    }
+    label, input {
+        color: $gray-13;
+    }
+    input {
+        border-color: $gray-07;
+        &.error {
+            border-color: $error;
+        }
+        &:focus {
+            border-color: $primary;
+        }
+    }
+    small {
+        color: $gray-10;
+        &.error {
+            color: $error;
+        }
+    }
+}
