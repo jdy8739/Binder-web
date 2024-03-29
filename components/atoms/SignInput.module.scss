@@ -1,23 +1,29 @@
 .wrapper {
-    label, small {
-        display: block;
+  label,
+  small {
+    display: block;
+  }
+  label,
+  input {
+    color: $gray-13;
+  }
+  input {
+    width: 320px;
+    padding: 13px 12px;
+    border: 1px solid $gray-07;
+    border-radius: 8px;
+    margin: 8px 0;
+    &.error {
+      border-color: $error;
     }
-    label, input {
-        color: $gray-13;
+    &:focus {
+      border-color: $primary;
     }
-    input {
-        border-color: $gray-07;
-        &.error {
-            border-color: $error;
-        }
-        &:focus {
-            border-color: $primary;
-        }
+  }
+  small {
+    color: $gray-10;
+    &.error {
+      color: $error;
     }
-    small {
-        color: $gray-10;
-        &.error {
-            color: $error;
-        }
-    }
+  }
 }
