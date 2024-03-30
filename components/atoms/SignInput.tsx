@@ -1,8 +1,8 @@
 'use client';
 
 import { useId, useState } from 'react';
-
 import classNames from 'classnames/bind';
+import { PwHidden, PwVisible } from '/assets/svg';
 
 import styles from './SignInput.module.scss';
 
@@ -44,15 +44,17 @@ const SignInput = ({
         type={isPasswordType ? 'password' : 'input'}
         spellCheck={false}
       />
-      <small className={cx({ error: isError && !isFocused })}>
-        {helperText}
-      </small>
+      {helperText && (
+        <small className={cx({ error: isError && !isFocused })}>
+          {helperText}
+        </small>
+      )}
       {isPassword && (
         <button
           type="button"
           onClick={() => setIsPasswordType(!isPasswordType)}
         >
-          {isPasswordType ? 'eye' : 'slash'}
+          {isPasswordType ? <PwHidden /> : <PwVisible />}
         </button>
       )}
     </div>
