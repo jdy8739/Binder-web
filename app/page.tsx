@@ -1,15 +1,13 @@
 import SignInput from '../components/atoms/SignInput';
-
-const Footer = () => {
-  return <footer>BINDER. All Rights Reserved</footer>;
-};
+import Button from '/components/atoms/Button';
 
 const Page = () => {
   return (
     <>
       <h1>main</h1>
-      <Footer />
-      <SignInput label="가가가" isPassword helperText="sds" />
+      <SignInput label="가가가" isPassword helperText="sds" required />
+      <Button content="나나나" />
+      <Button content="나나나" disabled />
     </>
   );
 };

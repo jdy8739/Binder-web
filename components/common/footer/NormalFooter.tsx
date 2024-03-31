@@ -2,11 +2,11 @@ import classNames from 'classnames/bind';
 
 import { Blof, Facebook, Instagram } from '/assets/svg';
 
-import styles from './Footer.module.scss';
+import styles from './NormalFooter.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Footer = () => {
+const NormalFooter = () => {
   return (
     <footer className={cx('footer')}>
       <div>
@@ -35,4 +35,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default NormalFooter;
