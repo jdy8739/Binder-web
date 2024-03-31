@@ -21,7 +21,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const SignInput = ({
   className = '',
   label = '',
-  placeholder = '',
   helperText = '',
   isError = false,
   required = false,
@@ -42,15 +41,13 @@ const SignInput = ({
       </div>
       <div>
         <input
+          {...props}
           id={inputId}
           className={cx(className, { error: isError })}
-          placeholder={placeholder}
-          required={required}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           type={isPasswordType ? 'password' : 'text'}
           spellCheck={false}
-          {...props}
         />
         {isPassword && (
           <button

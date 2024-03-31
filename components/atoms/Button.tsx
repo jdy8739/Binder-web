@@ -12,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({ className, content, ...props }: ButtonProps) => {
   return (
     // eslint-disable-next-line react/button-has-type
-    <button className={cx('button', className)} {...props}>
+    <button {...props} className={cx('button', className)}>
       {content}
     </button>
   );
