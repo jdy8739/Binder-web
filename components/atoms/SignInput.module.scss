@@ -1,6 +1,8 @@
 .wrapper {
-  position: relative;
   width: 320px;
+  > div:first-child {
+    position: relative;
+  }
   label,
   small {
     display: block;

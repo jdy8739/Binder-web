@@ -33,30 +33,32 @@ const SignInput = ({
 
   return (
     <div className={cx('wrapper')}>
-      <label htmlFor={inputId}>{label}</label>
-      <input
-        id={inputId}
-        className={cx(classname, { error: isError })}
-        placeholder={placeholder}
-        required={required}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        type={isPasswordType ? 'password' : 'input'}
-        spellCheck={false}
-      />
+      <div>
+        <label htmlFor={inputId}>{label}</label>
+        <input
+          id={inputId}
+          className={cx(classname, { error: isError })}
+          placeholder={placeholder}
+          required={required}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          type={isPasswordType ? 'password' : 'input'}
+          spellCheck={false}
+        />
+        {isPassword && (
+          <button
+            className={cx({ hidden: isPasswordType })}
+            type="button"
+            onClick={() => setIsPasswordType(!isPasswordType)}
+          >
+            {isPasswordType ? <PwHidden /> : <PwVisible />}
+          </button>
+        )}
+      </div>
       {helperText && (
         <small className={cx({ error: isError && !isFocused })}>
           {helperText}
         </small>
-      )}
-      {isPassword && (
-        <button
-          className={cx({ hidden: isPasswordType })}
-          type="button"
-          onClick={() => setIsPasswordType(!isPasswordType)}
-        >
-          {isPasswordType ? <PwHidden /> : <PwVisible />}
-        </button>
       )}
     </div>
   );
