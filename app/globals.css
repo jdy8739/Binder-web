@@ -108,6 +108,8 @@ section {
   display: block;
 }
 body {
+  position: relative;
+  min-height: 100vh;
   line-height: 1;
 }
 ol,
