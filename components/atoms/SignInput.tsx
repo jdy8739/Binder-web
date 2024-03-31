@@ -51,6 +51,7 @@ const SignInput = ({
       )}
       {isPassword && (
         <button
+          className={cx({ hidden: isPasswordType })}
           type="button"
           onClick={() => setIsPasswordType(!isPasswordType)}
         >
