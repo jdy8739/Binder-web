@@ -2,6 +2,8 @@
 
 import { useId, useState } from 'react';
 import classNames from 'classnames/bind';
+
+import Label from './Label';
 import { PwHidden, PwVisible } from '/assets/svg';
 
 import styles from './SignInput.module.scss';
@@ -33,8 +35,8 @@ const SignInput = ({
 
   return (
     <div className={cx('wrapper')}>
+      <Label htmlFor={inputId} content={label} />
       <div>
-        <label htmlFor={inputId}>{label}</label>
         <input
           id={inputId}
           className={cx(classname, { error: isError })}
