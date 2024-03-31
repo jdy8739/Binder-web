@@ -9,21 +9,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const Button = ({
-  className,
-  content,
-  disabled,
-  type,
-  onClick,
-}: ButtonProps) => {
+const Button = ({ className, content, ...props }: ButtonProps) => {
   return (
-    <button
-      className={cx('button', className)}
-      disabled={disabled}
-      // eslint-disable-next-line react/button-has-type
-      type={type}
-      onClick={onClick}
-    >
+    // eslint-disable-next-line react/button-has-type
+    <button className={cx('button', className)} {...props}>
       {content}
     </button>
   );

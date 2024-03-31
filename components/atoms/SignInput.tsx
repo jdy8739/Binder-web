@@ -26,7 +26,8 @@ const SignInput = ({
   isError = false,
   required = false,
   isPassword = false,
-}: InputProps) => {
+  ...props
+}: Omit<InputProps, 'type'>) => {
   const inputId = useId();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -49,6 +50,7 @@ const SignInput = ({
           onBlur={() => setIsFocused(false)}
           type={isPasswordType ? 'password' : 'text'}
           spellCheck={false}
+          {...props}
         />
         {isPassword && (
           <button
