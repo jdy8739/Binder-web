@@ -10,23 +10,23 @@ import styles from './SignInput.module.scss';
 
 const cx = classNames.bind(styles);
 
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+  label?: string;
+  helperText?: string;
+  isError?: boolean;
+  isPassword?: boolean;
+}
+
 const SignInput = ({
-  classname = '',
+  className = '',
   label = '',
   placeholder = '',
   helperText = '',
   isError = false,
   required = false,
   isPassword = false,
-}: {
-  classname?: string;
-  label?: string;
-  placeholder?: string;
-  helperText?: string;
-  isError?: boolean;
-  required?: boolean;
-  isPassword?: boolean;
-}) => {
+}: InputProps) => {
   const inputId = useId();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -42,12 +42,12 @@ const SignInput = ({
       <div>
         <input
           id={inputId}
-          className={cx(classname, { error: isError })}
+          className={cx(className, { error: isError })}
           placeholder={placeholder}
           required={required}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          type={isPasswordType ? 'password' : 'input'}
+          type={isPasswordType ? 'password' : 'text'}
           spellCheck={false}
         />
         {isPassword && (
