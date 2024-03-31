@@ -35,7 +35,10 @@ const SignInput = ({
 
   return (
     <div className={cx('wrapper')}>
-      <Label htmlFor={inputId} content={label} />
+      <div>
+        <Label htmlFor={inputId} content={label} />
+        {required && <span className={cx('required')}>*</span>}
+      </div>
       <div>
         <input
           id={inputId}
