@@ -1,18 +1,22 @@
 .wrapper {
-  label,
-  small {
-    display: block;
+  width: 320px;
+  > div:first-child {
+    position: relative;
+    display: flex;
+    gap: 2px;
+    .required {
+      color: $error;
+    }
   }
-  label,
   input {
-    color: $gray-13;
-  }
-  input {
-    width: 320px;
+    width: 100%;
+    box-sizing: border-box;
     padding: 13px 12px;
     border: 1px solid $gray-07;
     border-radius: 8px;
     margin: 8px 0;
+    color: $gray-13;
+
     &.error {
       border-color: $error;
     }
@@ -21,9 +25,22 @@
     }
   }
   small {
+    display: block;
     color: $gray-10;
     &.error {
       color: $error;
+    }
+  }
+  button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    transform: translate(0%, -50%);
+
+    &.hidden {
+      margin-top: 1.5px;
     }
   }
 }

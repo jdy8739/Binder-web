@@ -1,9 +1,16 @@
 import './globals.css';
 
+import NavBar from '/components/common/navbar/NavBar';
+import Footer from '../components/common/footer/Footer';
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 };

@@ -1,5 +1,7 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+@import 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css';
 * {
+  box-sizing: border-box;
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: 'Pretendard Variable';
   transform: rotate(0.04deg);
 }
@@ -84,12 +86,15 @@ time,
 mark,
 audio,
 video,
-main {
-  margin: 0;
+button,
+main,
+input {
   padding: 0;
   border: 0;
+  margin: 0;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -105,6 +110,8 @@ section {
   display: block;
 }
 body {
+  position: relative;
+  min-height: 100vh;
   line-height: 1;
 }
 ol,
@@ -115,10 +122,10 @@ blockquote,
 q {
   quotes: none;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
   content: '';
   content: none;
 }
@@ -129,4 +136,11 @@ table {
 input {
   border: solid;
   outline: none;
+}
+input[type="checkbox"] {
+  appearance: none;
+}
+button {
+  background-color: white;
+  cursor: pointer;
 }
