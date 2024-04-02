@@ -137,8 +137,9 @@ input {
   border: solid;
   outline: none;
 }
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
   appearance: none;
+  cursor: pointer;
 }
 button {
   background-color: white;

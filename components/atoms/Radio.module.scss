@@ -1,0 +1,11 @@
+.radio {
+   width: 20px;
+   height: 20px;
+   box-sizing: border-box;
+   border: 1.5px solid $gray-06;
+   border-radius: 50%;
+
+   &:checked {
+    border: 6px solid $primary;
+   }
+}
