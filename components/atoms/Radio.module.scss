@@ -4,8 +4,17 @@
    box-sizing: border-box;
    border: 1.5px solid $gray-06;
    border-radius: 50%;
+   transition: all 0.3s;
+
+   &:hover {
+      border: 6px solid $primary-light;
+   }
 
    &:checked {
     border: 6px solid $primary;
+
+    &:hover {
+      border: 6px solid $primary-light;
+   }
    }
 }
