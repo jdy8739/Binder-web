@@ -4,15 +4,11 @@ import styles from './Label.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Label = ({
-  className = '',
-  htmlFor = '',
-  content = '',
-}: {
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
-  htmlFor: string;
-  content: string;
-}) => {
+}
+
+const Label = ({ className = '', htmlFor = '', content = '' }: LabelProps) => {
   return (
     <label className={cx(className, 'label')} htmlFor={htmlFor}>
       {content}
