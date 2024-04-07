@@ -5,5 +5,17 @@ import Facebook from './facebook.svg';
 import Blof from './blof.svg';
 import Check from './Check.svg';
 import Search from './Search.svg';
+import Profile from './profile.svg';
+import Bell from './Bell.svg';
 
-export { PwHidden, PwVisible, Instagram, Facebook, Blof, Check, Search };
+export {
+  PwHidden,
+  PwVisible,
+  Instagram,
+  Facebook,
+  Blof,
+  Check,
+  Search,
+  Profile,
+  Bell,
+};
