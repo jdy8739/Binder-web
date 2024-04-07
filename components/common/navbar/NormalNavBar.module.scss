@@ -7,11 +7,16 @@
     }
     > nav > ul {
         height: 52px;
-       .nav-link {
+        > li {
             padding-right: 56px;
-            font-size: 16px;
-            font-weight: $font-bold;
-       }
+            a {
+                font-size: 16px;
+                font-weight: $font-bold;
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
     }
     > div {
         display: flex;

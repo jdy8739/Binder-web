@@ -62,24 +62,16 @@ const NormalNavBar = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/#" className={cx('nav-link')}>
-              필드별
-            </Link>
+            <Link href="/#">필드별</Link>
           </li>
           <li>
-            <Link href="/#" className={cx('nav-link')}>
-              직무 게시판
-            </Link>
+            <Link href="/#">직무 게시판</Link>
           </li>
           <li>
-            <Link href="/#" className={cx('nav-link')}>
-              학술 게시판
-            </Link>
+            <Link href="/#">학술 게시판</Link>
           </li>
           <li>
-            <Link href="/#" className={cx('nav-link')}>
-              취업이직 게시판
-            </Link>
+            <Link href="/#">취업이직 게시판</Link>
           </li>
         </ul>
       </nav>
