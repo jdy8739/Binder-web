@@ -2,7 +2,17 @@
     height: 120px;
     padding: 0 20%;
     font-size: 14px;
-
+    ul {
+        display: flex;
+    }
+    > nav > ul {
+        height: 52px;
+       .nav-link {
+            padding-right: 56px;
+            font-size: 16px;
+            font-weight: $font-bold;
+       }
+    }
     > div {
         display: flex;
         height: 68px;
@@ -58,29 +68,37 @@
         }
         .right {
             width: 130px;
-            li {
-                padding: 0 12px;
-                &:first-child {
-                    border-right: 1px solid $gray-06;
+            ul {
+                justify-content: flex-end;
+            }
+            .right-link {
+                color: $gray-14;
+            }
+            &.not-signed {
+                li {
+                    padding: 0 12px;
+                    &:first-child {
+                        border-right: 1px solid $gray-06;
+                    }
+                    &:last-child {
+                        padding-right: 0;
+                    }
                 }
-                &:last-child {
-                    padding-right: 0;
-                }
-                .sign-link {
-                    color: $gray-14;
+            }
+            &.signed {
+                /* stylelint-disable-next-line no-descending-specificity */
+                li {
+                    display: flex;
+                    align-items: center;
+
+                    &:first-child {
+                        padding-right: 16px;
+                    }
+                    &:nth-child(2) {
+                        padding-right: 6px;
+                    }
                 }
             }
         }
-    }
-    ul {
-        display: flex;
-    }
-    > nav > ul {
-        height: 52px;
-       .nav-link {
-            padding-right: 56px;
-            font-size: 16px;
-            font-weight: $font-bold;
-       }
     }
 }

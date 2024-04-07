@@ -2,12 +2,15 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import SearchInput from '/components/atoms/SearchInput';
+import { Bell, Profile } from '/assets/svg';
 
 import style from './NormalNavBar.module.scss';
 
 const cx = classNames.bind(style);
 
 const NormalNavBar = () => {
+  const isSignedIn = false;
+
   return (
     <header className={cx('wrapper')}>
       <div>
@@ -27,18 +30,32 @@ const NormalNavBar = () => {
           </span>
           <SearchInput className={cx('search-input')} />
         </div>
-        <span className={cx('right')}>
+        <span className={cx('right', isSignedIn ? 'signed' : 'not-signed')}>
           <ul>
-            <li>
-              <Link href="/#" className={cx('sign-link')}>
-                로그인
-              </Link>
-            </li>
-            <li>
-              <Link href="/#" className={cx('sign-link')}>
-                회원가입
-              </Link>
-            </li>
+            {isSignedIn ? (
+              <>
+                <li>
+                  <Bell />
+                </li>
+                <li>
+                  <Profile />
+                </li>
+                <li className={cx('right-link')}>닉네임</li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href="/signin" className={cx('right-link')}>
+                    로그인
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/signup" className={cx('right-link')}>
+                    회원가입
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </span>
       </div>
