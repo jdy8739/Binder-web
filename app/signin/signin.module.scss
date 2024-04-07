@@ -6,7 +6,7 @@
         display: flex;
         height: 24px;
         align-items: center;
-        button, a {
+        a {
             font-size: 13px;
             &:first-child {
                 @extend %title-default;

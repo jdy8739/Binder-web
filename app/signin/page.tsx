@@ -3,9 +3,9 @@ import classNames from 'classnames/bind';
 
 import Button from '/components/atoms/Button';
 import SignInput from '/components/atoms/SignInput';
+import { Google, Kakao, Naver } from '/assets/svg';
 
 import style from './signin.module.scss';
-import { Google, Kakao, Naver } from '/assets/svg';
 
 const cx = classNames.bind(style);
 
@@ -26,7 +26,7 @@ const SignInPage = () => {
       </form>
       <div>
         <Link href="/signup">회원가입</Link>
-        <button type="button">비밀번호 찾기</button>
+        <Link href="/findpw">비밀번호 찾기</Link>
       </div>
       <section>
         <div>소셜 계정으로 간편 로그인</div>
