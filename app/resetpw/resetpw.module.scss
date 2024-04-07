@@ -1,0 +1,30 @@
+.main {
+    width: 320px;
+    margin: auto;
+
+    > div {
+        margin-top: 100px;
+        text-align: center;
+        > div {
+            &:first-child {
+                @extend %sign-form-title-default;
+            }
+            &:last-child {
+                margin-top: 32px;
+                color: $gray-09;
+                font-size: 16px;
+            }
+        }
+    }
+
+    > form {
+        margin-top: 40px;
+
+        /* stylelint-disable-next-line no-descending-specificity */
+        > div {
+            &:nth-child(2) {
+                margin: 24px 0;
+            }
+        }
+    }
+}
