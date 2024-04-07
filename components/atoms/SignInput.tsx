@@ -6,9 +6,9 @@ import classNames from 'classnames/bind';
 import Label from './Label';
 import { PwHidden, PwVisible } from '/assets/svg';
 
-import styles from './SignInput.module.scss';
+import style from './SignInput.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(style);
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
