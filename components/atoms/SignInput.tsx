@@ -16,6 +16,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
   isError?: boolean;
   isPassword?: boolean;
+  denoteRequired?: boolean;
 }
 
 const SignInput = ({
@@ -24,6 +25,7 @@ const SignInput = ({
   helperText = '',
   isError = false,
   required = false,
+  denoteRequired = false,
   isPassword = false,
   ...props
 }: Omit<InputProps, 'type'>) => {
@@ -37,7 +39,9 @@ const SignInput = ({
     <div className={cx('wrapper')}>
       <div>
         <Label htmlFor={inputId} content={label} />
-        {required && <span className={cx('required')}>*</span>}
+        {required && denoteRequired && (
+          <span className={cx('required')}>*</span>
+        )}
       </div>
       <div>
         <input
