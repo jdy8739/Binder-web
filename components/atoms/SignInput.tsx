@@ -36,7 +36,7 @@ const SignInput = ({
   const [isPasswordType, setIsPasswordType] = useState(isPassword);
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', className)}>
       <div>
         <Label htmlFor={inputId} content={label} />
         {required && denoteRequired && (
@@ -47,7 +47,7 @@ const SignInput = ({
         <input
           {...props}
           id={inputId}
-          className={cx(className, { error: isError })}
+          className={cx({ error: isError })}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           type={isPasswordType ? 'password' : 'text'}
