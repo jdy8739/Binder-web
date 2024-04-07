@@ -114,7 +114,7 @@ const SignUpPage = () => {
             </div>
           </div>
         </section>
-        <Button content="회원가입 완료" disabled />
+        <Button content="회원가입 완료" type="submit" disabled />
       </form>
     </main>
   );
