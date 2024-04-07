@@ -13,7 +13,10 @@ const Footer = () => {
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {pathname === DOMAIN.SIGN_IN || pathname === DOMAIN.SIGN_UP ? (
+      {pathname === DOMAIN.SIGN_IN ||
+      pathname === DOMAIN.SIGN_UP ||
+      pathname === DOMAIN.FIND_PW ||
+      pathname === DOMAIN.RESET_PW ? (
         <SignFooter />
       ) : (
         <NormalFooter />

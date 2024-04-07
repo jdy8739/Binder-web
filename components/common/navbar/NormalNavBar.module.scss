@@ -1,0 +1,109 @@
+.wrapper {
+    height: 120px;
+    padding: 0 20%;
+    font-size: 14px;
+    ul {
+        display: flex;
+    }
+    > nav > ul {
+        height: 52px;
+        > li {
+            padding-right: 56px;
+            a {
+                font-size: 16px;
+                font-weight: $font-bold;
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+    > div {
+        display: flex;
+        height: 68px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+
+        .left {
+            display: inherit;
+            .logo {
+                width: 90px;
+                padding: 8px 24px 8px 0;
+
+                div:first-child {
+                    font-weight: $font-bolder;
+                    &::first-letter {
+                        color: $primary;
+                    }
+                }
+                .logo-border {
+                    display: flex;
+                    width: 100%;
+                    height: 1.5px;
+                    div {
+                        height: inherit;
+                        margin: 1px;
+                    }
+                    div:first-child {
+                        width: 15%;
+                        background-color: $primary;
+                    }
+                    div:last-child {
+                        width: 75%;
+                        background-color: $gray-15;
+                    }
+                }
+                small {
+                    display: flex;
+                    height: 15px;
+                    align-items: center;
+                    padding-left: 1.4px;
+                    font-size: 5.2px;
+                    span {
+                        &:first-child {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+            .search-input {
+                width: 480px;
+            }
+        }
+        .right {
+            width: 130px;
+            ul {
+                justify-content: flex-end;
+            }
+            .right-link {
+                color: $gray-14;
+            }
+            &.not-signed {
+                li {
+                    padding: 0 12px;
+                    &:first-child {
+                        border-right: 1px solid $gray-06;
+                    }
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+            }
+            &.signed {
+                /* stylelint-disable-next-line no-descending-specificity */
+                li {
+                    display: flex;
+                    align-items: center;
+
+                    &:first-child {
+                        padding-right: 16px;
+                    }
+                    &:nth-child(2) {
+                        padding-right: 6px;
+                    }
+                }
+            }
+        }
+    }
+}
