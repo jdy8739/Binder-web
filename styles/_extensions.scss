@@ -6,3 +6,9 @@
     color: $gray-15;
     font-size: 12px;
 }
+
+%title-default {
+    color: $gray-13;
+    cursor: pointer;
+    font-weight: $font-bold;
+}

@@ -1,5 +1,3 @@
 .label {
-  color: $gray-13;
-  cursor: pointer;
-  font-weight: $font-bold;
+  @extend %title-default
 }
