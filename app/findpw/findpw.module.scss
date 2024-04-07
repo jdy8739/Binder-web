@@ -7,9 +7,7 @@
         text-align: center;
         > div {
             &:first-child {
-                color: $gray-15;
-                font-size: 28px;
-                font-weight: $font-bolder;
+                @extend %sign-form-title-default;
             }
             &:last-child {
                 margin-top: 32px;
