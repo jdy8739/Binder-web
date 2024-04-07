@@ -12,7 +12,9 @@ const NavBar = () => {
 
   const service =
     // eslint-disable-next-line no-nested-ternary
-    pathname === DOMAIN.SIGN_IN
+    pathname === DOMAIN.SIGN_IN ||
+    pathname === DOMAIN.FIND_PW ||
+    pathname === DOMAIN.RESET_PW
       ? '통합 로그인'
       : pathname === DOMAIN.SIGN_UP
         ? '회원가입'
