@@ -26,7 +26,7 @@ const FindPw = () => {
         <Button content="인증번호 받기" />
       </form>
       <form className={cx('auth-send-form')}>
-        <SignInput label="인증번호" required />
+        <SignInput label="인증번호" type="number" required />
         <Button content="확인" disabled />
       </form>
     </main>

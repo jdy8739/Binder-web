@@ -6,9 +6,9 @@ import classNames from 'classnames/bind';
 import Label from './Label';
 import { PwHidden, PwVisible } from '/assets/svg';
 
-import styles from './SignInput.module.scss';
+import style from './SignInput.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(style);
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -28,7 +28,7 @@ const SignInput = ({
   denoteRequired = false,
   isPassword = false,
   ...props
-}: Omit<InputProps, 'type'>) => {
+}: InputProps) => {
   const inputId = useId();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -36,7 +36,7 @@ const SignInput = ({
   const [isPasswordType, setIsPasswordType] = useState(isPassword);
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', className)}>
       <div>
         <Label htmlFor={inputId} content={label} />
         {required && denoteRequired && (
@@ -47,10 +47,10 @@ const SignInput = ({
         <input
           {...props}
           id={inputId}
-          className={cx(className, { error: isError })}
+          className={cx({ error: isError })}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          type={isPasswordType ? 'password' : 'text'}
+          type={isPasswordType ? 'password' : props.type}
           spellCheck={false}
         />
         {isPassword && (

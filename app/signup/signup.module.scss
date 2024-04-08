@@ -1,0 +1,113 @@
+/* stylelint-disable no-descending-specificity */
+.main {
+    width: 320px;
+    padding: 100px 0 281px;
+    margin: auto ;
+
+    > div {
+        text-align: center;
+        > div {
+            &:first-child {
+                @extend %sign-form-title-default;
+            }
+        }
+    }
+
+    > form {
+        margin-top: 40px;
+
+        .sign-input {
+            margin-top: 24px;
+        }
+        
+        .get-auth-btn {
+            margin: 24px 0 26px;
+        }
+    }
+
+    section {
+        > div {
+            &:first-child {
+                @extend %title-default;
+            }
+        }
+
+        .terms-of-use {
+            height: 268px;
+            padding: 20px 14px;
+            border: 1px solid $gray-06;
+            border-radius: 8px;
+            margin-top: 8px;
+
+            > div {
+                &:first-child {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                &:nth-child(2) {
+                    padding-bottom: 12px;
+                    padding-left: 28px;
+                    border-bottom: 1px solid $gray-06;
+                    margin-top: 8px;
+                    small {
+                        color: $gray-08;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .check-list-box {
+                margin-top: 16px;
+
+                > ul {
+                    display: flex;
+                    height: 132px;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    > li {
+                        display: flex;
+                        align-items: center;
+                        color: $gray-13;
+                        font-size: 14px;
+                        gap: 8px;
+                    }
+                }
+            }
+        }
+
+        .private-data-storage {
+            margin-top: 16px;
+
+            > div {
+                &:first-child {
+                    @extend %title-default;
+
+                    margin-bottom: 8px;
+                }
+                &:last-child {
+                    margin: 12px 0 24px;
+
+                    .period-list-box {
+                        display: flex;
+                        justify-content: space-between;
+
+                        > li {
+                            display: flex;
+                            align-items: center;
+                            color: $gray-13;
+                            font-size: 14px;
+                            gap: 8px;
+                        }
+                    }
+                }
+            }
+            small {
+                color: $gray-08;
+                font-size: 12px;
+            }
+        }
+    }
+}

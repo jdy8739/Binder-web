@@ -1,6 +1,38 @@
+/* stylelint-disable no-descending-specificity */
 .main {
     width: 320px;
+    padding: 80px 0 281px;
     margin: auto;
+
+    .title {
+        display: flex;
+        width: 120px;
+        height: 72px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0 auto;
+        text-align: center;
+        
+        div {
+            font-weight: $font-bolder;
+
+            &:first-child {
+                font-size: 40px;
+                &::first-letter {
+                    color: $primary;
+                }
+            }
+            &:nth-child(2) {
+                span {
+                    &:first-child {
+                        margin-right: 3px;
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
 
     > div {
         display: flex;
@@ -55,36 +87,5 @@
         border-top: 1px solid $gray-06;
         margin: 0 17.5px;
         margin-top: 39.5px;        
-    }
-
-    .title {
-        display: flex;
-        width: 120px;
-        height: 72px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        margin: 80px auto 0;
-        text-align: center;
-        
-        /* stylelint-disable-next-line no-descending-specificity */
-        div {
-            font-weight: $font-bolder;
-
-            &:first-child {
-                font-size: 40px;
-                &::first-letter {
-                    color: $primary;
-                }
-            }
-            &:nth-child(2) {
-                span {
-                    &:first-child {
-                        margin-right: 3px;
-                        color: $primary;
-                    }
-                }
-            }
-        }
     }
 }
