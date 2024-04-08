@@ -1,4 +1,7 @@
+'use client';
+
 import classNames from 'classnames/bind';
+import { useCallback, useState } from 'react';
 
 import Button from '/components/atoms/Button';
 import SignInput from '/components/atoms/SignInput';
@@ -11,6 +14,12 @@ const cx = classNames.bind(style);
 
 const SignUpPage = () => {
   const nameForRadio = 'period';
+
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
+
+  const handleOnTermCheckBoxClick = useCallback((checked: boolean) => {
+    if (!checked) setIsCheckedAll(false);
+  }, []);
 
   return (
     <main className={cx('main')}>
@@ -55,7 +64,11 @@ const SignUpPage = () => {
           <div>이용 약관</div>
           <div className={cx('terms-of-use')}>
             <div>
-              <CheckBox />
+              <CheckBox
+                checkAll
+                checkedAll={isCheckedAll}
+                onClick={() => setIsCheckedAll(!isCheckedAll)}
+              />
               <span>전체동의</span>
             </div>
             <div>
@@ -67,19 +80,31 @@ const SignUpPage = () => {
             <div className={cx('check-list-box')}>
               <ul>
                 <li>
-                  <CheckBox />
+                  <CheckBox
+                    checkedAll={isCheckedAll}
+                    handleOnClick={handleOnTermCheckBoxClick}
+                  />
                   <span>(필수) 개인회원 약관에 동의</span>
                 </li>
                 <li>
-                  <CheckBox />
+                  <CheckBox
+                    checkedAll={isCheckedAll}
+                    handleOnClick={handleOnTermCheckBoxClick}
+                  />
                   <span>(필수) 개인정보 수집 및 이용에 동의</span>
                 </li>
                 <li>
-                  <CheckBox />
+                  <CheckBox
+                    checkedAll={isCheckedAll}
+                    handleOnClick={handleOnTermCheckBoxClick}
+                  />
                   <span>(선택) 마케팅 정보 수신 동의 - 이메일</span>
                 </li>
                 <li>
-                  <CheckBox />
+                  <CheckBox
+                    checkedAll={isCheckedAll}
+                    handleOnClick={handleOnTermCheckBoxClick}
+                  />
                   <span>(선택) 마케팅 정보 수신 동의 - SMS/MMS</span>
                 </li>
               </ul>
