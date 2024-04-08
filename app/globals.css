@@ -141,6 +141,9 @@ input[type="checkbox"], input[type="radio"] {
   appearance: none;
   cursor: pointer;
 }
+input::-webkit-inner-spin-button {
+  appearance: none;
+}
 button {
   background-color: white;
   cursor: pointer;
