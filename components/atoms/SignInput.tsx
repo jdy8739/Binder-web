@@ -28,7 +28,7 @@ const SignInput = ({
   denoteRequired = false,
   isPassword = false,
   ...props
-}: Omit<InputProps, 'type'>) => {
+}: InputProps) => {
   const inputId = useId();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -50,7 +50,7 @@ const SignInput = ({
           className={cx({ error: isError })}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          type={isPasswordType ? 'password' : 'text'}
+          type={isPasswordType ? 'password' : props.type}
           spellCheck={false}
         />
         {isPassword && (
