@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import Slide from '/components/atoms/slide/Slide';
+import Carousel from '../components/atoms/carousel/Carousel';
 import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
 
 import style from './main.module.scss';
@@ -10,7 +10,7 @@ const cx = classNames.bind(style);
 const MainContents = () => {
   return (
     <section className={cx('upper')}>
-      <Slide className={cx('upper-left')} />
+      <Carousel className={cx('upper-left')} />
       <div className={cx('upper-right')}>
         <div
           style={{
@@ -27,7 +27,12 @@ const MainContents = () => {
 };
 
 const PopularPosts = () => {
-  return <section />;
+  return (
+    <section className={cx('lower')}>
+      <div />
+      <div />
+    </section>
+  );
 };
 
 const Page = () => {

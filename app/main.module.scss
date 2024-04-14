@@ -2,17 +2,20 @@
     min-width: $width-desktop;
 
     .main {
+        display: flex;
+        flex-direction: column;
         padding: 0 320px;
         padding-bottom: 390px;
+        gap: 108px;
     
         .upper {
             display: flex;
             height: 600px;
+            gap: 24px;
 
             &-left {
                 width: 55%;
                 height: 100%;
-                margin-right: 24px;
                 background-color: black;
             }
 
@@ -20,6 +23,11 @@
                 width: 45%;
                 height: 100%;
             }
+        }
+
+        .lower {
+            height: 768px;
+            background-color: red;
         }
     }
 }
