@@ -1,0 +1,25 @@
+.body {
+    min-width: $width-desktop;
+
+    .main {
+        padding: 0 320px;
+        padding-bottom: 390px;
+    
+        .upper {
+            display: flex;
+            height: 600px;
+
+            &-left {
+                width: 55%;
+                height: 100%;
+                margin-right: 24px;
+                background-color: black;
+            }
+
+            &-right {
+                width: 45%;
+                height: 100%;
+            }
+        }
+    }
+}
