@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import { NavLeft, NavRight } from '/assets/svg';
 
-import CarouselPageIndicator from '../carousel-page-indicator/CarouselPageIndicator';
+import CarouselIndexIndicator from '../carousel-index-indicator/CarouselIndexIndicator';
 
 import style from './Carousel.module.scss';
 
@@ -24,7 +24,7 @@ const Carousel = ({ className }: Props) => {
           <NavRight />
         </button>
       </div>
-      <CarouselPageIndicator
+      <CarouselIndexIndicator
         className={cx('indicator')}
         currentIndex={1}
         totalCount={11}
