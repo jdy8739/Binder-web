@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import style from './SlidePageIndicator.module.scss';
+import style from './CarouselPageIndicator.module.scss';
 
 const cx = classNames.bind(style);
 
@@ -10,7 +10,7 @@ interface Props {
   totalCount: number;
 }
 
-const SlidePageIndicator = ({
+const CarouselPageIndicator = ({
   className,
   currentIndex = 0,
   totalCount = 0,
@@ -22,4 +22,4 @@ const SlidePageIndicator = ({
   );
 };
 
-export default SlidePageIndicator;
+export default CarouselPageIndicator;

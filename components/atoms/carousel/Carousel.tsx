@@ -2,9 +2,9 @@ import classNames from 'classnames/bind';
 
 import { NavLeft, NavRight } from '/assets/svg';
 
-import SlidePageIndicator from '../slide-page-indicator/SlidePageIndicator';
+import CarouselPageIndicator from '../carousel-page-indicator/CarouselPageIndicator';
 
-import style from './Slide.module.scss';
+import style from './Carousel.module.scss';
 
 const cx = classNames.bind(style);
 
@@ -12,7 +12,7 @@ interface Props {
   className?: string;
 }
 
-const Slide = ({ className }: Props) => {
+const Carousel = ({ className }: Props) => {
   return (
     <div className={cx('wrapper', className)}>
       <div className={cx('slides')} />
@@ -24,7 +24,7 @@ const Slide = ({ className }: Props) => {
           <NavRight />
         </button>
       </div>
-      <SlidePageIndicator
+      <CarouselPageIndicator
         className={cx('indicator')}
         currentIndex={1}
         totalCount={11}
@@ -33,4 +33,4 @@ const Slide = ({ className }: Props) => {
   );
 };
 
-export default Slide;
+export default Carousel;
