@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
-import SearchInput from '/components/atoms/SearchInput';
+import SearchInput from '/components/atoms/search-input/SearchInput';
 import { Bell, Profile } from '/assets/svg';
 
 import style from './NormalNavBar.module.scss';
