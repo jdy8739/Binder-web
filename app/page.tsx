@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 
 import Slide from '/components/atoms/slide/Slide';
+import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
 
 import style from './main.module.scss';
-import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
 
 const cx = classNames.bind(style);
 

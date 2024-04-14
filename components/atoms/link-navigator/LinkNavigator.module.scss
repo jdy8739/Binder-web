@@ -10,9 +10,11 @@
     font-size: 12px;
 
     .nav-text {
+        display: flex;
+        gap: 12px;
+        
         span {
             &:first-child {
-                margin-right: 12px;
                 color: $gray-14;
                 font-weight: $font-bolder;
             }

@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 
-import style from './LinkNavigator.module.scss';
 import { NavLeftSmall, NavRightSmall } from '/assets/svg';
+
+import style from './LinkNavigator.module.scss';
 
 const cx = classNames.bind(style);
 
