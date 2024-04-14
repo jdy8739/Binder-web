@@ -1,0 +1,29 @@
+.wrapper {
+    position: relative;
+    border-radius: 8px;
+
+    .navigator {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translate(0%, -50%);
+
+        button {
+            position: absolute;
+            margin-top: -18px;
+            background: none;
+            &:first-child {
+                left: -22px;
+            }
+            &:last-child {
+                right: -22px;
+            }
+        }
+    }
+
+    .indicator {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+}
