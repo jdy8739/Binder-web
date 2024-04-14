@@ -2,6 +2,7 @@
     @extend %footer-default;
 
     display: flex;
+    min-width: inherit;
     height: 210px;
     box-sizing: border-box;
     justify-content: space-between;
