@@ -1,9 +1,13 @@
+import Link from 'next/link';
+
 import classNames from 'classnames/bind';
 
 import Carousel from '../components/atoms/carousel/Carousel';
+import Slide from '/components/atoms/slide/Slide';
 import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
 
 import style from './main.module.scss';
+import PostThumbnail from '/components/mocules/PostThumbnail';
 
 const cx = classNames.bind(style);
 
@@ -29,8 +33,30 @@ const MainContents = () => {
 const PopularPosts = () => {
   return (
     <section className={cx('lower')}>
-      <div />
-      <div />
+      <div>
+        <div className={cx('lower-head')}>
+          <span>인기글</span>
+          <Link href="/#">더보기</Link>
+        </div>
+        <Slide
+          className={cx('lower-body')}
+          elementList={[1, 2, 3, 4].map(() => (
+            <PostThumbnail className={cx('post-thumbnail')} />
+          ))}
+        />
+      </div>
+      <div>
+        <div className={cx('lower-head')}>
+          <span>최신글</span>
+          <Link href="/#">더보기</Link>
+        </div>
+        <Slide
+          className={cx('lower-body')}
+          elementList={[1, 2, 3, 4].map(() => (
+            <PostThumbnail className={cx('post-thumbnail')} />
+          ))}
+        />
+      </div>
     </section>
   );
 };

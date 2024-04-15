@@ -26,8 +26,38 @@
         }
 
         .lower {
+            display: flex;
             height: 768px;
-            background-color: red;
+            flex-direction: column;
+            gap: 80px;
+
+            &-head {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 16px;
+                
+                > span {
+                    font-size: 22px;
+                    font-weight: $font-bolder;
+                }
+
+                > a {
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px;
+                }
+            }
+
+            &-body {
+                display: flex;
+                height: 294px;
+                justify-content: space-between;
+                gap: 24px;
+
+                .post-thumbnail {
+                    width: 25%;
+                }
+            }
         }
     }
 }
