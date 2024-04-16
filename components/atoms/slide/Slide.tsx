@@ -126,9 +126,6 @@ const Slide = ({
   );
 
   useLayoutEffect(() => {
-    /**
-     * TODO: debounce updateElementWidth.
-     */
     updateElementWidth();
 
     window.addEventListener('resize', updateElementWidth);
