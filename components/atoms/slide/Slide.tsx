@@ -93,21 +93,28 @@ const Slide = ({
 
   const handleOnNavClick = useCallback(
     (way: SlidingWay) => {
-      if (!isTransitioning) setIsTransitioning({ way, isTransitioning: true });
-
-      setTimeout(() => {
-        setIsTransitioning({ way, isTransitioning: false });
-        setFirstIndex((current) => {
-          const isWayLeft = way === 'left';
-          const nextIndex = isWayLeft ? current - 1 : current + 1;
-          if (isWayLeft) {
-            return nextIndex < CONST.NUMBER.ZERO
-              ? validElList.length - 1
-              : nextIndex;
-          }
-          return nextIndex === validElList.length ? 0 : nextIndex;
+      if (!isTransitioning) {
+        setIsTransitioning((current) => {
+          if (!current.isTransitioning) return { way, isTransitioning: true };
+          return current;
         });
-      }, transitionDuration);
+
+        setTimeout(() => {
+          setIsTransitioning({ way, isTransitioning: false });
+          setFirstIndex((current) => {
+            const isWayLeft = way === 'left';
+            const nextIndex = isWayLeft ? current - 1 : current + 1;
+            if (isWayLeft) {
+              return nextIndex < CONST.NUMBER.ZERO
+                ? validElList.length - 1
+                : nextIndex;
+            }
+            return nextIndex === validElList.length
+              ? CONST.NUMBER.ZERO
+              : nextIndex;
+          });
+        }, transitionDuration);
+      }
     },
     [isTransitioning, validElList, transitionDuration],
   );
