@@ -57,25 +57,39 @@ const Slide = ({
     return elementList.filter((el) => React.isValidElement(el));
   }, [elementList]);
 
-  const slicedElementList = useMemo(() => {
+  const { isNavButtonDisabled, slicedElementList } = useMemo(() => {
     const lastIndex = firstIndex + numberToShow + CONST.NUMBER.ONE;
 
     const { length } = validElList;
 
+    const isNavButtonDisabled = validElList.length <= numberToShow;
+
     if (firstIndex === CONST.NUMBER.ZERO) {
-      return [
-        validElList[length - CONST.NUMBER.ONE],
-        ...validElList.slice(firstIndex, lastIndex),
-      ];
+      return {
+        isNavButtonDisabled,
+        slicedElementList: [
+          validElList[length - CONST.NUMBER.ONE],
+          ...validElList.slice(firstIndex, lastIndex),
+        ],
+      };
     }
     if (lastIndex >= validElList.length) {
       const overflowed = lastIndex - length;
-      return [
-        ...validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex),
-        ...validElList.slice(CONST.NUMBER.ZERO, overflowed),
-      ];
+      return {
+        isNavButtonDisabled,
+        slicedElementList: [
+          ...validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex),
+          ...validElList.slice(CONST.NUMBER.ZERO, overflowed),
+        ],
+      };
     }
-    return validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex);
+    return {
+      isNavButtonDisabled,
+      slicedElementList: validElList.slice(
+        firstIndex - CONST.NUMBER.ONE,
+        lastIndex,
+      ),
+    };
   }, [firstIndex, validElList, numberToShow]);
 
   const calcEachElementWidth = useCallback(() => {
@@ -145,11 +159,19 @@ const Slide = ({
       ) : (
         <>
           <div className={cx('navigator')}>
-            <button type="button" onClick={() => handleOnNavClick('left')}>
-              <NavLeftVerticalWide />
+            <button
+              type="button"
+              onClick={() => handleOnNavClick('left')}
+              disabled={isNavButtonDisabled}
+            >
+              {navLeft}
             </button>
-            <button type="button" onClick={() => handleOnNavClick('right')}>
-              <NavRightVerticalWide />
+            <button
+              type="button"
+              onClick={() => handleOnNavClick('right')}
+              disabled={isNavButtonDisabled}
+            >
+              {navRight}
             </button>
           </div>
           <div className={cx('slide')}>
