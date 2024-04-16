@@ -40,8 +40,8 @@ const PopularPosts = () => {
         </div>
         <Slide
           className={cx('lower-body')}
-          elementList={[1, 2, 3, 4].map(() => (
-            <PostThumbnail className={cx('post-thumbnail')} />
+          elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
+            <PostThumbnail index={el} />
           ))}
         />
       </div>
@@ -52,8 +52,8 @@ const PopularPosts = () => {
         </div>
         <Slide
           className={cx('lower-body')}
-          elementList={[1, 2, 3, 4].map(() => (
-            <PostThumbnail className={cx('post-thumbnail')} />
+          elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
+            <PostThumbnail index={el} />
           ))}
         />
       </div>

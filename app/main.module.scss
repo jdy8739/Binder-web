@@ -49,14 +49,8 @@
             }
 
             &-body {
-                display: flex;
                 height: 294px;
-                justify-content: space-between;
-                gap: 24px;
 
-                .post-thumbnail {
-                    width: 25%;
-                }
             }
         }
     }
