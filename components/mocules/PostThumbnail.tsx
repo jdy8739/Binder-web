@@ -6,9 +6,10 @@ const cx = classNames.bind(style);
 
 interface Props {
   className?: string;
+  index: number;
 }
 
-const PostThumbnail = ({ className }: Props) => {
+const PostThumbnail = ({ className, index }: Props) => {
   return (
     <div className={cx('wrapper', className)}>
       <div className={cx('thumbnail-img')} />
@@ -21,7 +22,7 @@ const PostThumbnail = ({ className }: Props) => {
             <span>24</span>
           </span>
         </div>
-        <div className={cx('title')}>글제목</div>
+        <div className={cx('title')}>글제목 {index}</div>
         <div className={cx('tag-list')}>
           <span>#유전학</span>
         </div>
