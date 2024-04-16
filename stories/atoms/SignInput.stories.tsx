@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
-import SignInput from '../../components/atoms/SignInput';
+import SignInput from '../../components/atoms/sign-input/SignInput';
 
 type StoryComponent = StoryObj<typeof SignInput>;
 type StoryTemplate = StoryFn<typeof SignInput>;

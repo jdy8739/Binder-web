@@ -3,7 +3,7 @@
 import { useId, useState } from 'react';
 import classNames from 'classnames/bind';
 
-import Label from './Label';
+import Label from '../label/Label';
 import { PwHidden, PwVisible } from '/assets/svg';
 
 import style from './SignInput.module.scss';

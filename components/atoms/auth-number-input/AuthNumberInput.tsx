@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import SignInput from './SignInput';
+import SignInput from '../sign-input/SignInput';
 
 import style from './AuthNumberInput.module.scss';
 
