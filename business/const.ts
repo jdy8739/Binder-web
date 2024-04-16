@@ -1,6 +1,10 @@
 const CONST = {
   STRING: {
     BLANK: '',
+    ZERO: '0',
+  },
+  NUMBER: {
+    ZERO: 0,
   },
 } as const;
 
