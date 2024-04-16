@@ -9,6 +9,7 @@ import React, {
   useState,
 } from 'react';
 import classNames from 'classnames/bind';
+import throttle from 'lodash.throttle';
 
 import { CONST } from '/business/const';
 
@@ -30,14 +31,14 @@ type SlidingWay = 'left' | 'right';
 const Slide = ({
   className,
   elementList,
-  startIndex = 0,
+  startIndex = CONST.NUMBER.ZERO,
   numberToShow = 4,
   gap = 10,
   transitionDuration = 600,
 }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const [eachElWidth, setEachElWidth] = useState(0);
+  const [eachElWidth, setEachElWidth] = useState<number>(CONST.NUMBER.ZERO);
 
   const [firstIndex, setFirstIndex] = useState(startIndex);
 
@@ -52,24 +53,24 @@ const Slide = ({
   }, [elementList]);
 
   const slicedElementList = useMemo(() => {
-    const lastIndex = firstIndex + numberToShow + 1;
+    const lastIndex = firstIndex + numberToShow + CONST.NUMBER.ONE;
 
     const { length } = validElList;
 
     if (firstIndex === CONST.NUMBER.ZERO) {
       return [
-        validElList[length - 1],
+        validElList[length - CONST.NUMBER.ONE],
         ...validElList.slice(firstIndex, lastIndex),
       ];
     }
     if (lastIndex >= validElList.length) {
       const overflowed = lastIndex - length;
       return [
-        ...validElList.slice(firstIndex - 1, lastIndex),
+        ...validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex),
         ...validElList.slice(CONST.NUMBER.ZERO, overflowed),
       ];
     }
-    return validElList.slice(firstIndex - 1, lastIndex);
+    return validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex);
   }, [firstIndex, validElList, numberToShow]);
 
   const calcEachElementWidth = useCallback(() => {
@@ -86,9 +87,12 @@ const Slide = ({
     return eachElWidth;
   }, [numberToShow]);
 
-  const updateElementWidth = useCallback(
-    () => setEachElWidth(calcEachElementWidth()),
-    [calcEachElementWidth],
+  const updateElementWidth = throttle(
+    useCallback(
+      () => setEachElWidth(calcEachElementWidth()),
+      [calcEachElementWidth],
+    ),
+    900,
   );
 
   const handleOnNavClick = useCallback(
@@ -103,10 +107,12 @@ const Slide = ({
           setIsTransitioning({ way, isTransitioning: false });
           setFirstIndex((current) => {
             const isWayLeft = way === 'left';
-            const nextIndex = isWayLeft ? current - 1 : current + 1;
+            const nextIndex = isWayLeft
+              ? current - CONST.NUMBER.ONE
+              : current + CONST.NUMBER.ONE;
             if (isWayLeft) {
               return nextIndex < CONST.NUMBER.ZERO
-                ? validElList.length - 1
+                ? validElList.length - CONST.NUMBER.ONE
                 : nextIndex;
             }
             return nextIndex === validElList.length
