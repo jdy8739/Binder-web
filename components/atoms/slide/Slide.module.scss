@@ -7,15 +7,22 @@
 
         > button {
             position: absolute;
+            width: 35px;
+            height: 40%;
+            border-radius: 8px;
+            background-color: $gray-02;
             transform: translate(0%, -50%);
 
+            &:active {
+                background-color: $gray-04;
+            }
             &:first-child {
                 top: 50%;
-                left: -50px;      
+                left: -45px;      
             }
             &:last-child {
                 top: 50%;
-                right: -50px;
+                right: -45px;
             }
         }
     }

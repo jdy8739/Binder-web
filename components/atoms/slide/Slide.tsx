@@ -14,6 +14,7 @@ import throttle from 'lodash.throttle';
 import { CONST } from '/business/const';
 
 import style from './Slide.module.scss';
+import { NavLeftVerticalWide, NavRightVerticalWide } from '/assets/svg';
 
 const cx = classNames.bind(style);
 
@@ -24,6 +25,8 @@ interface Props {
   numberToShow?: number;
   gap?: number;
   transitionDuration?: number;
+  navLeft?: ReactElement;
+  navRight?: ReactElement;
 }
 
 type SlidingWay = 'left' | 'right';
@@ -35,6 +38,8 @@ const Slide = ({
   numberToShow = 4,
   gap = 10,
   transitionDuration = 600,
+  navLeft = <NavLeftVerticalWide />,
+  navRight = <NavRightVerticalWide />,
 }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -135,41 +140,43 @@ const Slide = ({
 
   return (
     <div ref={wrapperRef} className={cx('wrapper', className)}>
-      <div className={cx('navigator')}>
-        <button type="button" onClick={() => handleOnNavClick('left')}>
-          left
-        </button>
-        <button type="button" onClick={() => handleOnNavClick('right')}>
-          right
-        </button>
-      </div>
-      <div className={cx('slide')}>
-        {eachElWidth === CONST.NUMBER.ZERO ? (
-          <div />
-        ) : (
-          <div
-            className={cx('slide-elements')}
-            style={{
-              width: `${eachElWidth * slicedElementList.length}px`,
-              gap: `${gap}px`,
-              top: CONST.STRING.ZERO,
-              left: `-${eachElWidth}px`,
-              transform: isTransitioning
-                ? `translateX(${way === 'left' ? CONST.STRING.BLANK : '-'}${eachElWidth}px)`
-                : CONST.STRING.BLANK,
-              transitionDuration: isTransitioning
-                ? `${transitionDuration}ms`
-                : CONST.STRING.BLANK,
-            }}
-          >
-            {slicedElementList.map((el, idx) => (
-              <div key={idx} style={{ width: `${eachElWidth}px` }}>
-                {el}
-              </div>
-            ))}
+      {eachElWidth === CONST.NUMBER.ZERO ? (
+        <div />
+      ) : (
+        <>
+          <div className={cx('navigator')}>
+            <button type="button" onClick={() => handleOnNavClick('left')}>
+              <NavLeftVerticalWide />
+            </button>
+            <button type="button" onClick={() => handleOnNavClick('right')}>
+              <NavRightVerticalWide />
+            </button>
           </div>
-        )}
-      </div>
+          <div className={cx('slide')}>
+            <div
+              className={cx('slide-elements')}
+              style={{
+                width: `${eachElWidth * slicedElementList.length}px`,
+                gap: `${gap}px`,
+                top: CONST.STRING.ZERO,
+                left: `-${eachElWidth}px`,
+                transform: isTransitioning
+                  ? `translateX(${way === 'left' ? CONST.STRING.BLANK : '-'}${eachElWidth}px)`
+                  : CONST.STRING.BLANK,
+                transitionDuration: isTransitioning
+                  ? `${transitionDuration}ms`
+                  : CONST.STRING.BLANK,
+              }}
+            >
+              {slicedElementList.map((el, idx) => (
+                <div key={idx} style={{ width: `${eachElWidth}px` }}>
+                  {el}
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
