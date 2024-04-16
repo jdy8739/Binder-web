@@ -7,21 +7,22 @@
 
         > button {
             position: absolute;
+            top: 50%;
             width: 35px;
             height: 40%;
-            border-radius: 8px;
+            border-radius: 4px;
             background-color: $gray-02;
             transform: translate(0%, -50%);
-
             &:active {
                 background-color: $gray-04;
             }
+            &:disabled {
+                cursor: not-allowed;
+            }
             &:first-child {
-                top: 50%;
                 left: -45px;      
             }
             &:last-child {
-                top: 50%;
                 right: -45px;
             }
         }
