@@ -171,7 +171,7 @@ const Slide = ({
   return (
     <div
       ref={wrapperRef}
-      className={cx('wrapper', className, { 'scale-up': isMouseDown })}
+      className={cx('wrapper', className, { grab: isMouseDown })}
       onMouseDown={handleOnMouseDown}
       onMouseUp={handleOnMouseEventEnd}
       onMouseLeave={handleOnMouseEventEnd}
