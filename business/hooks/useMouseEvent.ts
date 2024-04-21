@@ -11,8 +11,6 @@ interface TriggeredCoord {
   yDown: boolean;
 }
 
-type OnChange = () => void;
-
 const useMouseEvent = ({
   moveBenchmark = 30,
   handleOnXLeftChange,
@@ -21,10 +19,10 @@ const useMouseEvent = ({
   handleOnYDownChange,
 }: {
   moveBenchmark?: number;
-  handleOnXLeftChange?: OnChange;
-  handleOnXRightChange?: OnChange;
-  handleOnYUpChange?: OnChange;
-  handleOnYDownChange?: OnChange;
+  handleOnXLeftChange?: () => void;
+  handleOnXRightChange?: () => void;
+  handleOnYUpChange?: () => void;
+  handleOnYDownChange?: () => void;
 }) => {
   const clientCoordRef = useRef<{ clientX: number; clientY: number }>({
     clientX: CONST.NUMBER.ZERO,
