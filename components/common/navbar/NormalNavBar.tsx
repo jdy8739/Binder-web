@@ -9,7 +9,7 @@ import style from './NormalNavBar.module.scss';
 const cx = classNames.bind(style);
 
 const NormalNavBar = () => {
-  const isSignedIn = false;
+  const isSignedIn = true;
 
   return (
     <header className={cx('wrapper')}>
