@@ -52,6 +52,10 @@
                 transform: translateX(calc(var(--each-el-width) * calc(var(--direction))));
                 transition-duration: var(--duration);
             }
+
+            .slide-item {
+                width: var(--each-el-width);
+            }
         }
     }
 }

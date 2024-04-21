@@ -195,7 +195,11 @@ const Slide = ({
               }
             >
               {slicedElementList.map((el, idx) => (
-                <div key={idx} style={{ width: `${eachElWidth}px` }}>
+                <div
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={idx}
+                  className={cx('slide-item')}
+                >
                   {el}
                 </div>
               ))}
