@@ -1,7 +1,13 @@
 .wrapper {
+    position: relative;
+
+    &.grab {
+        cursor: grab;    
+    }
+
     .navigator {
         position: absolute;
-        z-index: 100;
+        top: 0;
         width: 100%;
         height: 100%;
 
@@ -36,8 +42,16 @@
 
         &-elements {
             position: absolute;
+            top: 0;
+            left: calc(var(--each-el-width) * -1);
             display: flex;
+            width: calc(var(--each-el-width) * var(--el-length));
             justify-content: space-between;
+
+            &.transition {
+                transform: translateX(calc(var(--each-el-width) * calc(var(--direction))));
+                transition-duration: var(--duration);
+            }
         }
     }
 }
