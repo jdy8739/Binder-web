@@ -5,9 +5,9 @@ import classNames from 'classnames/bind';
 import Carousel from '../components/atoms/carousel/Carousel';
 import Slide from '/components/atoms/slide/Slide';
 import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
+import PostThumbnail from '/components/mocules/PostThumbnail';
 
 import style from './main.module.scss';
-import PostThumbnail from '/components/mocules/PostThumbnail';
 
 const cx = classNames.bind(style);
 
@@ -41,7 +41,7 @@ const PopularPosts = () => {
         <Slide
           className={cx('lower-body')}
           elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
-            <PostThumbnail index={el} />
+            <PostThumbnail key={el} index={el} />
           ))}
         />
       </div>
@@ -53,7 +53,7 @@ const PopularPosts = () => {
         <Slide
           className={cx('lower-body')}
           elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
-            <PostThumbnail index={el} />
+            <PostThumbnail key={el} index={el} />
           ))}
         />
       </div>

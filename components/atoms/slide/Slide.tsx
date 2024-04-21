@@ -1,6 +1,7 @@
 'use client';
 
 import React, {
+  CSSProperties,
   ReactElement,
   useCallback,
   useLayoutEffect,
@@ -13,8 +14,11 @@ import throttle from 'lodash.throttle';
 
 import { CONST } from '/business/const';
 
-import style from './Slide.module.scss';
+import useMouseEvent from '/business/hooks/useMouseEvent';
+
 import { NavLeftVerticalWide, NavRightVerticalWide } from '/assets/svg';
+
+import style from './Slide.module.scss';
 
 const cx = classNames.bind(style);
 
@@ -23,20 +27,20 @@ interface Props {
   elementList: ReactElement[];
   startIndex?: number;
   numberToShow?: number;
-  gap?: number;
+  gap?: CSSProperties['gap'];
   transitionDuration?: number;
   navLeft?: ReactElement;
   navRight?: ReactElement;
 }
 
-type SlidingWay = 'left' | 'right';
+type SlideDirection = 'left' | 'right';
 
 const Slide = ({
   className,
   elementList,
   startIndex = CONST.NUMBER.ZERO,
   numberToShow = 4,
-  gap = 10,
+  gap = '10px',
   transitionDuration = 600,
   navLeft = <NavLeftVerticalWide />,
   navRight = <NavRightVerticalWide />,
@@ -47,10 +51,10 @@ const Slide = ({
 
   const [firstIndex, setFirstIndex] = useState(startIndex);
 
-  const [{ way, isTransitioning }, setIsTransitioning] = useState<{
-    way: SlidingWay;
+  const [{ direction, isTransitioning }, setIsTransitioning] = useState<{
+    direction: SlideDirection;
     isTransitioning: boolean;
-  }>({ way: 'left', isTransitioning: false });
+  }>({ direction: 'left', isTransitioning: false });
 
   const validElList = useMemo(() => {
     if (!Array.isArray(elementList)) return [];
@@ -115,21 +119,22 @@ const Slide = ({
   );
 
   const handleOnNavClick = useCallback(
-    (way: SlidingWay) => {
+    (direction: SlideDirection) => {
       if (!isTransitioning) {
         setIsTransitioning((current) => {
-          if (!current.isTransitioning) return { way, isTransitioning: true };
+          if (!current.isTransitioning)
+            return { direction, isTransitioning: true };
           return current;
         });
 
         setTimeout(() => {
-          setIsTransitioning({ way, isTransitioning: false });
+          setIsTransitioning({ direction, isTransitioning: false });
           setFirstIndex((current) => {
-            const isWayLeft = way === 'left';
-            const nextIndex = isWayLeft
+            const isDirectionLeft = direction === 'left';
+            const nextIndex = isDirectionLeft
               ? current - CONST.NUMBER.ONE
               : current + CONST.NUMBER.ONE;
-            if (isWayLeft) {
+            if (isDirectionLeft) {
               return nextIndex < CONST.NUMBER.ZERO
                 ? validElList.length - CONST.NUMBER.ONE
                 : nextIndex;
@@ -144,6 +149,17 @@ const Slide = ({
     [isTransitioning, validElList, transitionDuration],
   );
 
+  const {
+    isMouseDown,
+    handleOnMouseDown,
+    handleOnMouseMove,
+    handleOnMouseEventEnd,
+  } = useMouseEvent({
+    moveBenchmark: 30,
+    handleOnXLeftChange: () => handleOnNavClick('right'),
+    handleOnXRightChange: () => handleOnNavClick('left'),
+  });
+
   useLayoutEffect(() => {
     updateElementWidth();
 
@@ -153,11 +169,42 @@ const Slide = ({
   }, [updateElementWidth]);
 
   return (
-    <div ref={wrapperRef} className={cx('wrapper', className)}>
+    <div
+      ref={wrapperRef}
+      className={cx('wrapper', className, { grab: isMouseDown })}
+      onMouseDown={handleOnMouseDown}
+      onMouseUp={handleOnMouseEventEnd}
+      onMouseLeave={handleOnMouseEventEnd}
+      onMouseMove={handleOnMouseMove}
+    >
       {eachElWidth === CONST.NUMBER.ZERO ? (
         <div />
       ) : (
         <>
+          <div className={cx('slide')}>
+            <div
+              className={cx('slide-elements', { transition: isTransitioning })}
+              style={
+                {
+                  '--each-el-width': `${eachElWidth}px`,
+                  '--el-length': slicedElementList.length,
+                  '--direction': direction === 'left' ? 1 : -1,
+                  '--duration': `${transitionDuration}ms`,
+                  gap,
+                } as CSSProperties
+              }
+            >
+              {slicedElementList.map((el, idx) => (
+                <div
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={idx}
+                  className={cx('slide-elements-item')}
+                >
+                  {el}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className={cx('navigator')}>
             <button
               type="button"
@@ -173,29 +220,6 @@ const Slide = ({
             >
               {navRight}
             </button>
-          </div>
-          <div className={cx('slide')}>
-            <div
-              className={cx('slide-elements')}
-              style={{
-                width: `${eachElWidth * slicedElementList.length}px`,
-                gap: `${gap}px`,
-                top: CONST.STRING.ZERO,
-                left: `-${eachElWidth}px`,
-                transform: isTransitioning
-                  ? `translateX(${way === 'left' ? CONST.STRING.BLANK : '-'}${eachElWidth}px)`
-                  : CONST.STRING.BLANK,
-                transitionDuration: isTransitioning
-                  ? `${transitionDuration}ms`
-                  : CONST.STRING.BLANK,
-              }}
-            >
-              {slicedElementList.map((el, idx) => (
-                <div key={idx} style={{ width: `${eachElWidth}px` }}>
-                  {el}
-                </div>
-              ))}
-            </div>
           </div>
         </>
       )}
