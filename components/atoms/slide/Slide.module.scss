@@ -53,7 +53,7 @@
                 transition-duration: var(--duration);
             }
 
-            .slide-item {
+            &-item {
                 width: var(--each-el-width);
             }
         }
