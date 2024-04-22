@@ -10,7 +10,7 @@ import {
 import classNames from 'classnames/bind';
 
 import Select from '../select/Select';
-import Option from '../option/Option';
+import Option, { BaseOption } from '../option/Option';
 
 import style from './Dropdown.module.scss';
 
@@ -21,11 +21,7 @@ interface DropdownProps {
   header?: ReactNode;
   footer?: ReactNode;
   trigger: ReactNode;
-  optionList: {
-    value: number | string;
-    content: number | string;
-    subContent?: number | string;
-  }[];
+  optionList: BaseOption[];
   animationDuration?: number;
 }
 
@@ -68,7 +64,7 @@ const Dropdown = ({
         </button>
       </div>
       <div
-        className={cx('select', {
+        className={cx('drop-down', {
           triggered,
           visible,
         })}
@@ -85,12 +81,7 @@ const Dropdown = ({
           <div>
             <Select>
               {optionList.map((option) => (
-                <Option key={option.value}>
-                  <div>
-                    <span>{option.content}</span>
-                    <span>{option.subContent}</span>
-                  </div>
-                </Option>
+                <Option key={option.value} option={option} />
               ))}
             </Select>
           </div>

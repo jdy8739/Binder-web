@@ -30,9 +30,9 @@ export const Default: StoryComponent = {
     header: <div>header</div>,
     footer: <div>footer</div>,
     optionList: [
-      { value: 0, content: 0, subContent: 0 },
-      { value: 1, content: 1, subContent: 1 },
-      { value: 2, content: 2, subContent: 2 },
+      { value: 0, label: 0, subContent: 0 },
+      { value: 1, label: 1, subContent: 1 },
+      { value: 2, label: 2, subContent: 2 },
     ],
   },
   render: Template,

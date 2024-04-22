@@ -1,20 +1,25 @@
-import { ReactElement } from 'react';
-
 import classNames from 'classnames/bind';
 
 import style from './Option.module.scss';
 
 const cx = classNames.bind(style);
 
-interface OptionProps {
-  children: ReactElement;
-  className?: string;
+interface BaseOption {
+  value: number | string;
+  label: number | string;
+  [key: string]: number | string;
 }
 
-const Option = ({ children, className }: OptionProps) => {
+interface OptionProps {
+  className?: string;
+  option: BaseOption;
+}
+
+const Option = ({ className, option }: OptionProps) => {
   return (
-    <div className={cx('wrapper', className)}>
-      <div>{children}</div>
+    <div className={cx('wrapper', { visited: option.visited }, className)}>
+      <span>{option.label}</span>
+      {option.sub && <span>{option.sub}</span>}
     </div>
   );
 };
@@ -22,3 +27,4 @@ const Option = ({ children, className }: OptionProps) => {
 Option.displayName = 'Option';
 
 export default Option;
+export type { BaseOption };
