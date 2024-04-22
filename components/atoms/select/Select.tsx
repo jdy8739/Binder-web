@@ -12,14 +12,17 @@ interface SelectProps {
 }
 
 const Select = ({ children, className }: SelectProps) => {
-  const filteredOption = useMemo(
-    () => Children.map(children, (child) => child.displayName === 'Option'),
+  const validOptionElements = useMemo(
+    () =>
+      Children.map(children, (child) => child).filter(
+        (child) => child.type?.displayName === 'Option',
+      ),
     [children],
   );
 
   return (
     <div className={cx('wrapper', className)}>
-      <select>{filteredOption}</select>
+      <div className={cx('select')}>{validOptionElements}</div>
     </div>
   );
 };

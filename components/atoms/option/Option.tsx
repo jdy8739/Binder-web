@@ -6,15 +6,15 @@ import style from './Option.module.scss';
 
 const cx = classNames.bind(style);
 
-interface OptionProps extends React.OptionHTMLAttributes<HTMLOptionElement> {
+interface OptionProps {
   children: ReactElement;
   className?: string;
 }
 
-const Option = ({ children, className, value }: OptionProps) => {
+const Option = ({ children, className }: OptionProps) => {
   return (
     <div className={cx('wrapper', className)}>
-      <option value={value}>{children}</option>
+      <div>{children}</div>
     </div>
   );
 };
