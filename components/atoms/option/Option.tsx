@@ -4,7 +4,7 @@ import style from './Option.module.scss';
 
 const cx = classNames.bind(style);
 
-interface BaseOption {
+interface BasicOption {
   value: number | string;
   label: number | string;
   [key: string]: number | string;
@@ -12,7 +12,7 @@ interface BaseOption {
 
 interface OptionProps {
   className?: string;
-  option: BaseOption;
+  option: BasicOption;
 }
 
 const Option = ({ className, option }: OptionProps) => {
@@ -27,4 +27,4 @@ const Option = ({ className, option }: OptionProps) => {
 Option.displayName = 'Option';
 
 export default Option;
-export type { BaseOption };
+export type { BasicOption, OptionProps };

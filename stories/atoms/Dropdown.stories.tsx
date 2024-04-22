@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Dropdown from '../../components/atoms/dropdown/Dropdown';
+import Option from '/components/atoms/option/Option';
 
 type StoryComponent = StoryObj<typeof Dropdown>;
 type StoryTemplate = StoryFn<typeof Dropdown>;
@@ -29,6 +30,7 @@ export const Default: StoryComponent = {
     trigger: <div>trigger</div>,
     header: <div>header</div>,
     footer: <div>footer</div>,
+    optionComp: Option,
     optionList: [
       { value: 0, label: 0, subContent: 0 },
       { value: 1, label: 1, subContent: 1 },

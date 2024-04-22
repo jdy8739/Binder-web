@@ -1,6 +1,6 @@
 'use client';
 
-import {
+import React, {
   CSSProperties,
   ReactNode,
   useCallback,
@@ -10,7 +10,7 @@ import {
 import classNames from 'classnames/bind';
 
 import Select from '../select/Select';
-import Option, { BaseOption } from '../option/Option';
+import Option, { BasicOption, OptionProps } from '../option/Option';
 
 import style from './Dropdown.module.scss';
 
@@ -21,7 +21,8 @@ interface DropdownProps {
   header?: ReactNode;
   footer?: ReactNode;
   trigger: ReactNode;
-  optionList: BaseOption[];
+  optionComp: ({ className, option }: OptionProps) => JSX.Element;
+  optionList: BasicOption[];
   animationDuration?: number;
 }
 
@@ -30,6 +31,7 @@ const Dropdown = ({
   header,
   footer,
   trigger,
+  optionComp = Option,
   optionList,
   animationDuration = 800,
 }: DropdownProps) => {
@@ -80,9 +82,9 @@ const Dropdown = ({
           {header && <div className={cx('header')}>{header}</div>}
           <div>
             <Select>
-              {optionList.map((option) => (
-                <Option key={option.value} option={option} />
-              ))}
+              {optionList.map((option) =>
+                React.createElement(optionComp, { key: option.value, option }),
+              )}
             </Select>
           </div>
           {footer && <div className={cx('footer')}>{footer}</div>}
