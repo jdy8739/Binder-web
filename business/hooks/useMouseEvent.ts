@@ -12,17 +12,17 @@ interface TriggeredCoord {
 }
 
 const useMouseEvent = ({
-  moveBenchmark = 30,
-  handleOnXLeftChange,
-  handleOnXRightChange,
-  handleOnYUpChange,
-  handleOnYDownChange,
+  threshold = 30,
+  handleOnXLeftMove,
+  handleOnXRightMove,
+  handleOnYUpMove,
+  handleOnYDownMove,
 }: {
-  moveBenchmark?: number;
-  handleOnXLeftChange?: () => void;
-  handleOnXRightChange?: () => void;
-  handleOnYUpChange?: () => void;
-  handleOnYDownChange?: () => void;
+  threshold?: number;
+  handleOnXLeftMove?: () => void;
+  handleOnXRightMove?: () => void;
+  handleOnYUpMove?: () => void;
+  handleOnYDownMove?: () => void;
 }) => {
   const clientCoordRef = useRef<{ clientX: number; clientY: number }>({
     clientX: CONST.NUMBER.ZERO,
@@ -53,28 +53,25 @@ const useMouseEvent = ({
         const yMoved = curClientY - clientY;
 
         setTriggeredCoord((current) => {
-          let changed: TriggeredCoord = current;
+          let Moved: TriggeredCoord = current;
 
-          if (Math.abs(xMoved) >= moveBenchmark) {
-            if (Math.sign(xMoved) === 1) changed = { ...changed, xRight: true };
+          if (Math.abs(xMoved) >= threshold) {
+            if (Math.sign(xMoved) === 1) Moved = { ...Moved, xRight: true };
             else if (Math.sign(xMoved) === -1)
-              changed = { ...changed, xLeft: true };
+              Moved = { ...Moved, xLeft: true };
           }
-          if (Math.abs(yMoved) >= moveBenchmark) {
-            if (Math.sign(yMoved) === 1) changed = { ...changed, yDown: true };
-            else if (Math.sign(yMoved) === -1)
-              changed = { ...changed, yUp: true };
+          if (Math.abs(yMoved) >= threshold) {
+            if (Math.sign(yMoved) === 1) Moved = { ...Moved, yDown: true };
+            else if (Math.sign(yMoved) === -1) Moved = { ...Moved, yUp: true };
           }
 
-          return Object.keys(current).some(
-            (key) => current[key] !== changed[key],
-          )
-            ? changed
+          return Object.keys(current).some((key) => current[key] !== Moved[key])
+            ? Moved
             : current;
         });
       }
     },
-    [isMouseDown, moveBenchmark],
+    [isMouseDown, threshold],
   );
 
   const handleOnMouseEventEnd = useCallback(() => {
@@ -96,16 +93,16 @@ const useMouseEvent = ({
   }, []);
 
   useEffect(() => {
-    if (triggeredCoord.xLeft) handleOnXLeftChange?.();
-    if (triggeredCoord.xRight) handleOnXRightChange?.();
-    if (triggeredCoord.yUp) handleOnYUpChange?.();
-    if (triggeredCoord.yDown) handleOnYDownChange?.();
+    if (triggeredCoord.xLeft) handleOnXLeftMove?.();
+    if (triggeredCoord.xRight) handleOnXRightMove?.();
+    if (triggeredCoord.yUp) handleOnYUpMove?.();
+    if (triggeredCoord.yDown) handleOnYDownMove?.();
   }, [
     triggeredCoord,
-    handleOnXLeftChange,
-    handleOnXRightChange,
-    handleOnYDownChange,
-    handleOnYUpChange,
+    handleOnXLeftMove,
+    handleOnXRightMove,
+    handleOnYDownMove,
+    handleOnYUpMove,
   ]);
 
   return {

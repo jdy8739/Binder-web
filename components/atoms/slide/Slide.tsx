@@ -155,9 +155,9 @@ const Slide = ({
     handleOnMouseMove,
     handleOnMouseEventEnd,
   } = useMouseEvent({
-    moveBenchmark: 30,
-    handleOnXLeftChange: () => handleOnNavClick('right'),
-    handleOnXRightChange: () => handleOnNavClick('left'),
+    threshold: 30,
+    handleOnXLeftMove: () => handleOnNavClick('right'),
+    handleOnXRightMove: () => handleOnNavClick('left'),
   });
 
   useLayoutEffect(() => {
