@@ -58,7 +58,9 @@ const Dropdown = ({
         </button>
       </div>
       <div
-        className={cx('dropdown', 'dropdown-body', { triggered: isTriggered })}
+        className={cx('dropdown-content', 'dropdown-dropdown', {
+          triggered: isTriggered,
+        })}
         style={
           {
             '--duration': `${duration}ms`,
@@ -66,7 +68,7 @@ const Dropdown = ({
         }
       >
         {header && <div className={cx('dropdown-header')}>{header}</div>}
-        <div>
+        <div className={cx('dropdown-body')}>
           <Select>
             {(optionList || []).map((option) =>
               React.createElement(optionComponent, {
