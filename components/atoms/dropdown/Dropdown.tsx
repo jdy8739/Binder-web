@@ -2,6 +2,7 @@
 
 import React, {
   CSSProperties,
+  FunctionComponent,
   ReactNode,
   useCallback,
   useEffect,
@@ -10,20 +11,24 @@ import React, {
 import classNames from 'classnames/bind';
 
 import Select from '../select/Select';
-import Option, { BasicOption, OptionProps } from '../option/Option';
+import Option, { BasicOption } from '../option/Option';
 
 import style from './Dropdown.module.scss';
 
 const cx = classNames.bind(style);
+
+type ExtendedOption = BasicOption & { [key: string]: unknown };
 
 interface DropdownProps {
   className?: string;
   header?: ReactNode;
   footer?: ReactNode;
   trigger: ReactNode;
-  optionComp: ({ className, option }: OptionProps) => JSX.Element;
-  optionList: BasicOption[];
-  animationDuration?: number;
+  optionComponent: FunctionComponent<{
+    option: BasicOption | ExtendedOption;
+  }>;
+  optionList: ExtendedOption[];
+  duration?: number;
 }
 
 const Dropdown = ({
@@ -31,9 +36,9 @@ const Dropdown = ({
   header,
   footer,
   trigger,
-  optionComp = Option,
+  optionComponent = Option,
   optionList,
-  animationDuration = 800,
+  duration = 300,
 }: DropdownProps) => {
   const [{ triggered, visible }, setTriggerState] = useState<{
     triggered: boolean;
@@ -52,11 +57,11 @@ const Dropdown = ({
     if (!triggered && visible) {
       timeout = setTimeout(() => {
         setTriggerState((current) => ({ ...current, visible: false }));
-      }, animationDuration);
+      }, duration);
     }
 
     return () => clearTimeout(timeout);
-  }, [triggered, visible, animationDuration]);
+  }, [triggered, visible, duration]);
 
   return (
     <section className={cx('wrapper', className)}>
@@ -65,30 +70,27 @@ const Dropdown = ({
           {trigger}
         </button>
       </div>
-      <div
-        className={cx('drop-down', {
-          triggered,
-          visible,
-        })}
-      >
+      <div className={cx('drop-down', { triggered, visible })}>
+        {header && <div className={cx('header')}>{header}</div>}
+        <div>
+          <Select>
+            {optionList.map((option) =>
+              React.createElement(optionComponent, {
+                key: option.value,
+                option,
+              }),
+            )}
+          </Select>
+        </div>
+        {footer && <div className={cx('footer')}>{footer}</div>}
         <div
-          className={cx(triggered ? 'roll-down' : 'roll-up')}
+          className={cx('cover')}
           style={
             {
-              '--duration': `${animationDuration + 100}ms`,
+              '--duration': `${duration}ms`,
             } as CSSProperties
           }
-        >
-          {header && <div className={cx('header')}>{header}</div>}
-          <div>
-            <Select>
-              {optionList.map((option) =>
-                React.createElement(optionComp, { key: option.value, option }),
-              )}
-            </Select>
-          </div>
-          {footer && <div className={cx('footer')}>{footer}</div>}
-        </div>
+        />
       </div>
     </section>
   );
