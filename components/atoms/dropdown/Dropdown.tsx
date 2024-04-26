@@ -4,9 +4,12 @@ import React, {
   CSSProperties,
   FunctionComponent,
   ReactNode,
+  useRef,
   useState,
 } from 'react';
 import classNames from 'classnames/bind';
+
+import useClickOutside from '/business/hooks/useClickOutside';
 
 import Select from '../select/Select';
 import Option, { BasicOption } from '../option/Option';
@@ -38,10 +41,17 @@ const Dropdown = ({
   optionList,
   duration = 300,
 }: DropdownProps) => {
+  const dropdownWrapperRef = useRef<HTMLElement>(null);
+
   const [isTriggered, setIsTriggered] = useState(false);
 
+  useClickOutside({
+    ref: dropdownWrapperRef.current,
+    callback: () => setIsTriggered(false),
+  });
+
   return (
-    <section className={cx('wrapper', className)}>
+    <section ref={dropdownWrapperRef} className={cx('wrapper', className)}>
       <div className={cx('dropdown-trigger')}>
         <button type="button" onClick={() => setIsTriggered(!isTriggered)}>
           {trigger}

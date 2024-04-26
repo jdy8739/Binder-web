@@ -4,7 +4,7 @@ const useClickOutside = ({
   ref,
   callback,
 }: {
-  ref: HTMLElement;
+  ref: HTMLElement | null;
   callback: () => void;
 }) => {
   const handleOnEventOccur = useCallback(
