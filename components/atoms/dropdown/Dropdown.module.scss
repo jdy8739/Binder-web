@@ -1,0 +1,18 @@
+
+.wrapper {
+    position: relative;
+
+    .dropdown-content {
+        position: absolute;
+        top: 37px;
+        right: -12px;
+        overflow: hidden;
+        height: 0;
+        box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
+        transition: height var(--duration) ease-out;
+
+        &.triggered {
+            height: 396px;
+        }
+    }
+}
