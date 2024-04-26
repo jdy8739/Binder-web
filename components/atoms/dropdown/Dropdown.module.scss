@@ -1,59 +1,43 @@
-@keyframes roll-down {
-    0% {
-        transform: translateY(-100%);
-    }
-    10% {
-        transform: translateY(0%);
-    }
-    45% {
-        transform: translateY(-20%);
-    }
-    62% {
-        transform: translateY(0%);
-    }
-    81% {
-        transform: translateY(-10%);
-    }
-    90% {
-        transform: translateY(0%);
-    }
-    95% {
-        transform: translateY(-2.5%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
-
-@keyframes roll-up {
-    0% {
-        transform: translateY(0%);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
 
 .wrapper {
     position: relative;
 
     .drop-down {
         position: absolute;
-        display: none;
         overflow: hidden;
+        visibility: hidden; 
+
+        .cover {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transition: height var(--duration) ease-out; 
+        }
+
+        &.triggered {
+            .cover {
+                height: 0;
+            }
+        }
 
         &.visible {
-            display: block;
+            visibility: visible;
         }
+    }
 
-        .roll-up {
-            animation: roll-up;
-            animation-duration: var(--duration);
-        }
+    :global {
+        .option-item {
+            border: 1px solid $gray-05;
+            cursor: pointer;
 
-        .roll-down {
-            animation: roll-down;
-            animation-duration: var(--duration);
+            &:first-child {
+                border-top: none;
+            }
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }

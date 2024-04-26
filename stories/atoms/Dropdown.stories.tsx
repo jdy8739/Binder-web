@@ -1,6 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+
 import Dropdown from '../../components/atoms/dropdown/Dropdown';
-import Option from '/components/atoms/option/Option';
+import AlarmOption from '/components/atoms/option/AlarmOption';
 
 type StoryComponent = StoryObj<typeof Dropdown>;
 type StoryTemplate = StoryFn<typeof Dropdown>;
@@ -30,11 +31,11 @@ export const Default: StoryComponent = {
     trigger: <div>trigger</div>,
     header: <div>header</div>,
     footer: <div>footer</div>,
-    optionComp: Option,
+    optionComponent: AlarmOption,
     optionList: [
-      { value: 0, label: 0, subContent: 0 },
-      { value: 1, label: 1, subContent: 1 },
-      { value: 2, label: 2, subContent: 2 },
+      { value: 0, label: 0, time: 434234234 },
+      { value: 1, label: 1, time: 434234234, clicked: true },
+      { value: 2, label: 2, time: 434234234 },
     ],
   },
   render: Template,
