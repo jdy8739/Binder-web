@@ -14,7 +14,7 @@ import throttle from 'lodash.throttle';
 
 import { CONST } from '/business/const';
 
-import useMouseEvent from '/business/hooks/useMouseEvent';
+import useMouseMove from '../../../business/hooks/useMouseMove';
 
 import { NavLeftVerticalWide, NavRightVerticalWide } from '/assets/svg';
 
@@ -154,7 +154,7 @@ const Slide = ({
     handleOnMouseDown,
     handleOnMouseMove,
     handleOnMouseEventEnd,
-  } = useMouseEvent({
+  } = useMouseMove({
     threshold: 30,
     handleOnXLeftMove: () => handleOnNavClick('right'),
     handleOnXRightMove: () => handleOnNavClick('left'),

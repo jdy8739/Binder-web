@@ -11,7 +11,7 @@ interface TriggeredCoord {
   yDown: boolean;
 }
 
-const useMouseEvent = ({
+const useMouseMove = ({
   threshold = 30,
   handleOnXLeftMove,
   handleOnXRightMove,
@@ -113,4 +113,4 @@ const useMouseEvent = ({
   };
 };
 
-export default useMouseEvent;
+export default useMouseMove;
