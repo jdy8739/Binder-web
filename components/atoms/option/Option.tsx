@@ -17,7 +17,7 @@ interface OptionProps {
 const Option = ({ className, option }: OptionProps) => {
   return (
     <div className={cx('wrapper', className)}>
-      <span>{option.label}</span>
+      <span className={cx('label')}>{option.label}</span>
     </div>
   );
 };

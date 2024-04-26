@@ -4,8 +4,6 @@ import React, {
   CSSProperties,
   FunctionComponent,
   ReactNode,
-  useCallback,
-  useEffect,
   useState,
 } from 'react';
 import classNames from 'classnames/bind';
@@ -24,10 +22,10 @@ interface DropdownProps {
   header?: ReactNode;
   footer?: ReactNode;
   trigger: ReactNode;
-  optionComponent: FunctionComponent<{
+  optionComponent?: FunctionComponent<{
     option: BasicOption | ExtendedOption;
   }>;
-  optionList: ExtendedOption[];
+  optionList?: ExtendedOption[];
   duration?: number;
 }
 
@@ -40,41 +38,27 @@ const Dropdown = ({
   optionList,
   duration = 300,
 }: DropdownProps) => {
-  const [{ triggered, visible }, setTriggerState] = useState<{
-    triggered: boolean;
-    visible: boolean;
-  }>({ triggered: false, visible: false });
-
-  const handleOnToggleTrigger = useCallback(() => {
-    if (!triggered && !visible)
-      setTriggerState({ triggered: true, visible: true });
-    if (triggered && visible) setTriggerState({ triggered: false, visible });
-  }, [triggered, visible]);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    if (!triggered && visible) {
-      timeout = setTimeout(() => {
-        setTriggerState((current) => ({ ...current, visible: false }));
-      }, duration);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [triggered, visible, duration]);
+  const [isTriggered, setIsTriggered] = useState(false);
 
   return (
     <section className={cx('wrapper', className)}>
-      <div className={cx('trigger')}>
-        <button type="button" onClick={handleOnToggleTrigger}>
+      <div className={cx('dropdown-trigger')}>
+        <button type="button" onClick={() => setIsTriggered(!isTriggered)}>
           {trigger}
         </button>
       </div>
-      <div className={cx('drop-down', { triggered, visible })}>
-        {header && <div className={cx('header')}>{header}</div>}
+      <div
+        className={cx('dropdown', 'dropdown-body', { triggered: isTriggered })}
+        style={
+          {
+            '--duration': `${duration}ms`,
+          } as CSSProperties
+        }
+      >
+        {header && <div className={cx('dropdown-header')}>{header}</div>}
         <div>
           <Select>
-            {optionList.map((option) =>
+            {(optionList || []).map((option) =>
               React.createElement(optionComponent, {
                 key: option.value,
                 option,
@@ -82,15 +66,7 @@ const Dropdown = ({
             )}
           </Select>
         </div>
-        {footer && <div className={cx('footer')}>{footer}</div>}
-        <div
-          className={cx('cover')}
-          style={
-            {
-              '--duration': `${duration}ms`,
-            } as CSSProperties
-          }
-        />
+        {footer && <div className={cx('dropdown-footer')}>{footer}</div>}
       </div>
     </section>
   );

@@ -1,13 +1,21 @@
+/* stylelint-disable no-descending-specificity */
 .wrapper {
+    position: relative;
+    z-index: 1;
     height: 120px;
     padding: 0 20%;
     font-size: 14px;
+
     ul {
         display: flex;
     }
-    > nav > ul {
+
+    .categories {
+        position: relative;
+        z-index: -1;
         height: 52px;
-        > li {
+        
+        li {
             padding-right: 56px;
             a {
                 font-size: 16px;
@@ -18,7 +26,8 @@
             }
         }
     }
-    > div {
+
+    .top-bar {
         display: flex;
         height: 68px;
         align-items: center;
@@ -91,7 +100,6 @@
                 }
             }
             &.signed {
-                /* stylelint-disable-next-line no-descending-specificity */
                 li {
                     display: flex;
                     align-items: center;
@@ -101,6 +109,51 @@
                     }
                     &:nth-child(2) {
                         padding-right: 6px;
+                    }
+                }
+            }
+
+            :global {
+                .dropdown-header {
+                    display: flex;
+                    height: 40px;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: white;
+                    font-size: 16px;
+                    gap: 14px;
+
+                    > div {
+                        display: flex;
+                        gap: 4px;
+                        span {
+                            &:first-child {
+                                font-size: 14px;
+                            }
+                            &:nth-child(2) {
+                                color: $primary;
+                            }
+                        }
+                    }
+                }
+
+                .dropdown-body {
+                    border-radius: 8px 8px 0 0;
+                }
+
+                .dropdown-footer {
+                    height: 56px;
+                    border-radius: 0 0 8px 8px;
+                    background-color: $primary;
+                    
+                    a {
+                        display: flex;
+                        width: 100%;
+                        height: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        color: $white;
+                        font-size: 16px;
                     }
                 }
             }

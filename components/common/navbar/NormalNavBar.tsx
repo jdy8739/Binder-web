@@ -2,6 +2,8 @@ import Link from 'next/link';
 import classNames from 'classnames/bind';
 
 import SearchInput from '/components/atoms/search-input/SearchInput';
+import Dropdown from '/components/atoms/dropdown/Dropdown';
+import AlarmOption from '/components/atoms/option/AlarmOption';
 import { Bell, Profile } from '/assets/svg';
 
 import style from './NormalNavBar.module.scss';
@@ -13,7 +15,7 @@ const NormalNavBar = () => {
 
   return (
     <header className={cx('wrapper')}>
-      <div>
+      <div className={cx('top-bar')}>
         <div className={cx('left')}>
           <span className={cx('logo')}>
             <div>바인더</div>
@@ -35,10 +37,57 @@ const NormalNavBar = () => {
             {isSignedIn ? (
               <>
                 <li>
-                  <Bell />
+                  <Dropdown
+                    className={cx('alarm-dropdown')}
+                    trigger={<Bell />}
+                    optionComponent={AlarmOption}
+                    optionList={[
+                      {
+                        value: 1,
+                        label:
+                          '내가 작성한 게시글에 Aaasia님이 답글을 작성했습니다.',
+                        time: 423,
+                      },
+                      {
+                        value: 2,
+                        label:
+                          '내가 작성한 게시글에 Aaasia님이 답글을 작성했습니다.',
+                        time: 423,
+                      },
+                      {
+                        value: 3,
+                        label:
+                          '내가 작성한 게시글에 Aaasia님이 답글을 작성했습니다.',
+                        time: 423,
+                      },
+                      {
+                        value: 4,
+                        label:
+                          '내가 작성한 게시글에 Aaasia님이 답글을 작성했습니다.',
+                        time: 423,
+                      },
+                      {
+                        value: 5,
+                        label:
+                          '내가 작성한 게시글에 Aaasia님이 답글을 작성했습니다.',
+                        time: 423,
+                        clicked: true,
+                      },
+                    ]}
+                    header={
+                      <div>
+                        <span>새로운 알림</span>
+                        <span>4</span>
+                        <span>개</span>
+                      </div>
+                    }
+                    footer={<Link href="/#">알림 더보기</Link>}
+                  />
                 </li>
                 <li>
-                  <Profile />
+                  <button type="button">
+                    <Profile />
+                  </button>
                 </li>
                 <li className={cx('right-link')}>닉네임</li>
               </>
@@ -59,7 +108,7 @@ const NormalNavBar = () => {
           </ul>
         </span>
       </div>
-      <nav>
+      <nav className={cx('categories')}>
         <ul>
           <li>
             <Link href="/#">필드별</Link>

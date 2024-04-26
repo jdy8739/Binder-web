@@ -20,10 +20,12 @@ interface AlarmOptionProps {
 const AlarmOption = ({ className, option }: AlarmOptionProps) => {
   return (
     <div className={cx('wrapper', { clicked: option.clicked }, className)}>
-      <Link className={cx('label')} href="/#">
-        <Option option={option} />
+      <Link href="/#">
+        <div className={cx('label')}>
+          <Option option={option} />
+        </div>
+        <span className={cx('time')}>{option.time}</span>
       </Link>
-      <span className={cx('time')}>{option.time}</span>
     </div>
   );
 };
