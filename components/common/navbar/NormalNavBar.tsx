@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 import SearchInput from '/components/atoms/search-input/SearchInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import AlarmOption from '/components/atoms/option/AlarmOption';
-import { Bell, Profile } from '/assets/svg';
+import UserOption from '/components/atoms/option/UserOption';
+import { Bell, Pen, Profile } from '/assets/svg';
 
 import style from './NormalNavBar.module.scss';
 
@@ -82,12 +83,37 @@ const NormalNavBar = () => {
                       </div>
                     }
                     footer={<Link href="/#">알림 더보기</Link>}
+                    height={399}
                   />
                 </li>
                 <li>
-                  <button type="button">
-                    <Profile />
-                  </button>
+                  <Dropdown
+                    className={cx('user-dropdown')}
+                    trigger={<Profile />}
+                    optionComponent={UserOption}
+                    optionList={[
+                      { value: 1, label: '나의 콘텐츠' },
+                      { value: 2, label: '스크랩 보기' },
+                      { value: 3, label: '개인정보 수정' },
+                      { value: 4, label: '로그아웃' },
+                    ]}
+                    header={
+                      <div className={cx('user-dropdown-header')}>
+                        <div>
+                          <div>
+                            <div>닉네임자리</div>
+                            <div>소속</div>
+                          </div>
+                          <div>
+                            <button type="button">
+                              <Pen />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    height={332}
+                  />
                 </li>
                 <li className={cx('right-link')}>닉네임</li>
               </>

@@ -30,6 +30,7 @@ interface DropdownProps {
   }>;
   optionList?: ExtendedOption[];
   duration?: number;
+  height: number;
 }
 
 const Dropdown = ({
@@ -40,6 +41,7 @@ const Dropdown = ({
   optionComponent = Option,
   optionList,
   duration = 300,
+  height,
 }: DropdownProps) => {
   const dropdownWrapperRef = useRef<HTMLElement>(null);
 
@@ -64,6 +66,7 @@ const Dropdown = ({
         style={
           {
             '--duration': `${duration}ms`,
+            '--height': `${height}px`,
           } as CSSProperties
         }
       >
