@@ -4,13 +4,27 @@
 
     .dropdown-content {
         position: absolute;
+        display: none;
         overflow: hidden;
-        height: 0;
         box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
-        transition: height var(--duration) ease-out;
+        transition: all var(--duration) ease-out;
 
         &.triggered {
-            height: var(--height);
+            display: block;
+
+            &.fade {
+                opacity: 0;
+                &.visible {
+                    opacity: 1;
+                }
+            }
+
+            &.rolling {
+                height: 0;
+                &.visible {
+                    height: var(--height);
+                }
+            }
         }
 
         :global {
