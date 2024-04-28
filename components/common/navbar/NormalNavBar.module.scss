@@ -8,6 +8,14 @@
 
     ul {
         display: flex;
+        align-items: center;
+    }
+
+    :global {
+        .dropdown-dropdown {
+            border-radius: 8px;
+            background-color: $white;
+        }
     }
 
     .categories {
@@ -16,11 +24,36 @@
         
         li {
             padding-right: 56px;
-            a {
+            a, .category-option {
                 font-size: 16px;
                 font-weight: $font-bold;
                 &:hover {
                     color: $primary;
+                }
+            }
+
+            .category-dropdown {
+                :global {
+                    .dropdown-dropdown {
+                        top: 50px;
+                        height: max-content;
+                        
+                        .dropdown-body {
+                            width: 50vw;
+                            max-width: 1056px;
+                            padding: 48px 60px 60px;
+                            .select {
+                                display: grid;
+                                gap: 28px;
+                                grid-auto-flow: dense;
+                                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+                                .option-item {
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -79,6 +112,7 @@
                 width: 480px;
             }
         }
+        
         .right {
             width: 130px;
             ul {
@@ -112,13 +146,6 @@
                 }
             }
 
-            :global {
-                .dropdown-dropdown {
-                    border-radius: 8px;
-                    background-color: white;
-                }
-            }
-
             .alarm-dropdown {
                 :global {
                     .dropdown-dropdown {
@@ -131,7 +158,7 @@
                             height: 40px;
                             align-items: center;
                             justify-content: center;
-                            background-color: white;
+                            background-color: $white;
                             font-size: 16px;
                             gap: 14px;
         

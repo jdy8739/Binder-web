@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import SearchInput from '/components/atoms/search-input/SearchInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import AlarmOption from '/components/atoms/option/AlarmOption';
-import UserOption from '/components/atoms/option/UserOption';
+import LinkOption from '../../atoms/option/LinkOption';
 import { Bell, Pen, Profile } from '/assets/svg';
 
 import style from './NormalNavBar.module.scss';
@@ -90,7 +90,7 @@ const NormalNavBar = () => {
                   <Dropdown
                     className={cx('user-dropdown')}
                     trigger={<Profile />}
-                    optionComponent={UserOption}
+                    optionComponent={LinkOption}
                     optionList={[
                       { value: 1, label: '나의 콘텐츠' },
                       { value: 2, label: '스크랩 보기' },
@@ -137,7 +137,27 @@ const NormalNavBar = () => {
       <nav className={cx('categories')}>
         <ul>
           <li>
-            <Link href="/#">필드별</Link>
+            <Dropdown
+              className={cx('category-dropdown')}
+              trigger={<span className={cx('category-option')}>필드별</span>}
+              optionComponent={LinkOption}
+              optionList={[
+                { value: 1, label: '암생물학' },
+                { value: 2, label: '바이러스' },
+                { value: 3, label: '영업' },
+                { value: 4, label: '박테리아' },
+                { value: 5, label: '유전학' },
+                { value: 6, label: '생명 정보' },
+                { value: 7, label: '의료기기' },
+                { value: 8, label: '스마트팜' },
+                { value: 9, label: '제약 공학' },
+                { value: 10, label: '식물농업' },
+                { value: 11, label: '줄기세포' },
+                { value: 12, label: '식품 공학' },
+                { value: 13, label: '축산*가축' },
+              ]}
+              effect="fade"
+            />
           </li>
           <li>
             <Link href="/#">직무 게시판</Link>
