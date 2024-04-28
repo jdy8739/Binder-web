@@ -3,16 +3,16 @@ import classNames from 'classnames/bind';
 
 import Option, { BasicOption } from './Option';
 
-import style from './UserOption.module.scss';
+import style from './LinkOption.module.scss';
 
 const cx = classNames.bind(style);
 
-interface UserOptionProps {
+interface LinkOptionProps {
   className?: string;
   option: BasicOption;
 }
 
-const UserOption = ({ className, option }: UserOptionProps) => {
+const LinkOption = ({ className, option }: LinkOptionProps) => {
   return (
     <div className={cx('wrapper', className)}>
       <Link href="/#">
@@ -24,6 +24,6 @@ const UserOption = ({ className, option }: UserOptionProps) => {
   );
 };
 
-UserOption.displayName = 'Option';
+LinkOption.displayName = 'Option';
 
-export default UserOption;
+export default LinkOption;
