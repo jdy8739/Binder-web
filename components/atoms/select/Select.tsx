@@ -14,9 +14,17 @@ interface SelectProps {
 const Select = ({ children, className }: SelectProps) => {
   const validOptionElements = useMemo(
     () =>
-      Children.map(children, (child) => child).filter(
-        (child) => child.type?.displayName === 'Option',
-      ),
+      Children.map(children, (child) => child)
+        .filter(
+          (child) =>
+            typeof child.type !== 'string' &&
+            (child.type as { displayName?: string }).displayName === 'Option',
+        )
+        .map((child) => (
+          <div key={child.key} className={cx('option-item')}>
+            {child}
+          </div>
+        )),
     [children],
   );
 
