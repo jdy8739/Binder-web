@@ -37,6 +37,7 @@ export const Default: StoryComponent = {
       { value: 1, label: 1, time: 434234234, clicked: true },
       { value: 2, label: 2, time: 434234234 },
     ],
+    height: 396,
   },
   render: Template,
 };

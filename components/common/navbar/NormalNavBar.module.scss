@@ -8,20 +8,52 @@
 
     ul {
         display: flex;
+        align-items: center;
+    }
+
+    :global {
+        .dropdown-dropdown {
+            border-radius: 8px;
+            background-color: $white;
+        }
     }
 
     .categories {
         position: relative;
         z-index: -1;
-        height: 52px;
         
         li {
             padding-right: 56px;
-            a {
+            a, .category-option {
                 font-size: 16px;
                 font-weight: $font-bold;
                 &:hover {
                     color: $primary;
+                }
+            }
+
+            .category-dropdown {
+                :global {
+                    .dropdown-dropdown {
+                        top: 50px;
+                        height: max-content;
+                        
+                        .dropdown-body {
+                            width: 50vw;
+                            max-width: 1056px;
+                            padding: 48px 60px 60px;
+                            .select {
+                                display: grid;
+                                gap: 28px;
+                                grid-auto-flow: dense;
+                                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+                                .option-item {
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -80,6 +112,7 @@
                 width: 480px;
             }
         }
+        
         .right {
             width: 130px;
             ul {
@@ -113,48 +146,96 @@
                 }
             }
 
-            :global {
-                .dropdown-header {
-                    display: flex;
-                    height: 40px;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: white;
-                    font-size: 16px;
-                    gap: 14px;
+            .alarm-dropdown {
+                :global {
+                    .dropdown-dropdown {
+                        top: 37px;
+                        right: -12px;
+                        width: 400px;
 
-                    > div {
-                        display: flex;
-                        gap: 4px;
-                        span {
-                            &:first-child {
-                                font-size: 14px;
+                        .dropdown-header {
+                            display: flex;
+                            height: 40px;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: $white;
+                            font-size: 16px;
+                            gap: 14px;
+        
+                            > div {
+                                display: flex;
+                                gap: 4px;
+                                span {
+                                    &:first-child {
+                                        font-size: 14px;
+                                    }
+                                    &:nth-child(2) {
+                                        color: $primary;
+                                    }
+                                }
                             }
-                            &:nth-child(2) {
-                                color: $primary;
+                        }
+
+                        .dropdown-footer {
+                            height: 56px;
+                            border-radius: 0 0 8px 8px;
+                            background-color: $primary;
+                            
+                            a {
+                                display: flex;
+                                width: 100%;
+                                height: 100%;
+                                align-items: center;
+                                justify-content: center;
+                                color: $white;
+                                font-size: 16px;
                             }
                         }
                     }
                 }
+            }
 
-                .dropdown-body {
-                    border-radius: 8px;
-                    background-color: white;
+            .user-dropdown {
+                :global {
+                    .dropdown-dropdown {
+                        top: 42px;
+                        right: -41px;
+                        width: 288px;
+                    }
                 }
 
-                .dropdown-footer {
-                    height: 56px;
-                    border-radius: 0 0 8px 8px;
-                    background-color: $primary;
+                .user-dropdown-header {
+                    height: 102px;
+                    padding: 20px 12px 8px;
                     
-                    a {
+                    > div {
                         display: flex;
-                        width: 100%;
                         height: 100%;
-                        align-items: center;
-                        justify-content: center;
-                        color: $white;
-                        font-size: 16px;
+                        justify-content: space-between;
+                        padding: 10px 12px;
+                        border-radius: 10px;
+                        background-color: $gray-03;
+
+                        > div {
+                            &:first-child {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-around;
+                                font-size: 12px;
+
+                                > div {
+                                    &:first-child {
+                                        font-size: 16px;
+                                        font-weight: $font-bold;
+                                    }
+                                }
+                            }
+
+                            &:last-child {
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
                     }
                 }
             }
