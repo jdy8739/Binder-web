@@ -15,7 +15,7 @@ interface LinkOptionProps {
 const LinkOption = ({ className, option }: LinkOptionProps) => {
   return (
     <div className={cx('wrapper', className)}>
-      <Link href="/#">
+      <Link href={`/field/${option.value}`}>
         <div className={cx('label')}>
           <Option option={option} />
         </div>
