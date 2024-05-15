@@ -1,28 +1,28 @@
 .wrapper {
-    height: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: space-between;
+    padding: 18px 20px;
 
-    a {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: space-between;
-        padding: 18px 20px;
-
-        .label {
-            color: $gray-12;
-            font-size: 14px;
-        }
-    
-        .time {
-            color: $gray-08;
-            font-size: 12px;
-        }
+    .label {
+      color: $gray-12;
+      font-size: 14px;
     }
 
-    &.clicked {
-        background-color: $gray-03;
+    .time {
+      color: $gray-08;
+      font-size: 12px;
     }
+  }
+
+  &.clicked {
+    background-color: $gray-03;
+  }
 }

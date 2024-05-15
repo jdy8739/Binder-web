@@ -1,55 +1,55 @@
 .wrapper {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+
+  input {
     width: 20px;
     height: 20px;
-    align-items: center;
-
+    border: 1.5px solid $gray-06;
+    border-radius: 2px;
+  }
+  &.checked {
     input {
-        width: 20px;
-        height: 20px;
-        border: 1.5px solid $gray-06;
-        border-radius: 2px;
+      border: none;
     }
+  }
+
+  span {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+
     &.checked {
-        input {
-            border: none;
-        }
+      background-color: $primary;
+
+      &:hover {
+        background-color: $primary-light;
+      }
     }
 
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &:hover {
+    input {
+      border: none;
+    }
     span {
-        position: absolute;
-        z-index: -1;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        border-radius: 2px;
-        transform: translate(-50%, -50%);
-        transition: all 0.3s;
-
-        &.checked {
-            background-color: $primary;
-
-            &:hover {
-                background-color: $primary-light;
-            }
-        }
-
-        svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+      background-color: $primary-light;
     }
-
-    &:hover {
-        input {
-            border: none;
-        }
-        span {
-            background-color: $primary-light;
-        }
-    }
+  }
 }

@@ -1,38 +1,38 @@
 .button-wrapper {
-    border: 1px solid $primary;
-    border-radius: 8px;
-    background-color: $primary;
-    color: $white;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: $font-bolder;
-    transition: all 0.2s;
+  border: 1px solid $primary;
+  border-radius: 8px;
+  background-color: $primary;
+  color: $white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: $font-bolder;
+  transition: all 0.2s;
 
-    &.lg {
-        width: 320px;
-        height: 54px;
-    }
+  &.lg {
+    width: 320px;
+    height: 54px;
+  }
 
-    &.sm {
-        width: 180px;
-        height: 56px;
-    }
-    
+  &.sm {
+    width: 180px;
+    height: 56px;
+  }
+
+  &:hover {
+    background-color: $white;
+    color: $primary;
+  }
+
+  &:disabled {
+    border-color: $gray-04;
+    background-color: $gray-04;
+    color: $gray-07;
+    cursor: not-allowed;
+
     &:hover {
-        background-color: $white;
-        color: $primary;
+      border-color: $primary-light;
+      background-color: $white;
+      color: $primary-light;
     }
-
-    &:disabled {
-        border-color: $gray-04;
-        background-color: $gray-04;
-        color: $gray-07;
-        cursor: not-allowed;
-
-        &:hover {
-            border-color: $primary-light;
-            background-color: $white;
-            color: $primary-light;
-        }
-    }
+  }
 }
