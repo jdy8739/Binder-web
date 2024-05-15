@@ -7,12 +7,13 @@ const cx = classNames.bind(styles);
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   content: string;
   className?: string;
+  size?: 'lg' | 'sm';
 }
 
-const Button = ({ className, content, ...props }: ButtonProps) => {
+const Button = ({ className, content, size = 'lg', ...rest }: ButtonProps) => {
   return (
     // eslint-disable-next-line react/button-has-type
-    <button {...props} className={cx('button', className)}>
+    <button className={cx('button-wrapper', size, className)} {...rest}>
       {content}
     </button>
   );
