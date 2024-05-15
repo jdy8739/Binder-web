@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { CONST } from '../const';
+import { VALUE_CONST } from '../const';
 
 type MouseEvent = React.MouseEvent<HTMLDivElement>;
 
@@ -25,8 +25,8 @@ const useMouseMove = ({
   handleOnYDownMove?: () => void;
 }) => {
   const clientCoordRef = useRef<{ clientX: number; clientY: number }>({
-    clientX: CONST.NUMBER.ZERO,
-    clientY: CONST.NUMBER.ZERO,
+    clientX: VALUE_CONST.NUMBER.ZERO,
+    clientY: VALUE_CONST.NUMBER.ZERO,
   });
 
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -76,8 +76,8 @@ const useMouseMove = ({
 
   const handleOnMouseEventEnd = useCallback(() => {
     clientCoordRef.current = {
-      clientX: CONST.NUMBER.ZERO,
-      clientY: CONST.NUMBER.ZERO,
+      clientX: VALUE_CONST.NUMBER.ZERO,
+      clientY: VALUE_CONST.NUMBER.ZERO,
     };
     setTriggeredCoord((current) => {
       return Object.values(current).some((val) => val)
