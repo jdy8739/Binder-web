@@ -1,19 +1,34 @@
+import { useMemo } from 'react';
+
 import classNames from 'classnames/bind';
+
+import useServerSideUrl from '../../../business/hooks/useServerSideUrl';
 
 import BorderedButton from '/components/atoms/button/BorderedButton';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
+
+import { FILED_CONST } from '/business/const/field-const';
 
 import style from './fieldDetail.module.scss';
 
 const cx = classNames.bind(style);
 
 const FiledDetailTop = () => {
+  const { lastPathnameString } = useServerSideUrl();
+
+  const currentField = useMemo(
+    () =>
+      FILED_CONST.find((field) => field.value === lastPathnameString)?.label ||
+      lastPathnameString,
+    [lastPathnameString],
+  );
+
   return (
     <article className={cx('field-detail-top')}>
       <figure>
         <div className={cx('field-detail-top-title')}>
-          <span>&apos;암생물학&apos;</span>
+          <span>&apos;{currentField}&apos;</span>
           <span>필드 태그 검색결과</span>
         </div>
       </figure>
