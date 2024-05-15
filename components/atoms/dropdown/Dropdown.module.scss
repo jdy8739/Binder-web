@@ -1,40 +1,39 @@
-
 .wrapper {
-    position: relative;
+  position: relative;
 
-    .dropdown-content {
-        position: absolute;
-        display: none;
-        overflow: hidden;
-        box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
-        transition: all var(--duration) ease-out;
+  .dropdown-content {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
+    transition: all var(--duration) ease-out;
 
-        &.triggered {
-            display: block;
+    &.triggered {
+      display: block;
 
-            &.fade {
-                opacity: 0;
-                &.visible {
-                    opacity: 1;
-                }
-            }
-
-            &.rolling {
-                height: 0;
-                &.visible {
-                    height: var(--height);
-                }
-            }
+      &.fade {
+        opacity: 0;
+        &.visible {
+          opacity: 1;
         }
+      }
 
-        :global {
-            .option-item {
-                border-bottom: 1px solid $gray-05;
-
-                &:last-child {
-                    border-bottom: none;
-                }
-            }
+      &.rolling {
+        height: 0;
+        &.visible {
+          height: var(--height);
         }
+      }
     }
+
+    :global {
+      .option-item {
+        border-bottom: 1px solid $gray-05;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
 }

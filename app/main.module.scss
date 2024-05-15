@@ -1,57 +1,56 @@
 .body {
-    min-width: $width-desktop;
+  min-width: $width-desktop;
 
-    .main {
-        display: flex;
-        flex-direction: column;
-        padding: 0 320px;
-        padding-bottom: 390px;
-        gap: 108px;
-    
-        .upper {
-            display: flex;
-            height: 600px;
-            gap: 24px;
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 320px;
+    padding-bottom: 390px;
+    gap: 108px;
 
-            &-left {
-                width: 55%;
-                height: 100%;
-                background-color: black;
-            }
+    .upper {
+      display: flex;
+      height: 600px;
+      gap: 24px;
 
-            &-right {
-                width: 45%;
-                height: 100%;
-            }
-        }
+      &-left {
+        width: 55%;
+        height: 100%;
+        background-color: black;
+      }
 
-        .lower {
-            display: flex;
-            height: 768px;
-            flex-direction: column;
-            gap: 80px;
-
-            &-head {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 16px;
-                
-                > span {
-                    font-size: 22px;
-                    font-weight: $font-bolder;
-                }
-
-                > a {
-                    display: flex;
-                    align-items: center;
-                    font-size: 12px;
-                }
-            }
-
-            &-body {
-                height: 294px;
-
-            }
-        }
+      &-right {
+        width: 45%;
+        height: 100%;
+      }
     }
+
+    .lower {
+      display: flex;
+      height: 768px;
+      flex-direction: column;
+      gap: 80px;
+
+      &-head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        > span {
+          font-size: 22px;
+          font-weight: $font-bolder;
+        }
+
+        > a {
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+        }
+      }
+
+      &-body {
+        height: 294px;
+      }
+    }
+  }
 }

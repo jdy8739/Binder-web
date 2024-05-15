@@ -21,6 +21,9 @@ export const Default: StoryComponent = {
       },
     },
   },
-  args: {},
+  args: {
+    endValue: 100,
+    startValue: 0,
+  },
   render: Template,
 };

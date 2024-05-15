@@ -1,9 +1,9 @@
 .footer {
-    @extend %footer-default;
+  @extend %footer-default;
 
-    display: flex;
-    height: 81px;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
+  display: flex;
+  height: 81px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
 }
