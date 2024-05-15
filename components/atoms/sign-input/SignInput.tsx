@@ -27,7 +27,8 @@ const SignInput = ({
   required = false,
   denoteRequired = false,
   isPassword = false,
-  ...props
+  type = 'text',
+  ...rest
 }: InputProps) => {
   const inputId = useId();
 
@@ -36,26 +37,15 @@ const SignInput = ({
   const [showInputContent, setShowInputContent] = useState(isPassword);
 
   return (
-    <div className={cx('wrapper', className)}>
-      <div>
+    <div className={cx('sign-input', className)}>
+      <div className={cx('sign-input-label')}>
         <Label htmlFor={inputId} content={label} />
         {required && denoteRequired && (
           <span className={cx('required')}>*</span>
         )}
-      </div>
-      <div>
-        <input
-          {...props}
-          id={inputId}
-          className={cx({ error: isError })}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          type={showInputContent ? 'password' : props.type}
-          spellCheck={false}
-        />
         {isPassword && (
           <button
-            className={cx({ hidden: showInputContent })}
+            className={cx('eye-icon', { hidden: showInputContent })}
             type="button"
             onClick={() => setShowInputContent(!showInputContent)}
           >
@@ -63,8 +53,23 @@ const SignInput = ({
           </button>
         )}
       </div>
+      <div className={cx('sign-input-erea')}>
+        <input
+          {...rest}
+          id={inputId}
+          className={cx('sign-input-input', { error: isError })}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          type={showInputContent ? 'password' : type}
+          spellCheck={false}
+        />
+      </div>
       {helperText && (
-        <small className={cx({ error: isError && !isFocused })}>
+        <small
+          className={cx('sign-input-helper-text', {
+            error: isError && !isFocused,
+          })}
+        >
           {helperText}
         </small>
       )}
