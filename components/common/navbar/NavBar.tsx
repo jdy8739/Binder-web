@@ -1,24 +1,22 @@
-'use client';
+import useServerSideUrl from '/business/hooks/useServerSideUrl';
 
-import { usePathname } from 'next/navigation';
-
-import { CONST, DOMAIN } from '/business/const';
+import { URL_CONST, VALUE_CONST } from '/business/const/index';
 
 import SignNavBar from './SignNavBar';
 import NormalNavBar from './NormalNavBar';
 
 const NavBar = () => {
-  const pathname = usePathname();
+  const { lastPathnameString } = useServerSideUrl();
 
   const service =
     // eslint-disable-next-line no-nested-ternary
-    pathname === DOMAIN.SIGN_IN ||
-    pathname === DOMAIN.FIND_PW ||
-    pathname === DOMAIN.RESET_PW
+    lastPathnameString === URL_CONST.SIGN_IN ||
+    lastPathnameString === URL_CONST.FIND_PW ||
+    lastPathnameString === URL_CONST.RESET_PW
       ? '통합 로그인'
-      : pathname === DOMAIN.SIGN_UP
+      : lastPathnameString === URL_CONST.SIGN_UP
         ? '회원가입'
-        : CONST.STRING.BLANK;
+        : VALUE_CONST.STRING.BLANK;
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{service ? <SignNavBar service={service} /> : <NormalNavBar />}</>;

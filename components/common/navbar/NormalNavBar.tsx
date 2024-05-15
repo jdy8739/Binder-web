@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
@@ -9,7 +11,7 @@ import AlarmOption from '/components/atoms/option/AlarmOption';
 import LinkOption from '../../atoms/option/LinkOption';
 import { Bell, Pen, Profile } from '/assets/svg';
 
-import { FILED_CONST } from '/business/const/field-const';
+import { FILED_CONST } from '/business/const/index';
 
 import style from './NormalNavBar.module.scss';
 

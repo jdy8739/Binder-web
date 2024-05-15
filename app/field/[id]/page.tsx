@@ -8,7 +8,7 @@ import BorderedButton from '/components/atoms/button/BorderedButton';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
 
-import { FILED_CONST } from '/business/const/field-const';
+import { FILED_CONST } from '/business/const/index';
 
 import style from './fieldDetail.module.scss';
 

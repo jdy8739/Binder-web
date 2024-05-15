@@ -1,4 +1,4 @@
-const CONST = {
+const VALUE_CONST = {
   STRING: {
     BLANK: '',
     ZERO: '0',
@@ -11,4 +11,4 @@ const CONST = {
 
 const co = null;
 
-export { CONST, co };
+export { VALUE_CONST, co };
