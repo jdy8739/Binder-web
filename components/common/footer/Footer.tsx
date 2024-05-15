@@ -1,4 +1,4 @@
-import useServerSideUrl from '/business/hooks/useServerSideUrl';
+import useServerSidePathname from '/business/hooks/useServerSidePathname';
 
 import { URL_CONST } from '/business/const/index';
 
@@ -6,7 +6,7 @@ import SignFooter from './SignFooter';
 import NormalFooter from './NormalFooter';
 
 const Footer = () => {
-  const { lastPathnameString } = useServerSideUrl();
+  const { lastPathnameString } = useServerSidePathname();
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment

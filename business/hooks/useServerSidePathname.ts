@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
 
-const useServerSideUrl = () => {
+const useServerSidePathname = () => {
   const headersList = headers();
 
   const headerPathname = headersList.get('x-pathname') || '';
@@ -16,4 +16,4 @@ const useServerSideUrl = () => {
   };
 };
 
-export default useServerSideUrl;
+export default useServerSidePathname;

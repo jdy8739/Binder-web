@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import classNames from 'classnames/bind';
 
-import useServerSideUrl from '../../../business/hooks/useServerSideUrl';
+import useServerSidePathname from '../../../business/hooks/useServerSidePathname';
 
 import BorderedButton from '/components/atoms/button/BorderedButton';
 import Button from '/components/atoms/button/Button';
@@ -15,7 +15,7 @@ import style from './fieldDetail.module.scss';
 const cx = classNames.bind(style);
 
 const FiledDetailTop = () => {
-  const { lastPathnameString } = useServerSideUrl();
+  const { lastPathnameString } = useServerSidePathname();
 
   const currentField = useMemo(
     () =>

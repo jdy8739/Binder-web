@@ -1,4 +1,4 @@
-import useServerSideUrl from '/business/hooks/useServerSideUrl';
+import useServerSidePathname from '/business/hooks/useServerSidePathname';
 
 import { URL_CONST, VALUE_CONST } from '/business/const/index';
 
@@ -6,7 +6,7 @@ import SignNavBar from './SignNavBar';
 import NormalNavBar from './NormalNavBar';
 
 const NavBar = () => {
-  const { lastPathnameString } = useServerSideUrl();
+  const { lastPathnameString } = useServerSidePathname();
 
   const service =
     // eslint-disable-next-line no-nested-ternary
