@@ -4,12 +4,20 @@ import { VALUE_CONST } from '../const';
 
 type MouseEvent = React.MouseEvent<HTMLDivElement>;
 
-interface TriggeredCoord {
+type MovedCoord = {
   xLeft: boolean;
   xRight: boolean;
   yUp: boolean;
   yDown: boolean;
-}
+};
+
+type MoveEventParams = {
+  threshold?: number;
+  handleOnXLeftMove?: () => void;
+  handleOnXRightMove?: () => void;
+  handleOnYUpMove?: () => void;
+  handleOnYDownMove?: () => void;
+};
 
 const useMouseMove = ({
   threshold = 30,
@@ -17,13 +25,7 @@ const useMouseMove = ({
   handleOnXRightMove,
   handleOnYUpMove,
   handleOnYDownMove,
-}: {
-  threshold?: number;
-  handleOnXLeftMove?: () => void;
-  handleOnXRightMove?: () => void;
-  handleOnYUpMove?: () => void;
-  handleOnYDownMove?: () => void;
-}) => {
+}: MoveEventParams) => {
   const clientCoordRef = useRef<{ clientX: number; clientY: number }>({
     clientX: VALUE_CONST.NUMBER.ZERO,
     clientY: VALUE_CONST.NUMBER.ZERO,
@@ -31,7 +33,7 @@ const useMouseMove = ({
 
   const [isMouseDown, setIsMouseDown] = useState(false);
 
-  const [triggeredCoord, setTriggeredCoord] = useState<TriggeredCoord>({
+  const [triggeredCoord, setTriggeredCoord] = useState<MovedCoord>({
     xLeft: false,
     xRight: false,
     yUp: false,
@@ -53,7 +55,7 @@ const useMouseMove = ({
         const yMoved = curClientY - clientY;
 
         setTriggeredCoord((current) => {
-          let Moved: TriggeredCoord = current;
+          let Moved: MovedCoord = current;
 
           if (Math.abs(xMoved) >= threshold) {
             if (Math.sign(xMoved) === 1) Moved = { ...Moved, xRight: true };
