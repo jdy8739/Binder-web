@@ -33,7 +33,7 @@ const SignInput = ({
 
   const [isFocused, setIsFocused] = useState(false);
 
-  const [isPasswordType, setIsPasswordType] = useState(isPassword);
+  const [showInputContent, setShowInputContent] = useState(isPassword);
 
   return (
     <div className={cx('wrapper', className)}>
@@ -50,16 +50,16 @@ const SignInput = ({
           className={cx({ error: isError })}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          type={isPasswordType ? 'password' : props.type}
+          type={showInputContent ? 'password' : props.type}
           spellCheck={false}
         />
         {isPassword && (
           <button
-            className={cx({ hidden: isPasswordType })}
+            className={cx({ hidden: showInputContent })}
             type="button"
-            onClick={() => setIsPasswordType(!isPasswordType)}
+            onClick={() => setShowInputContent(!showInputContent)}
           >
-            {isPasswordType ? <PwHidden /> : <PwVisible />}
+            {showInputContent ? <PwHidden /> : <PwVisible />}
           </button>
         )}
       </div>
