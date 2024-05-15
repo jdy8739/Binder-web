@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { usePathname } from 'next/navigation';
 import classNames from 'classnames/bind';
 
 import useClickOutside from '/business/hooks/useClickOutside';
@@ -57,6 +58,8 @@ const Dropdown = ({
   duration = 300,
   height,
 }: DropdownProps) => {
+  const pathname = usePathname();
+
   const dropdownWrapperRef = useRef<HTMLElement>(null);
 
   const isActive = useRef(false);
@@ -89,7 +92,11 @@ const Dropdown = ({
       });
     }
     return () => clearTimeout(timeout);
-  }, [isTriggered, isVisible, duration]);
+  }, [isTriggered, isVisible, pathname, duration]);
+
+  useEffect(() => {
+    setIsVisible(false);
+  }, [pathname]);
 
   return (
     <section ref={dropdownWrapperRef} className={cx('wrapper', className)}>

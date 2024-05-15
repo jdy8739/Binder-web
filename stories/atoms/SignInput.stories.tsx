@@ -21,6 +21,13 @@ export const Default: StoryComponent = {
       },
     },
   },
-  args: { label: 'test label' },
+  args: {
+    label: 'test label',
+    helperText: 'test helper txt',
+    isError: false,
+    required: false,
+    denoteRequired: false,
+    isPassword: false,
+  },
   render: Template,
 };

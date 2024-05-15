@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 
-import style from './SearchInput.module.scss';
 import { Search } from '/assets/svg';
+
+import style from './SearchInput.module.scss';
 
 const cx = classNames.bind(style);
 

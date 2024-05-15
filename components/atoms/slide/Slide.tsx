@@ -12,9 +12,9 @@ import React, {
 import classNames from 'classnames/bind';
 import throttle from 'lodash.throttle';
 
-import { CONST } from '/business/const';
+import { VALUE_CONST } from '/business/const/index';
 
-import useMouseMove from '../../../business/hooks/useMouseMove';
+import useMouseMove from '/business/hooks/useMouseMove';
 
 import { NavLeftVerticalWide, NavRightVerticalWide } from '/assets/svg';
 
@@ -38,7 +38,7 @@ type SlideDirection = 'left' | 'right';
 const Slide = ({
   className,
   elementList,
-  startIndex = CONST.NUMBER.ZERO,
+  startIndex = VALUE_CONST.NUMBER.ZERO,
   numberToShow = 4,
   gap = '10px',
   transitionDuration = 600,
@@ -47,7 +47,9 @@ const Slide = ({
 }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const [eachElWidth, setEachElWidth] = useState<number>(CONST.NUMBER.ZERO);
+  const [eachElWidth, setEachElWidth] = useState<number>(
+    VALUE_CONST.NUMBER.ZERO,
+  );
 
   const [firstIndex, setFirstIndex] = useState(startIndex);
 
@@ -62,17 +64,17 @@ const Slide = ({
   }, [elementList]);
 
   const { isNavButtonDisabled, slicedElementList } = useMemo(() => {
-    const lastIndex = firstIndex + numberToShow + CONST.NUMBER.ONE;
+    const lastIndex = firstIndex + numberToShow + VALUE_CONST.NUMBER.ONE;
 
     const { length } = validElList;
 
     const isNavButtonDisabled = validElList.length <= numberToShow;
 
-    if (firstIndex === CONST.NUMBER.ZERO) {
+    if (firstIndex === VALUE_CONST.NUMBER.ZERO) {
       return {
         isNavButtonDisabled,
         slicedElementList: [
-          validElList[length - CONST.NUMBER.ONE],
+          validElList[length - VALUE_CONST.NUMBER.ONE],
           ...validElList.slice(firstIndex, lastIndex),
         ],
       };
@@ -82,15 +84,15 @@ const Slide = ({
       return {
         isNavButtonDisabled,
         slicedElementList: [
-          ...validElList.slice(firstIndex - CONST.NUMBER.ONE, lastIndex),
-          ...validElList.slice(CONST.NUMBER.ZERO, overflowed),
+          ...validElList.slice(firstIndex - VALUE_CONST.NUMBER.ONE, lastIndex),
+          ...validElList.slice(VALUE_CONST.NUMBER.ZERO, overflowed),
         ],
       };
     }
     return {
       isNavButtonDisabled,
       slicedElementList: validElList.slice(
-        firstIndex - CONST.NUMBER.ONE,
+        firstIndex - VALUE_CONST.NUMBER.ONE,
         lastIndex,
       ),
     };
@@ -101,7 +103,7 @@ const Slide = ({
 
     const { width } = wrapperEl
       ? wrapperEl.getBoundingClientRect()
-      : { width: CONST.NUMBER.ZERO };
+      : { width: VALUE_CONST.NUMBER.ZERO };
 
     const widthNumberValue = Math.floor(width);
 
@@ -132,15 +134,15 @@ const Slide = ({
           setFirstIndex((current) => {
             const isDirectionLeft = direction === 'left';
             const nextIndex = isDirectionLeft
-              ? current - CONST.NUMBER.ONE
-              : current + CONST.NUMBER.ONE;
+              ? current - VALUE_CONST.NUMBER.ONE
+              : current + VALUE_CONST.NUMBER.ONE;
             if (isDirectionLeft) {
-              return nextIndex < CONST.NUMBER.ZERO
-                ? validElList.length - CONST.NUMBER.ONE
+              return nextIndex < VALUE_CONST.NUMBER.ZERO
+                ? validElList.length - VALUE_CONST.NUMBER.ONE
                 : nextIndex;
             }
             return nextIndex === validElList.length
-              ? CONST.NUMBER.ZERO
+              ? VALUE_CONST.NUMBER.ZERO
               : nextIndex;
           });
         }, transitionDuration);
@@ -177,7 +179,7 @@ const Slide = ({
       onMouseLeave={handleOnMouseEventEnd}
       onMouseMove={handleOnMouseMove}
     >
-      {eachElWidth === CONST.NUMBER.ZERO ? (
+      {eachElWidth === VALUE_CONST.NUMBER.ZERO ? (
         <div />
       ) : (
         <>

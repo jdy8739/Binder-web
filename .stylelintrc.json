@@ -10,6 +10,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "rule-empty-line-before": null
+    "rule-empty-line-before": null,
+    "selector-pseudo-class-no-unknown": null
   }
 }

@@ -1,5 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import classNames from 'classnames/bind';
+
+import { usePathname } from 'next/navigation';
 
 import SearchInput from '/components/atoms/search-input/SearchInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
@@ -7,11 +11,15 @@ import AlarmOption from '/components/atoms/option/AlarmOption';
 import LinkOption from '../../atoms/option/LinkOption';
 import { Bell, Pen, Profile } from '/assets/svg';
 
+import { FILED_CONST } from '/business/const/index';
+
 import style from './NormalNavBar.module.scss';
 
 const cx = classNames.bind(style);
 
 const NormalNavBar = () => {
+  const pathname = usePathname();
+
   const isSignedIn = true;
 
   return (
@@ -139,23 +147,17 @@ const NormalNavBar = () => {
           <li>
             <Dropdown
               className={cx('category-dropdown')}
-              trigger={<span className={cx('category-option')}>필드별</span>}
+              trigger={
+                <span
+                  className={cx('category-option', {
+                    primary: pathname.includes('field'),
+                  })}
+                >
+                  필드별
+                </span>
+              }
               optionComponent={LinkOption}
-              optionList={[
-                { value: 1, label: '암생물학' },
-                { value: 2, label: '바이러스' },
-                { value: 3, label: '영업' },
-                { value: 4, label: '박테리아' },
-                { value: 5, label: '유전학' },
-                { value: 6, label: '생명 정보' },
-                { value: 7, label: '의료기기' },
-                { value: 8, label: '스마트팜' },
-                { value: 9, label: '제약 공학' },
-                { value: 10, label: '식물농업' },
-                { value: 11, label: '줄기세포' },
-                { value: 12, label: '식품 공학' },
-                { value: 13, label: '축산*가축' },
-              ]}
+              optionList={FILED_CONST}
               effect="fade"
             />
           </li>

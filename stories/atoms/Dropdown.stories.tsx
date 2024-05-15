@@ -28,16 +28,18 @@ export const Default: StoryComponent = {
     },
   },
   args: {
-    trigger: <div>trigger</div>,
-    header: <div>header</div>,
-    footer: <div>footer</div>,
+    trigger: <button type="button">trigger</button>,
+    header: null,
+    footer: null,
     optionComponent: AlarmOption,
     optionList: [
       { value: 0, label: 0, time: 434234234 },
       { value: 1, label: 1, time: 434234234, clicked: true },
       { value: 2, label: 2, time: 434234234 },
     ],
-    height: 396,
+    duration: 500,
+    height: 185,
+    effect: 'rolling',
   },
   render: Template,
 };
