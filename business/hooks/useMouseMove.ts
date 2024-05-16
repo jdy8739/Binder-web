@@ -4,7 +4,7 @@ import { VALUE_CONST } from '../const';
 
 type MouseEvent = React.MouseEvent<HTMLDivElement>;
 
-type MovedCoord = {
+type DirectionMoved = {
   xLeft: boolean;
   xRight: boolean;
   yUp: boolean;
@@ -33,7 +33,7 @@ const useMouseMove = ({
 
   const [isMouseDown, setIsMouseDown] = useState(false);
 
-  const [triggeredCoord, setTriggeredCoord] = useState<MovedCoord>({
+  const [directionsMoved, setDirectionsMoved] = useState<DirectionMoved>({
     xLeft: false,
     xRight: false,
     yUp: false,
@@ -54,21 +54,24 @@ const useMouseMove = ({
         const xMoved = curClientX - clientX;
         const yMoved = curClientY - clientY;
 
-        setTriggeredCoord((current) => {
-          let Moved: MovedCoord = current;
+        setDirectionsMoved((current) => {
+          let moved: DirectionMoved = current;
 
           if (Math.abs(xMoved) >= threshold) {
-            if (Math.sign(xMoved) === 1) Moved = { ...Moved, xRight: true };
-            else if (Math.sign(xMoved) === -1)
-              Moved = { ...Moved, xLeft: true };
+            const xMovedSign = Math.sign(xMoved);
+
+            if (xMovedSign === 1) moved = { ...moved, xRight: true };
+            else if (xMovedSign === -1) moved = { ...moved, xLeft: true };
           }
           if (Math.abs(yMoved) >= threshold) {
-            if (Math.sign(yMoved) === 1) Moved = { ...Moved, yDown: true };
-            else if (Math.sign(yMoved) === -1) Moved = { ...Moved, yUp: true };
+            const yMovedSign = Math.sign(yMoved);
+
+            if (yMovedSign === 1) moved = { ...moved, yDown: true };
+            else if (yMovedSign === -1) moved = { ...moved, yUp: true };
           }
 
-          return Object.keys(current).some((key) => current[key] !== Moved[key])
-            ? Moved
+          return Object.keys(current).some((key) => current[key] !== moved[key])
+            ? moved
             : current;
         });
       }
@@ -81,7 +84,7 @@ const useMouseMove = ({
       clientX: VALUE_CONST.NUMBER.ZERO,
       clientY: VALUE_CONST.NUMBER.ZERO,
     };
-    setTriggeredCoord((current) => {
+    setDirectionsMoved((current) => {
       return Object.values(current).some((val) => val)
         ? {
             xLeft: false,
@@ -95,12 +98,12 @@ const useMouseMove = ({
   }, []);
 
   useEffect(() => {
-    if (triggeredCoord.xLeft) handleOnXLeftMove?.();
-    if (triggeredCoord.xRight) handleOnXRightMove?.();
-    if (triggeredCoord.yUp) handleOnYUpMove?.();
-    if (triggeredCoord.yDown) handleOnYDownMove?.();
+    if (directionsMoved.xLeft) handleOnXLeftMove?.();
+    if (directionsMoved.xRight) handleOnXRightMove?.();
+    if (directionsMoved.yUp) handleOnYUpMove?.();
+    if (directionsMoved.yDown) handleOnYDownMove?.();
   }, [
-    triggeredCoord,
+    directionsMoved,
     handleOnXLeftMove,
     handleOnXRightMove,
     handleOnYDownMove,
