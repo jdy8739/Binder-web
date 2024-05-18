@@ -8,6 +8,8 @@ import BorderedButton from '/components/atoms/button/BorderedButton';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
 
+import { ProfileBig } from '/assets/svg';
+
 import { FILED_CONST } from '/business/const/index';
 
 import style from './fieldDetail.module.scss';
@@ -37,6 +39,30 @@ const FiledDetailTop = () => {
           <BorderedButton content="직무 게시판" chosen />
           <BorderedButton content="학술 게시판" />
           <BorderedButton content="취직이직 게시판" />
+        </div>
+      </figure>
+      <figure>
+        <div className={cx('field-detail-top-profile')}>
+          <div className={cx('profile')}>
+            <div>
+              <div className={cx('profile-pic')}>
+                <ProfileBig />
+              </div>
+              <div className={cx('status-ball')} />
+            </div>
+            <div>
+              <span>닉네임</span>
+              <span>뱃지 이름</span>
+            </div>
+            <div>
+              <span>직무</span>
+              <span>대학원생</span>
+            </div>
+          </div>
+          <div className={cx('tags')}>
+            <span>#태그</span>
+            <span>#태그</span>
+          </div>
         </div>
       </figure>
       <figure>
