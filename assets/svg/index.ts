@@ -17,6 +17,7 @@ import NavLeftSmall from './nav_left_sm.svg';
 import NavLeftVerticalWide from './nav_left_vertical_wide.svg';
 import NavRightVerticalWide from './nav_right_vertical_wide.svg';
 import Pen from './pen.svg';
+import ProfileBig from './profile-big.svg';
 
 export {
   PwHidden,
@@ -38,4 +39,5 @@ export {
   NavLeftVerticalWide,
   NavRightVerticalWide,
   Pen,
+  ProfileBig,
 };
