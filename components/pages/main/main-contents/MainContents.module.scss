@@ -1,0 +1,16 @@
+.main-contents-wrapper {
+  display: flex;
+  height: 600px;
+  gap: 24px;
+
+  .carousel {
+    width: 55%;
+    height: 100%;
+    background-color: black;
+  }
+
+  .notice {
+    width: 45%;
+    height: 100%;
+  }
+}

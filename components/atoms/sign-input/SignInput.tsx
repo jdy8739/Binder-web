@@ -27,7 +27,6 @@ const SignInput = ({
   required = false,
   denoteRequired = false,
   isPassword = false,
-  type = 'text',
   ...rest
 }: InputProps) => {
   const inputId = useId();
@@ -60,7 +59,7 @@ const SignInput = ({
           className={cx('sign-input-input', { error: isError })}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          type={showInputContent ? 'password' : type}
+          type={showInputContent ? 'password' : rest.type}
           spellCheck={false}
         />
       </div>

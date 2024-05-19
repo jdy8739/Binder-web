@@ -99,7 +99,10 @@ const Dropdown = ({
   }, [pathname]);
 
   return (
-    <section ref={dropdownWrapperRef} className={cx('wrapper', className)}>
+    <section
+      ref={dropdownWrapperRef}
+      className={cx('dropdown-wrapper', className)}
+    >
       <div className={cx('dropdown-trigger')}>
         <button
           type="button"
