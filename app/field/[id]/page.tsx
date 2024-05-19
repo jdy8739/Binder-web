@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 
 import useServerSidePathname from '../../../business/hooks/useServerSidePathname';
 
-import ProfileBar from '/components/pages/filed/[id]/ProfileBar';
+import ProfileBar from '../../../components/pages/filed/[id]/profile-bar/ProfileBar';
+import PostCardContainer from '/components/pages/filed/[id]/post-card-container/PostCardContainer';
 import BorderedButton from '/components/atoms/button/BorderedButton';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
@@ -27,6 +28,7 @@ const FiledDetailTop = () => {
 
   return (
     <article className={cx('field-detail-top')}>
+      <ProfileBar />
       <figure>
         <div className={cx('field-detail-top-title')}>
           <span>&apos;{currentField}&apos;</span>
@@ -40,7 +42,6 @@ const FiledDetailTop = () => {
           <BorderedButton content="취직이직 게시판" />
         </div>
       </figure>
-      <ProfileBar />
       <figure>
         <div className={cx('field-detail-top-total-count')}>
           <span>직무게시판</span>
@@ -73,21 +74,15 @@ const FiledDetailTop = () => {
   );
 };
 
-const FiledDetailBottom = () => {
-  return (
-    <article className={cx('filed-detail-bottom')}>
-      <div />
-    </article>
-  );
-};
-
-const FiledDetailPage = () => {
+const FieldDetailPage = () => {
   return (
     <main className={cx('filed-detail-wrapper')}>
       <FiledDetailTop />
-      <FiledDetailBottom />
+      <article className={cx('filed-detail-bottom')}>
+        <PostCardContainer />
+      </article>
     </main>
   );
 };
 
-export default FiledDetailPage;
+export default FieldDetailPage;

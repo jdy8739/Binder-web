@@ -1,0 +1,72 @@
+.field-detail-bottom {
+  min-height: 258px;
+  padding-bottom: 432px;
+
+  .pc-container {
+    border-top: 1px solid $gray-07;
+    margin-top: 20px;
+  }
+}
+
+.post-card {
+  height: 186px;
+  padding: 36px 32px;
+  border-bottom: 1px solid $gray-07;
+
+  .post-card-title {
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: $font-bolder;
+    line-height: 34px;
+  }
+
+  .post-card-content {
+    margin-bottom: 20px;
+    color: $gray-09;
+    line-height: 24px;
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    color: $gray-11;
+    font-size: 14px;
+
+    button {
+      color: $gray-11;
+      font-size: 14px;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 6px;
+
+      .icon-button {
+        position: relative;
+
+        svg {
+          position: absolute;
+          top: -2px;
+        }
+
+        span {
+          margin-left: 22px;
+        }
+      }
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 8px;
+
+      > div {
+        position: relative;
+
+        button {
+          position: absolute;
+          top: -2.5px;
+        }
+      }
+    }
+  }
+}

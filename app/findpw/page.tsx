@@ -9,7 +9,7 @@ import style from './findpw.module.scss';
 
 const cx = classNames.bind(style);
 
-const FindPw = () => {
+const FindPwPage = () => {
   return (
     <main className={cx('main')}>
       <div>
@@ -33,4 +33,4 @@ const FindPw = () => {
   );
 };
 
-export default FindPw;
+export default FindPwPage;
