@@ -18,6 +18,10 @@ import NavLeftVerticalWide from './nav_left_vertical_wide.svg';
 import NavRightVerticalWide from './nav_right_vertical_wide.svg';
 import Pen from './pen.svg';
 import ProfileBig from './profile-big.svg';
+import PostThumb from './post-thumb.svg';
+import SpeechBallon from './speech-ballon.svg';
+import PostCheck from './post-check.svg';
+import Bookmark from './bookmark.svg';
 
 export {
   PwHidden,
@@ -40,4 +44,8 @@ export {
   NavRightVerticalWide,
   Pen,
   ProfileBig,
+  PostThumb,
+  SpeechBallon,
+  PostCheck,
+  Bookmark,
 };
