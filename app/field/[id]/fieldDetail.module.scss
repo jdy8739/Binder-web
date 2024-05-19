@@ -1,72 +1,20 @@
-/* stylelint-disable no-descending-specificity */
-.filed-detail-wrapper {
+.field-detail-wrapper {
   padding: 60px 20% 0;
 
   .field-detail-top {
     display: flex;
     flex-direction: column;
     gap: 56px;
+  }
 
-    &-title {
-      font-size: 32px;
+  .field-detail-bottom {
+    min-height: 258px;
+    padding-bottom: 360px;
 
-      > span {
-        color: $gray-13;
-
-        &:first-child {
-          margin-right: 12px;
-          color: $gray-15;
-          font-weight: $font-bold;
-        }
-      }
-    }
-
-    &-categories {
+    .pagination-container {
       display: flex;
-      gap: 8px;
-    }
-
-    &-total-count {
-      display: flex;
-      color: $gray-13;
-      font-size: 20px;
-      font-weight: $font-normal;
-      gap: 6px;
-
-      > span {
-        &:nth-child(2) {
-          color: $gray-15;
-          font-weight: $font-bolder;
-        }
-      }
-    }
-
-    &-lower {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-
-      > div {
-        &:first-child {
-          display: flex;
-          height: 40px;
-          padding: 10px;
-          border: 1px solid $gray-06;
-          border-radius: 8px;
-          font-size: $font-normal;
-          gap: 12px;
-
-          .radio {
-            display: flex;
-            align-items: center;
-            line-height: 1px;
-
-            input {
-              margin-right: 4px;
-            }
-          }
-        }
-      }
+      justify-content: center;
+      margin-top: 40px;
     }
   }
 }

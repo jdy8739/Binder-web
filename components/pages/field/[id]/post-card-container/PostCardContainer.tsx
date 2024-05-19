@@ -53,13 +53,12 @@ const PostCard = () => {
 
 const PostCardContainer = () => {
   return (
-    <figure className={cx('field-detail-bottom')}>
+    <figure>
       <div className={cx('pc-container')}>
         {Array.from({ length: 8 }, (_, index) => (
           <PostCard key={index} />
         ))}
       </div>
-      <div className={cx('pagination')}>pagination</div>
     </figure>
   );
 };
