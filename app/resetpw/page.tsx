@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Button from '../../components/atoms/button/Button';
 import SignInput from '../../components/atoms/sign-input/SignInput';
 
-import style from './resetpw.module.scss';
+import style from './Resetpw.module.scss';
 
 const cx = classNames.bind(style);
 

@@ -8,7 +8,7 @@ import SignInput from '../../components/atoms/sign-input/SignInput';
 import Radio from '../../components/atoms/radio/Radio';
 import CheckBox from '../../components/atoms/check-box/CheckBox';
 
-import style from './signup.module.scss';
+import style from './Signup.module.scss';
 
 const cx = classNames.bind(style);
 

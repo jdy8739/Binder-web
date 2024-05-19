@@ -5,7 +5,7 @@ import Button from '../../components/atoms/button/Button';
 import SignInput from '../../components/atoms/sign-input/SignInput';
 import { Google, Kakao, Naver } from '/assets/svg';
 
-import style from './signin.module.scss';
+import style from './Signin.module.scss';
 
 const cx = classNames.bind(style);
 
