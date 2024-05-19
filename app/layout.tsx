@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import NavBar from '/components/common/navbar/NavBar';
 import Footer from '../components/common/footer/Footer';
 
-import style from './main.module.scss';
+import style from './Main.module.scss';
 
 const cx = classNames.bind(style);
 

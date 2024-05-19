@@ -1,69 +1,15 @@
-import Link from 'next/link';
-
 import classNames from 'classnames/bind';
 
-import Carousel from '../components/atoms/carousel/Carousel';
-import Slide from '/components/atoms/slide/Slide';
-import LinkNavigator from '/components/atoms/link-navigator/LinkNavigator';
-import PostThumbnail from '/components/mocules/PostThumbnail';
+import MainContents from '/components/pages/main/main-contents/MainContents';
+import PopularPosts from '/components/pages/main/popular-posts/PopularPosts';
 
-import style from './main.module.scss';
+import style from './Main.module.scss';
 
 const cx = classNames.bind(style);
 
-const MainContents = () => {
-  return (
-    <section className={cx('upper')}>
-      <Carousel className={cx('upper-left')} />
-      <div className={cx('upper-right')}>
-        <div
-          style={{
-            height: '536px',
-            background: 'black',
-            borderRadius: '8px',
-            marginBottom: '16px',
-          }}
-        />
-        <LinkNavigator title="공지사항" subTitle="공지사항" />
-      </div>
-    </section>
-  );
-};
-
-const PopularPosts = () => {
-  return (
-    <section className={cx('lower')}>
-      <div>
-        <div className={cx('lower-head')}>
-          <span>인기글</span>
-          <Link href="/#">더보기</Link>
-        </div>
-        <Slide
-          className={cx('lower-body')}
-          elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
-            <PostThumbnail key={el} index={el} />
-          ))}
-        />
-      </div>
-      <div>
-        <div className={cx('lower-head')}>
-          <span>최신글</span>
-          <Link href="/#">더보기</Link>
-        </div>
-        <Slide
-          className={cx('lower-body')}
-          elementList={[1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
-            <PostThumbnail key={el} index={el} />
-          ))}
-        />
-      </div>
-    </section>
-  );
-};
-
 const Page = () => {
   return (
-    <main className={cx('main')}>
+    <main className={cx('main-wrapper')}>
       <MainContents />
       <PopularPosts />
     </main>
