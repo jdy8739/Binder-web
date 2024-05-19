@@ -1,0 +1,18 @@
+.pagination-wrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.page-number {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: $gray-12;
+  size: 13px;
+
+  &.clicekd {
+    border: 1px solid $gray-09;
+    color: $gray-15;
+  }
+}
