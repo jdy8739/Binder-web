@@ -2,13 +2,13 @@ import classNames from 'classnames/bind';
 
 import Input from '/components/atoms/input/Input';
 
-import style from './WriteContainer.module.scss';
+import style from './CreateBoard.module.scss';
 
 const cx = classNames.bind(style);
 
-const WriteContainer = () => {
+const CreateBoard = () => {
   return (
-    <div className={cx('write-container')}>
+    <div className={cx('create-board')}>
       <div className={cx('title-input-area')}>
         <div>
           <span>카테고리</span>
@@ -31,4 +31,4 @@ const WriteContainer = () => {
   );
 };
 
-export default WriteContainer;
+export default CreateBoard;
