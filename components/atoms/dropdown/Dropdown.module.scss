@@ -1,7 +1,11 @@
 .dropdown-wrapper {
   position: relative;
+  height: 100%;
 
   .dropdown-trigger {
+    display: flex;
+    height: 100%;
+    align-items: center;
 
     .trigger-button {
       transition: transform var(--duration) ease-in-out;
