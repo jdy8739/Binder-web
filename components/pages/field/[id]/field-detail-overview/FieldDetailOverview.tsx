@@ -59,7 +59,7 @@ const FieldDetailOverview = () => {
             </span>
           </div>
           <div>
-            <Button content="게시글 작성" size="sm" />
+            <Button link="/write" content="게시글 작성" size="sm" />
           </div>
         </div>
       </figure>
