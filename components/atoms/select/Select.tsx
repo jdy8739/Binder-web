@@ -21,7 +21,11 @@ const Select = ({ children, className }: SelectProps) => {
             (child.type as { displayName?: string }).displayName === 'Option',
         )
         .map((child) => (
-          <div key={child.key} className={cx('option-item')}>
+          <div
+            key={child.key}
+            className={cx('option-item')}
+            style={{ background: 'white' }}
+          >
             {child}
           </div>
         )),

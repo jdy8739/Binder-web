@@ -14,42 +14,45 @@ const cx = classNames.bind(style);
 
 const CreateBoard = () => {
   return (
-    <div className={cx('create-board')}>
+    <main className={cx('create-board')}>
       <div>
-        <div className={cx('create-board-title')}>
+        <div className={cx('create-board-header')}>
           <span>카테고리</span>
           <span>직무게시판</span>
           <span>
             <Dropdown
+              className={cx('options-dropdown')}
               trigger={<NavDown />}
               optionComponent={Option}
               optionList={[
-                { value: 1, label: '나의 콘텐츠' },
-                { value: 2, label: '스크랩 보기' },
-                { value: 3, label: '개인정보 수정' },
+                { value: '직무 게시판', label: '직무 게시판' },
+                { value: '학술 게시판', label: '학술 게시판' },
+                { value: '취직이직 게시판', label: '취직이직 게시판' },
               ]}
-              height={300}
+              height={168}
               rotateTrigger
             />
           </span>
         </div>
-        <Input
-          className={cx('create-input', 'title-input')}
-          placeholder="제목을 입력해주세요."
-        />
+        <div className={cx('create-board-title')}>
+          <Input
+            className={cx('create-input')}
+            placeholder="제목을 입력해주세요."
+          />
+        </div>
       </div>
 
-      {/* <div className={cx('content-input-area')}>textarea</div>
+      <div className={cx('content-input-area')}>textarea</div>
 
       <div className={cx('hashtag-input-area')}>
         <div>
           <span>#해시태그 입력</span>
         </div>
         <div>
-          <Input className={cx('create-input', 'tag-input')} />
+          <Input className={cx('create-input')} />
         </div>
-      </div> */}
-    </div>
+      </div>
+    </main>
   );
 };
 
