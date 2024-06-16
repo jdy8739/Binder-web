@@ -18,3 +18,15 @@
   font-size: 28px;
   font-weight: $font-bolder;
 }
+
+%button-gray {
+  border-color: $gray-04;
+  background-color: $gray-04;
+  color: $gray-07;
+
+  &:hover {
+    border-color: $primary-light;
+    background-color: $white;
+    color: $primary-light;
+  }
+}

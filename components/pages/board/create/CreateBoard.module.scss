@@ -15,10 +15,22 @@
   }
 
   &-title,
-  .content-input-area,
-  .hashtag-input-area {
+  .content-input,
+  .hashtag-input {
     position: relative;
     z-index: -1;
+  }
+
+  .hashtag-input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 82px;
+    gap: 16px;
+
+    &-title {
+      font-size: 20px;
+      font-weight: $font-bolder;
+    }
   }
 
   .options-dropdown {
@@ -56,6 +68,21 @@
           color: $gray-07;
         }
       }
+    }
+
+    &.hashtag {
+      height: 72px;
+    }
+  }
+
+  .create-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 46px;
+    gap: 12px;
+
+    .button-gray {
+      @extend %button-gray;
     }
   }
 }
