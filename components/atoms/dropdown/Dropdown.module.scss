@@ -1,12 +1,22 @@
 .dropdown-wrapper {
   position: relative;
 
+  .dropdown-trigger {
+
+    .trigger-button {
+      transition: transform var(--duration) ease-in-out;
+    }
+    .triggered {
+      transform: rotate(180deg);
+    }
+  }
+
   .dropdown-content {
     position: absolute;
     display: none;
     overflow: hidden;
     box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
-    transition: all var(--duration) ease-out;
+    transition: all var(--duration) ease-in-out;
 
     &.triggered {
       display: block;

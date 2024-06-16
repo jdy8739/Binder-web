@@ -33,6 +33,7 @@ interface BaseProps {
   optionList?: ExtendedOption[];
   duration?: number;
   effect?: 'rolling' | 'fade';
+  rotateTrigger?: boolean;
 }
 
 interface RollingProps extends BaseProps {
@@ -57,6 +58,7 @@ const Dropdown = ({
   effect = 'rolling',
   duration = 300,
   height,
+  rotateTrigger = false,
 }: DropdownProps) => {
   const pathname = usePathname();
 
@@ -102,9 +104,17 @@ const Dropdown = ({
     <section
       ref={dropdownWrapperRef}
       className={cx('dropdown-wrapper', className)}
+      style={
+        {
+          '--duration': `${duration}ms`,
+        } as CSSProperties
+      }
     >
       <div className={cx('dropdown-trigger')}>
         <button
+          className={cx('trigger-button', {
+            triggered: rotateTrigger && isTriggered,
+          })}
           type="button"
           onClick={() =>
             !isTriggered ? setIsTriggered(true) : setIsVisible(false)
@@ -120,7 +130,6 @@ const Dropdown = ({
         })}
         style={
           {
-            '--duration': `${duration}ms`,
             '--height': `${height}px`,
           } as CSSProperties
         }

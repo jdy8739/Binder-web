@@ -1,3 +1,31 @@
 .create-board {
-  display: block;
+  padding: 68px 20% 223px;
+
+  &-title {
+    display: flex;
+    margin-bottom: 24px;
+    font-size: 24px;
+    gap: 4px;
+
+    > span {
+      &:nth-child(2) {
+        font-weight: $font-bolder;
+      }
+    }
+  }
+
+  .create-input {
+    height: 50px;
+    border-radius: 8px;
+    
+    :global {
+      .input-target {
+        padding: 13px 24px;
+
+        &::placeholder {
+          color: $gray-07;
+        }
+      }
+    }
+  }
 }
