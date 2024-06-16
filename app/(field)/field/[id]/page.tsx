@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
-import FieldDetailOverview from '../../../components/pages/field/[id]/field-detail-overview/FieldDetailOverview';
-import PostCardContainer from '../../../components/pages/field/[id]/post-card-container/PostCardContainer';
+import FieldDetailOverview from '../../../../components/pages/field/[id]/field-detail-overview/FieldDetailOverview';
+import PostCardContainer from '../../../../components/pages/field/[id]/post-card-container/PostCardContainer';
 import Pagination from '/components/atoms/pagination/Pagination';
 
 import style from './FieldDetail.module.scss';
