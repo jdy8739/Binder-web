@@ -12,12 +12,15 @@ interface BasicOption {
 interface OptionProps {
   className?: string;
   option: BasicOption;
+  chosen?: boolean;
 }
 
-const Option = ({ className, option }: OptionProps) => {
+const Option = ({ className, option, chosen }: OptionProps) => {
   return (
-    <div className={cx('option-wrapper', className)}>
-      <span className={cx('option-label')}>{option.label}</span>
+    <div className={cx('option-wrapper', className, { chosen })}>
+      <span className={cx('option-label')} data-option-value={option.value}>
+        {option.label}
+      </span>
     </div>
   );
 };

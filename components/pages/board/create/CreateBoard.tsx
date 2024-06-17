@@ -1,38 +1,52 @@
 'use client';
 
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import Input from '/components/atoms/input/Input';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import Option from '/components/atoms/option/Option';
+import Button from '/components/atoms/button/Button';
 
 import { NavDown } from '/assets/svg';
 
 import style from './CreateBoard.module.scss';
-import Button from '/components/atoms/button/Button';
 
 const cx = classNames.bind(style);
 
+type BoardType = 'jobs' | 'academic' | 'career';
+
+const BOARD_OPTIONS: { value: BoardType; label: string }[] = [
+  { value: 'jobs', label: '직무게시판' },
+  { value: 'academic', label: '학술게시판' },
+  { value: 'career', label: '취직이직게시판' },
+] as const;
+
 const CreateBoard = () => {
+  const [boardType, setBoardType] = useState<BoardType>('jobs');
+
   return (
     <main className={cx('create-board')}>
       <form>
         <div>
           <div className={cx('create-board-header')}>
             <span>카테고리</span>
-            <span>직무게시판</span>
+            <span>
+              {
+                BOARD_OPTIONS.find((option) => option.value === boardType)
+                  ?.label
+              }
+            </span>
             <span>
               <Dropdown
                 className={cx('options-dropdown')}
+                value={boardType}
                 trigger={<NavDown />}
                 optionComponent={Option}
-                optionList={[
-                  { value: '직무 게시판', label: '직무 게시판' },
-                  { value: '학술 게시판', label: '학술 게시판' },
-                  { value: '취직이직 게시판', label: '취직이직 게시판' },
-                ]}
+                optionList={BOARD_OPTIONS}
                 height={168}
                 rotateTrigger
+                onChange={(value) => setBoardType(value as BoardType)}
               />
             </span>
           </div>
@@ -59,7 +73,13 @@ const CreateBoard = () => {
         </div>
 
         <div className={cx('create-button')}>
-          <Button className={cx('button-gray')} content="취소" size="sm" />
+          <Button
+            className={cx('button-gray')}
+            link="/"
+            content="취소"
+            size="sm"
+            type="button"
+          />
           <Button content="게시글 등록" />
         </div>
       </form>

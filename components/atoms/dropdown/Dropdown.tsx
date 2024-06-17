@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import React, {
   CSSProperties,
   FunctionComponent,
   ReactNode,
+  useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import { usePathname } from 'next/navigation';
 import classNames from 'classnames/bind';
+import { usePathname } from 'next/navigation';
 
 import useClickOutside from '/business/hooks/useClickOutside';
 
@@ -24,16 +27,19 @@ type ExtendedOption = BasicOption & { [key: string]: unknown };
 
 interface BaseProps {
   className?: string;
+  value?: string;
   header?: ReactNode;
   footer?: ReactNode;
   trigger: ReactNode;
   optionComponent?: FunctionComponent<{
     option: BasicOption | ExtendedOption;
+    chosen?: boolean;
   }>;
   optionList?: ExtendedOption[];
   duration?: number;
   effect?: 'rolling' | 'fade';
   rotateTrigger?: boolean;
+  onChange?: (value: string) => void;
 }
 
 interface RollingProps extends BaseProps {
@@ -48,8 +54,13 @@ interface FadeProps extends BaseProps {
 
 type DropdownProps = RollingProps | FadeProps;
 
+type TargetElement = Element & {
+  dataset: { optionValue?: string };
+};
+
 const Dropdown = ({
   className,
+  value,
   header,
   footer,
   trigger,
@@ -59,6 +70,7 @@ const Dropdown = ({
   duration = 300,
   height,
   rotateTrigger = false,
+  onChange,
 }: DropdownProps) => {
   const pathname = usePathname();
 
@@ -69,6 +81,45 @@ const Dropdown = ({
   const [isTriggered, setIsTriggered] = useState(false);
 
   const [isVisible, setIsVisible] = useState(false);
+
+  const findOptionValueRecursive = useCallback((target: TargetElement) => {
+    const { optionValue } = target.dataset;
+
+    if (optionValue) {
+      return optionValue;
+    }
+
+    const children = Array.from(target.childNodes.entries()).map(
+      ([_, element]) => element,
+    );
+
+    let targetOptionValue = '';
+
+    children.some((child) => {
+      const optionValue = findOptionValueRecursive(child as TargetElement);
+
+      targetOptionValue = optionValue;
+
+      return optionValue;
+    });
+
+    return targetOptionValue;
+  }, []);
+
+  const handleOnChange = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (onChange) {
+        const target = e.target as TargetElement;
+
+        const optionValue = findOptionValueRecursive(target);
+
+        if (optionValue !== value) {
+          onChange(optionValue);
+        }
+      }
+    },
+    [value, onChange, findOptionValueRecursive],
+  );
 
   useClickOutside({
     ref: dropdownWrapperRef.current,
@@ -135,12 +186,13 @@ const Dropdown = ({
         }
       >
         {header && <div className={cx('dropdown-header')}>{header}</div>}
-        <div className={cx('dropdown-body')}>
+        <div className={cx('dropdown-body')} onClick={handleOnChange}>
           <Select>
             {(optionList || []).map((option) =>
               React.createElement(optionComponent, {
                 key: option.value,
                 option,
+                chosen: value === option.value,
               }),
             )}
           </Select>
