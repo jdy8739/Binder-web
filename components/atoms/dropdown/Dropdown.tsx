@@ -115,6 +115,7 @@ const Dropdown = ({
 
         if (optionValue !== value) {
           onChange(optionValue);
+          setIsVisible(false);
         }
       }
     },
