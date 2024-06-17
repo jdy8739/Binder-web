@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-.wrapper {
+.normal-navbar-wrapper {
   position: relative;
   z-index: 1;
   height: 120px;
@@ -22,6 +22,8 @@
   .categories {
     position: relative;
     z-index: -1;
+    display: flex;
+    height: 68px;
 
     li {
       padding-right: 56px;
@@ -43,7 +45,7 @@
       .category-dropdown {
         :global {
           .dropdown-dropdown {
-            top: 50px;
+            top: 40px;
             height: max-content;
 
             .dropdown-body {
@@ -70,10 +72,10 @@
 
   .top-bar {
     display: flex;
-    height: 68px;
+    height: 52px;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
+    padding-top: 16px;
 
     .left {
       display: inherit;
