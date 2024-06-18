@@ -1,5 +1,5 @@
 .create-board {
-  padding: 68px 20% 223px;
+  padding: 68px 20% 233px;
 
   &-header {
     display: flex;
@@ -15,10 +15,14 @@
   }
 
   &-title,
-  .content-input,
+  .content-editor,
   .hashtag-input {
     position: relative;
     z-index: -1;
+  }
+
+  .content-editor {
+    margin-top: 34px;
   }
 
   .hashtag-input {
