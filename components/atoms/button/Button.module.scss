@@ -24,15 +24,8 @@
   }
 
   &:disabled {
-    border-color: $gray-04;
-    background-color: $gray-04;
-    color: $gray-07;
-    cursor: not-allowed;
+    @extend %button-gray;
 
-    &:hover {
-      border-color: $primary-light;
-      background-color: $white;
-      color: $primary-light;
-    }
+    cursor: not-allowed;
   }
 }

@@ -2,14 +2,14 @@
 
 import classNames from 'classnames/bind';
 
-import Button from '../../components/atoms/button/Button';
-import SignInput from '../../components/atoms/sign-input/SignInput';
+import Button from '../../../components/atoms/button/Button';
+import SignInput from '../../../components/atoms/sign-input/SignInput';
 
-import style from './findpw.module.scss';
+import style from './Findpw.module.scss';
 
 const cx = classNames.bind(style);
 
-const FindPwPage = () => {
+const Page = () => {
   return (
     <main className={cx('main')}>
       <div>
@@ -33,4 +33,4 @@ const FindPwPage = () => {
   );
 };
 
-export default FindPwPage;
+export default Page;

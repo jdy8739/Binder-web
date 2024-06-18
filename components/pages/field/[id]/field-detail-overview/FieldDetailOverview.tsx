@@ -5,8 +5,7 @@ import classNames from 'classnames/bind';
 import useServerSidePathname from '/business/hooks/useServerSidePathname';
 
 import ProfileBar from './profile-bar/ProfileBar';
-
-import BorderedButton from '/components/atoms/button/BorderedButton';
+import Categories from './categories/Categories';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
 
@@ -35,13 +34,7 @@ const FieldDetailOverview = () => {
           <span>필드 태그 검색결과</span>
         </div>
       </figure>
-      <figure>
-        <div className={cx('categories')}>
-          <BorderedButton content="직무 게시판" chosen />
-          <BorderedButton content="학술 게시판" />
-          <BorderedButton content="취직이직 게시판" />
-        </div>
-      </figure>
+      <Categories />
       <figure>
         <div className={cx('total-count')}>
           <span>직무게시판</span>
@@ -66,7 +59,7 @@ const FieldDetailOverview = () => {
             </span>
           </div>
           <div>
-            <Button content="게시글 작성" size="sm" />
+            <Button link="/board/create" content="게시글 작성" size="sm" />
           </div>
         </div>
       </figure>

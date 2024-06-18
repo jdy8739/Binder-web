@@ -22,6 +22,7 @@ import PostThumb from './post-thumb.svg';
 import SpeechBallon from './speech-ballon.svg';
 import PostCheck from './post-check.svg';
 import Bookmark from './bookmark.svg';
+import NavDown from './nav_down.svg';
 
 export {
   PwHidden,
@@ -48,4 +49,5 @@ export {
   SpeechBallon,
   PostCheck,
   Bookmark,
+  NavDown,
 };

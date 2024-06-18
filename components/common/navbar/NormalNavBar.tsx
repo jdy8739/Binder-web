@@ -23,7 +23,7 @@ const NormalNavBar = () => {
   const isSignedIn = true;
 
   return (
-    <header className={cx('wrapper')}>
+    <header className={cx('normal-navbar-wrapper')}>
       <div className={cx('top-bar')}>
         <div className={cx('left')}>
           <span className={cx('logo')}>

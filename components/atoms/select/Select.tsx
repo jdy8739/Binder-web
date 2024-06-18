@@ -21,7 +21,7 @@ const Select = ({ children, className }: SelectProps) => {
             (child.type as { displayName?: string }).displayName === 'Option',
         )
         .map((child) => (
-          <div key={child.key} className={cx('option-item')}>
+          <div key={child.key} className={cx('option-item', 'white-bg')}>
             {child}
           </div>
         )),
@@ -29,8 +29,8 @@ const Select = ({ children, className }: SelectProps) => {
   );
 
   return (
-    <div className={cx('wrapper', className)}>
-      <div className={cx('select')}>{validOptionElements}</div>
+    <div className={cx('select-wrapper', className)}>
+      <div className={cx('select-content')}>{validOptionElements}</div>
     </div>
   );
 };

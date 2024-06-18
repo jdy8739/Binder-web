@@ -1,19 +1,23 @@
-.wrapper {
+.search-input-wrapper {
   position: relative;
+}
 
-  input {
-    width: 100%;
-    height: 40px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 40px;
-    background-color: $gray-02;
-  }
+.search-input {
+  height: 40px;
+  border: none;
+  border-radius: 40px;
+  background-color: $gray-02;
 
-  .search-btn {
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translate(-0%, -50%);
+  :global {
+    .input-target {
+      padding: 8px 16px;
+    }
   }
+}
+
+.search-input-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translate(-0%, -50%);
 }
