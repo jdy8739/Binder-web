@@ -1,11 +1,12 @@
 .body {
   min-width: $width-desktop;
+  padding-bottom: 210px;
 
   .main-wrapper {
     display: flex;
     flex-direction: column;
     padding: 0 320px;
-    padding-bottom: 390px;
+    padding-bottom: 180px;
     gap: 108px;
   }
 }

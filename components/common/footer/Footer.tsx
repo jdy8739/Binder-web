@@ -1,4 +1,6 @@
-import useServerSidePathname from '/business/hooks/useServerSidePathname';
+'use client';
+
+import { usePathname } from 'next/navigation';
 
 import { URL_CONST } from '/business/const/index';
 
@@ -6,15 +8,15 @@ import SignFooter from './SignFooter';
 import NormalFooter from './NormalFooter';
 
 const Footer = () => {
-  const { lastPathnameString } = useServerSidePathname();
+  const pathname = usePathname();
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {lastPathnameString === URL_CONST.SIGN_IN ||
-      lastPathnameString === URL_CONST.SIGN_UP ||
-      lastPathnameString === URL_CONST.FIND_PW ||
-      lastPathnameString === URL_CONST.RESET_PW ? (
+      {pathname === URL_CONST.SIGN_IN ||
+      pathname === URL_CONST.SIGN_UP ||
+      pathname === URL_CONST.FIND_PW ||
+      pathname === URL_CONST.RESET_PW ? (
         <SignFooter />
       ) : (
         <NormalFooter />

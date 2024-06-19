@@ -6,7 +6,8 @@ import style from './Radio.module.scss';
 
 const cx = classNames.bind(style);
 
-interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface RadioProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   className?: string;
 }
 

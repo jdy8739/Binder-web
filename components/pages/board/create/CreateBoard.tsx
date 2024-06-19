@@ -7,6 +7,7 @@ import Input from '/components/atoms/input/Input';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import Option from '/components/atoms/option/Option';
 import Button from '/components/atoms/button/Button';
+import TextEditor from '/components/atoms/text-editor/TextEditor';
 
 import { NavDown } from '/assets/svg';
 
@@ -58,7 +59,9 @@ const CreateBoard = () => {
           </div>
         </div>
 
-        <div className={cx('content-input')}>{null}</div>
+        <div className={cx('content-editor')}>
+          <TextEditor />
+        </div>
 
         <div className={cx('hashtag-input')}>
           <div>

@@ -3,8 +3,7 @@ const URL_CONST = {
   SIGN_IN: '/signin',
   FIND_PW: '/findpw',
   RESET_PW: '/resetpw',
-};
+} as const;
 
-const co = null;
-
-export { URL_CONST, co };
+// eslint-disable-next-line import/prefer-default-export
+export { URL_CONST };
