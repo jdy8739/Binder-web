@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { useState } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import ReactQuill from 'react-quill';
 
@@ -16,12 +16,23 @@ type TextEditorProps = {
 const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
   const [currentLength, setCurrentLength] = useState(0);
 
+  const quillRef = useRef<
+    | (LegacyRef<ReactQuill> & { editor: { root: HTMLTextAreaElement } })
+    | undefined
+  >(undefined);
+
+  useEffect(() => {
+    quillRef.current?.editor.root.setAttribute('spellcheck', 'false');
+  }, []);
+
   return (
     <div className={cx('text-editor-wrapper', className)}>
       <QuillToolBar />
       <ReactQuill
+        ref={quillRef as unknown as LegacyRef<ReactQuill> | undefined}
         className={cx('ql-container')}
         theme="snow"
+        placeholder="내용을 입력해주세요."
         modules={{
           toolbar: {
             container: '#toolbar-container',
@@ -29,8 +40,9 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
         }}
       />
       <div className={cx('ql-length')}>
-        <span>{`${currentLength} /`}</span>
-        <span> {maxLength}</span>
+        <span>{currentLength}</span>
+        <span> / </span>
+        <span>{maxLength}</span>
       </div>
     </div>
   );

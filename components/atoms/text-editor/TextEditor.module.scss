@@ -1,7 +1,6 @@
 .text-editor-wrapper {
   position: relative;
   display: block;
-  min-height: 500px;
   border: 1px solid $gray-06;
   border-radius: 8px;
 
@@ -19,11 +18,34 @@
       border-left: none;
     }
 
+    .ql-editor {
+      min-height: 500px;
+
+      &::before {
+        color: $gray-07;
+        font-style: normal;
+      }
+    }
+
     .ql-length {
       position: absolute;
       right: 0;
       bottom: -30px;
       font-size: 16px;
+
+      > span {
+        &:first-child {
+          color: $gray-09;
+        }
+
+        &:nth-child(2) {
+          color: $gray-06;
+        }
+
+        &:last-child {
+          color: $primary;
+        }
+      }
     }
   }
 }
