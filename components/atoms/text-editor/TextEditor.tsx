@@ -58,6 +58,8 @@ const QuillToolBar = () => {
       <span className="ql-formats">
         <select className="ql-color" />
         <select className="ql-background" />
+        <button className="ql-underline" />
+        <button className="ql-strike" />
       </span>
       <span className="ql-formats">
         <button className="ql-header" value="1" />
