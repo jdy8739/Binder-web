@@ -13,17 +13,16 @@ type TextEditorProps = {
   maxLength?: number;
 };
 
+type QuillEditor = {
+  editor: { root: HTMLTextAreaElement };
+  getEditor: () => {
+    on: (event: 'text-change', callback: () => void) => void;
+    getLength: () => number;
+  };
+};
+
 const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
-  const quillRef = useRef<
-    | (LegacyRef<ReactQuill> & {
-        editor: { root: HTMLTextAreaElement };
-        getEditor: () => {
-          on: (event: 'text-change', callback: () => void) => void;
-          getLength: () => number;
-        };
-      })
-    | undefined
-  >(undefined);
+  const quillRef = useRef<ReactQuill & QuillEditor>(null);
 
   const currentLengthSpanRef = useRef<HTMLSpanElement>(null);
 
