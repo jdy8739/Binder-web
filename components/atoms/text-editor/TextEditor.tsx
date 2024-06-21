@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { LegacyRef, useEffect, useRef, useState } from 'react';
+import { LegacyRef, useCallback, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import ReactQuill from 'react-quill';
 
@@ -14,16 +14,44 @@ type TextEditorProps = {
 };
 
 const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
-  const [currentLength, setCurrentLength] = useState(0);
-
   const quillRef = useRef<
-    | (LegacyRef<ReactQuill> & { editor: { root: HTMLTextAreaElement } })
+    | (LegacyRef<ReactQuill> & {
+        editor: { root: HTMLTextAreaElement };
+        getEditor: () => {
+          on: (event: 'text-change', callback: () => void) => void;
+          getLength: () => number;
+        };
+      })
     | undefined
   >(undefined);
 
-  useEffect(() => {
-    quillRef.current?.editor.root.setAttribute('spellcheck', 'false');
+  const currentLengthSpanRef = useRef<HTMLSpanElement>(null);
+
+  const insertCurrentLength = useCallback((length: number) => {
+    const lengthSpan = currentLengthSpanRef.current;
+
+    if (lengthSpan) {
+      lengthSpan.innerHTML = String(length);
+    }
   }, []);
+
+  useEffect(() => {
+    const quill = quillRef.current;
+
+    if (quill) {
+      quill.editor.root.setAttribute('spellcheck', 'false');
+
+      const quillEditor = quill.getEditor();
+
+      quillEditor.on('text-change', () => {
+        const length = quillEditor.getLength() - 1;
+
+        insertCurrentLength(length);
+      });
+
+      insertCurrentLength(0);
+    }
+  }, [insertCurrentLength]);
 
   return (
     <div className={cx('text-editor-wrapper', className)}>
@@ -40,7 +68,7 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
         }}
       />
       <div className={cx('ql-length')}>
-        <span>{currentLength}</span>
+        <span ref={currentLengthSpanRef} />
         <span> / </span>
         <span>{maxLength}</span>
       </div>
