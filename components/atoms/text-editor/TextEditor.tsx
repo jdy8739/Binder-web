@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react/button-has-type */
 import { LegacyRef, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
