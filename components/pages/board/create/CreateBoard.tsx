@@ -60,7 +60,7 @@ const CreateBoard = () => {
         </div>
 
         <div className={cx('content-editor')}>
-          <TextEditor />
+          <TextEditor maxLength={3000} />
         </div>
 
         <div className={cx('hashtag-input')}>

@@ -21,13 +21,13 @@ type QuillEditor = {
   };
 };
 
-const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
+const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
   const quillRef = useRef<ReactQuill & QuillEditor>(null);
 
   const currentLengthSpanRef = useRef<HTMLSpanElement>(null);
 
   const insertCurrentLength = useCallback((length: number) => {
-    const lengthSpan = currentLengthSpanRef.current;
+    const { current: lengthSpan } = currentLengthSpanRef;
 
     if (lengthSpan) {
       lengthSpan.innerHTML = String(length);
@@ -35,7 +35,7 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
   }, []);
 
   useEffect(() => {
-    const quill = quillRef.current;
+    const { current: quill } = quillRef;
 
     if (quill) {
       quill.editor.root.setAttribute('spellcheck', 'false');
@@ -45,12 +45,16 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
       quillEditor.on('text-change', () => {
         const length = quillEditor.getLength() - 1;
 
-        insertCurrentLength(length);
+        if (length > maxLength) {
+          quillEditor.deleteText(maxLength, length);
+        } else {
+          insertCurrentLength(length);
+        }
       });
 
       insertCurrentLength(0);
     }
-  }, [insertCurrentLength]);
+  }, [maxLength, insertCurrentLength]);
 
   return (
     <div className={cx('text-editor-wrapper', className)}>
@@ -64,6 +68,7 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
           toolbar: {
             container: '#toolbar-container',
           },
+          // maxlength: { maxLength: 10 },
         }}
       />
       <div className={cx('ql-length')}>
