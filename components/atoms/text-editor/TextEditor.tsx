@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { LegacyRef, useEffect, useRef, useState } from 'react';
+import { LegacyRef, useCallback, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import ReactQuill from 'react-quill';
 
@@ -13,17 +13,48 @@ type TextEditorProps = {
   maxLength?: number;
 };
 
-const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
-  const [currentLength, setCurrentLength] = useState(0);
+type QuillEditor = {
+  editor: { root: HTMLTextAreaElement };
+  getEditor: () => {
+    on: (event: 'text-change', callback: () => void) => void;
+    getLength: () => number;
+  };
+};
 
-  const quillRef = useRef<
-    | (LegacyRef<ReactQuill> & { editor: { root: HTMLTextAreaElement } })
-    | undefined
-  >(undefined);
+const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
+  const quillRef = useRef<ReactQuill & QuillEditor>(null);
+
+  const currentLengthSpanRef = useRef<HTMLSpanElement>(null);
+
+  const insertCurrentLength = useCallback((length: number) => {
+    const { current: lengthSpan } = currentLengthSpanRef;
+
+    if (lengthSpan) {
+      lengthSpan.innerHTML = String(length);
+    }
+  }, []);
 
   useEffect(() => {
-    quillRef.current?.editor.root.setAttribute('spellcheck', 'false');
-  }, []);
+    const { current: quill } = quillRef;
+
+    if (quill) {
+      quill.editor.root.setAttribute('spellcheck', 'false');
+
+      const quillEditor = quill.getEditor();
+
+      quillEditor.on('text-change', () => {
+        const length = quillEditor.getLength() - 1;
+
+        if (length > maxLength) {
+          quillEditor.deleteText(maxLength, length);
+        } else {
+          insertCurrentLength(length);
+        }
+      });
+
+      insertCurrentLength(0);
+    }
+  }, [maxLength, insertCurrentLength]);
 
   return (
     <div className={cx('text-editor-wrapper', className)}>
@@ -37,10 +68,11 @@ const TextEditor = ({ className, maxLength = 3000 }: TextEditorProps) => {
           toolbar: {
             container: '#toolbar-container',
           },
+          // maxlength: { maxLength: 10 },
         }}
       />
       <div className={cx('ql-length')}>
-        <span>{currentLength}</span>
+        <span ref={currentLengthSpanRef} />
         <span> / </span>
         <span>{maxLength}</span>
       </div>
