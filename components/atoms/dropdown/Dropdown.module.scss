@@ -10,6 +10,7 @@
     .trigger-button {
       transition: transform var(--duration) ease-in-out;
     }
+
     .triggered {
       transform: rotate(180deg);
     }
@@ -17,26 +18,36 @@
 
   .dropdown-content {
     position: absolute;
-    display: none;
+    display: inline-block;
     overflow: hidden;
+    animation-duration: var(--duration);
+    animation-timing-function: ease-in-out;
     box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
-    transition: all var(--duration) ease-in-out;
 
     &.triggered {
-      display: block;
+      animation-direction: normal;
+    }
 
-      &.fade {
-        opacity: 0;
-        &.visible {
-          opacity: 1;
-        }
+    &.leave {
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+    }
+
+    &.leave-done {
+      display: none;
+    }
+
+    &.fade {
+      &.triggered,
+      &.leave {
+        animation-name: fade;
       }
+    }
 
-      &.rolling {
-        height: 0;
-        &.visible {
-          height: var(--height);
-        }
+    &.rolling {
+      &.triggered,
+      &.leave {
+        animation-name: rolling;
       }
     }
 
@@ -49,5 +60,25 @@
         }
       }
     }
+  }
+}
+
+@keyframes rolling {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: var(--height);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

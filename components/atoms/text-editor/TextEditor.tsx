@@ -1,5 +1,7 @@
+'use client';
+
 /* eslint-disable react/button-has-type */
-import { LegacyRef, useCallback, useEffect, useRef } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import ReactQuill from 'react-quill';
 
@@ -24,15 +26,7 @@ type QuillEditor = {
 const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
   const quillRef = useRef<ReactQuill & QuillEditor>(null);
 
-  const currentLengthSpanRef = useRef<HTMLSpanElement>(null);
-
-  const insertCurrentLength = useCallback((length: number) => {
-    const { current: lengthSpan } = currentLengthSpanRef;
-
-    if (lengthSpan) {
-      lengthSpan.innerHTML = String(length);
-    }
-  }, []);
+  const [editorLength, setEditorLength] = useState(0);
 
   useEffect(() => {
     const { current: quill } = quillRef;
@@ -48,19 +42,19 @@ const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
         if (length > maxLength) {
           quillEditor.deleteText(maxLength, length);
         } else {
-          insertCurrentLength(length);
+          setEditorLength(length);
         }
       });
 
-      insertCurrentLength(0);
+      setEditorLength(0);
     }
-  }, [maxLength, insertCurrentLength]);
+  }, [maxLength]);
 
   return (
     <div className={cx('text-editor-wrapper', className)}>
       <QuillToolBar />
       <ReactQuill
-        ref={quillRef as unknown as LegacyRef<ReactQuill> | undefined}
+        ref={quillRef as unknown as LegacyRef<ReactQuill>}
         className={cx('ql-container')}
         theme="snow"
         placeholder="내용을 입력해주세요."
@@ -68,11 +62,10 @@ const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
           toolbar: {
             container: '#toolbar-container',
           },
-          // maxlength: { maxLength: 10 },
         }}
       />
       <div className={cx('ql-length')}>
-        <span ref={currentLengthSpanRef} />
+        <span>{editorLength}</span>
         <span> / </span>
         <span>{maxLength}</span>
       </div>
