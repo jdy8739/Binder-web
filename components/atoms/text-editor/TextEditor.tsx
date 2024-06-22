@@ -52,7 +52,7 @@ const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
     <div className={cx('text-editor-wrapper', className)}>
       <QuillToolBar />
       <ReactQuill
-        ref={quillRef as unknown as LegacyRef<ReactQuill> | undefined}
+        ref={quillRef as unknown as LegacyRef<ReactQuill>}
         className={cx('ql-container')}
         theme="snow"
         placeholder="내용을 입력해주세요."
