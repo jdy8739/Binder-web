@@ -15,6 +15,7 @@ import classNames from 'classnames/bind';
 import { usePathname } from 'next/navigation';
 
 import useClickOutside from '/business/hooks/useClickOutside';
+import { wait } from '/business/helper/utils';
 
 import Select from '../select/Select';
 import Option, { BasicOption } from '../option/Option';
@@ -76,11 +77,9 @@ const Dropdown = ({
 
   const dropdownWrapperRef = useRef<HTMLElement>(null);
 
-  const isActive = useRef(false);
-
-  const [isTriggered, setIsTriggered] = useState(false);
-
-  const [isVisible, setIsVisible] = useState(false);
+  const [status, setStatus] = useState<
+    'triggered' | 'triggered-done' | 'leave' | 'leave-done'
+  >('leave-done');
 
   const findOptionValueRecursive = useCallback((target: TargetElement) => {
     const { optionValue } = target.dataset;
@@ -115,41 +114,46 @@ const Dropdown = ({
 
         if (optionValue !== value) {
           onChange(optionValue);
-          setIsVisible(false);
         }
       }
     },
     [value, onChange, findOptionValueRecursive],
   );
 
+  const setStatusLeave = useCallback(
+    async (status: 'triggered' | 'leave') => {
+      setStatus(status);
+
+      await wait(duration);
+
+      setStatus(`${status}-done`);
+    },
+    [duration],
+  );
+
+  const handleOnTriggerClick = useCallback(async () => {
+    if (status === 'triggered' || status === 'leave') {
+      return;
+    }
+
+    if (status === 'leave-done') {
+      setStatusLeave('triggered');
+    } else {
+      setStatusLeave('leave');
+    }
+  }, [status, setStatusLeave]);
+
   useClickOutside({
     ref: dropdownWrapperRef.current,
-    callback: () => setIsVisible(false),
+    callback: async () => {
+      if (status === 'triggered-done') {
+        setStatusLeave('leave');
+      }
+    },
   });
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    const beforeChange = isTriggered && !isVisible;
-
-    const isActiveNow = isActive.current;
-
-    if (beforeChange && isActiveNow) {
-      timeout = setTimeout(() => {
-        isActive.current = false;
-        setIsTriggered(false);
-      }, duration);
-    } else if (beforeChange && !isActiveNow) {
-      timeout = setTimeout(() => {
-        isActive.current = true;
-        setIsVisible(true);
-      });
-    }
-    return () => clearTimeout(timeout);
-  }, [isTriggered, isVisible, pathname, duration]);
-
-  useEffect(() => {
-    setIsVisible(false);
+    setStatus('leave-done');
   }, [pathname]);
 
   return (
@@ -165,21 +169,18 @@ const Dropdown = ({
       <div className={cx('dropdown-trigger')}>
         <button
           className={cx('trigger-button', {
-            triggered: rotateTrigger && isTriggered,
+            triggered:
+              rotateTrigger &&
+              (status === 'triggered' || status === 'triggered-done'),
           })}
           type="button"
-          onClick={() =>
-            !isTriggered ? setIsTriggered(true) : setIsVisible(false)
-          }
+          onClick={handleOnTriggerClick}
         >
           {trigger}
         </button>
       </div>
       <div
-        className={cx('dropdown-content', 'dropdown-dropdown', effect, {
-          visible: isVisible,
-          triggered: isTriggered,
-        })}
+        className={cx('dropdown-content', 'dropdown-dropdown', effect, status)}
         style={
           {
             '--height': `${height}px`,
