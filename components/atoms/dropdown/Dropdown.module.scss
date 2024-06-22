@@ -24,37 +24,30 @@
     animation-timing-function: ease-in-out;
     box-shadow: -2px 2px 20px 0 rgb(128 128 128 / 25%);
 
+    &.triggered {
+      animation-direction: normal;
+    }
+
+    &.leave {
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+    }
+
+    &.leave-done {
+      display: none;
+    }
+
     &.fade {
-      &.triggered {
-        animation-direction: normal;
-        animation-name: fade;
-      }
-
+      &.triggered,
       &.leave {
-        animation-direction: reverse;
-        animation-fill-mode: forwards;
         animation-name: fade;
-      }
-
-      &.leave-done {
-        display: none;
       }
     }
 
     &.rolling {
-      &.triggered {
-        animation-direction: normal;
-        animation-name: rolling;
-      }
-
+      &.triggered,
       &.leave {
-        animation-direction: reverse;
-        animation-fill-mode: forwards;
         animation-name: rolling;
-      }
-
-      &.leave-done {
-        display: none;
       }
     }
 
