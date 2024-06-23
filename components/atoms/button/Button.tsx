@@ -12,6 +12,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   link?: string;
   size?: 'lg' | 'sm';
+  width?: number;
+  height?: number;
 }
 
 const Button = ({
@@ -19,6 +21,8 @@ const Button = ({
   content,
   link,
   size = 'lg',
+  width,
+  height,
   onClick,
   ...rest
 }: ButtonProps) => {
@@ -27,6 +31,7 @@ const Button = ({
   return (
     // eslint-disable-next-line react/button-has-type
     <button
+      style={{ width: `${width}px`, height: `${height}px` }}
       className={cx('button-wrapper', size, className)}
       onClick={(e) => {
         onClick?.(e);
