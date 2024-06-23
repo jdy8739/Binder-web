@@ -1,4 +1,7 @@
-const FILED_CONST = [
+import { LinkOptionType } from '/components/atoms/option/LinkOption';
+import { BasicOption } from '/components/atoms/option/Option';
+
+const BASIC_CONST: BasicOption[] = [
   { value: 'life-science', label: '암생물학' },
   { value: 'virus', label: '바이러스' },
   { value: 'sales', label: '영업' },
@@ -12,6 +15,10 @@ const FILED_CONST = [
   { value: 'stem-cells', label: '줄기세포' },
   { value: 'food-engineering', label: '식품공학' },
   { value: 'livestock-industry', label: '축산*가축' },
-] as const;
+];
+
+const FILED_CONST: LinkOptionType[] = BASIC_CONST.map((con) => {
+  return { ...con, link: `/board/field?category=${con.value}` };
+});
 
 export { FILED_CONST };

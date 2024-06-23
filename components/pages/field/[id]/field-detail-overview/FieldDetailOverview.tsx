@@ -2,27 +2,28 @@ import { useMemo } from 'react';
 
 import classNames from 'classnames/bind';
 
-import useServerSidePathname from '../../../../../business/hook/useServerSidePathname';
+import useServerSideSearchParams from '/business/hook/useServerSideSearchParams';
 
 import ProfileBar from './profile-bar/ProfileBar';
-import Categories from './categories/Categories';
+import SubjectButtons from './subject-buttons/SubjectButtons';
 import Button from '/components/atoms/button/Button';
 import Radio from '/components/atoms/radio/Radio';
 
-import { FILED_CONST } from '/business/const/index';
+import { FILED_CONST } from '/business/const/field-const';
 
 import style from './FiledDetailOverview.module.scss';
 
 const cx = classNames.bind(style);
 
 const FieldDetailOverview = () => {
-  const { lastPathnameString } = useServerSidePathname();
+  const {
+    searchParams: { category },
+  } = useServerSideSearchParams();
 
   const currentField = useMemo(
     () =>
-      FILED_CONST.find((field) => field.value === lastPathnameString)?.label ||
-      lastPathnameString,
-    [lastPathnameString],
+      FILED_CONST.find((field) => field.value === category)?.label || category,
+    [category],
   );
 
   return (
@@ -34,7 +35,7 @@ const FieldDetailOverview = () => {
           <span>필드 태그 검색결과</span>
         </div>
       </figure>
-      <Categories />
+      <SubjectButtons />
       <figure>
         <div className={cx('total-count')}>
           <span>직무게시판</span>

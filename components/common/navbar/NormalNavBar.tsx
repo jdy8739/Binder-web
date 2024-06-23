@@ -5,13 +5,13 @@ import classNames from 'classnames/bind';
 
 import { usePathname } from 'next/navigation';
 
+import { FILED_CONST } from '/business/const/field-const';
+
 import SearchInput from '/components/atoms/search-input/SearchInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import AlarmOption from '/components/atoms/option/AlarmOption';
 import LinkOption from '../../atoms/option/LinkOption';
 import { Bell, Pen, Profile } from '/assets/svg';
-
-import { FILED_CONST } from '/business/const/index';
 
 import style from './NormalNavBar.module.scss';
 
