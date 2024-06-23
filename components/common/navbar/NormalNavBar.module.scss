@@ -19,7 +19,7 @@
     }
   }
 
-  .categories {
+  .option-nav {
     position: relative;
     z-index: -1;
     display: flex;
@@ -28,7 +28,7 @@
     li {
       padding-right: 56px;
       a,
-      .category-option {
+      .board-option {
         font-size: 16px;
         font-weight: $font-bold;
         &:hover {
@@ -36,13 +36,13 @@
         }
       }
 
-      .category-option {
+      .board-option {
         &.primary {
           color: $primary;
         }
       }
 
-      .category-dropdown {
+      .field-option {
         :global {
           .dropdown-dropdown {
             top: 40px;
