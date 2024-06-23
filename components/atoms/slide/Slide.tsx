@@ -14,7 +14,7 @@ import throttle from 'lodash.throttle';
 
 import { VALUE_CONST } from '/business/const/index';
 
-import useMouseMove from '/business/hooks/useMouseMove';
+import useMouseMove from '../../../business/hook/useMouseMove';
 
 import { NavLeftVerticalWide, NavRightVerticalWide } from '/assets/svg';
 

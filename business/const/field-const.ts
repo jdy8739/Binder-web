@@ -12,8 +12,6 @@ const FILED_CONST = [
   { value: 'stem-cells', label: '줄기세포' },
   { value: 'food-engineering', label: '식품공학' },
   { value: 'livestock-industry', label: '축산*가축' },
-];
+] as const;
 
-const con = null;
-
-export { FILED_CONST, con };
+export { FILED_CONST };

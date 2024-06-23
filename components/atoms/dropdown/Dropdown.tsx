@@ -14,7 +14,7 @@ import React, {
 import classNames from 'classnames/bind';
 import { usePathname } from 'next/navigation';
 
-import useClickOutside from '/business/hooks/useClickOutside';
+import useClickOutside from '../../../business/hook/useClickOutside';
 import { wait } from '/business/helper/utils';
 
 import Select from '../select/Select';
