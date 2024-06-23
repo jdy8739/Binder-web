@@ -14,7 +14,7 @@ import React, {
 import classNames from 'classnames/bind';
 import { usePathname } from 'next/navigation';
 
-import useClickOutside from '/business/hooks/useClickOutside';
+import useClickOutside from '../../../business/hook/useClickOutside';
 import { wait } from '/business/helper/utils';
 
 import Select from '../select/Select';
@@ -105,22 +105,7 @@ const Dropdown = ({
     return targetOptionValue;
   }, []);
 
-  const handleOnChange = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (onChange) {
-        const target = e.target as TargetElement;
-
-        const optionValue = findOptionValueRecursive(target);
-
-        if (optionValue !== value) {
-          onChange(optionValue);
-        }
-      }
-    },
-    [value, onChange, findOptionValueRecursive],
-  );
-
-  const setStatusLeave = useCallback(
+  const switchStatus = useCallback(
     async (status: 'triggered' | 'leave') => {
       setStatus(status);
 
@@ -131,23 +116,39 @@ const Dropdown = ({
     [duration],
   );
 
+  const handleOnChange = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (onChange) {
+        const target = e.target as TargetElement;
+
+        const optionValue = findOptionValueRecursive(target);
+
+        if (optionValue !== value) {
+          onChange(optionValue);
+          switchStatus('leave');
+        }
+      }
+    },
+    [value, onChange, findOptionValueRecursive, switchStatus],
+  );
+
   const handleOnTriggerClick = useCallback(async () => {
     if (status === 'triggered' || status === 'leave') {
       return;
     }
 
     if (status === 'leave-done') {
-      setStatusLeave('triggered');
+      switchStatus('triggered');
     } else {
-      setStatusLeave('leave');
+      switchStatus('leave');
     }
-  }, [status, setStatusLeave]);
+  }, [status, switchStatus]);
 
   useClickOutside({
     ref: dropdownWrapperRef.current,
     callback: async () => {
       if (status === 'triggered-done') {
-        setStatusLeave('leave');
+        switchStatus('leave');
       }
     },
   });

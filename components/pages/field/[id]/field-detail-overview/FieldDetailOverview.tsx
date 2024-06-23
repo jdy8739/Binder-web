@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import classNames from 'classnames/bind';
 
-import useServerSidePathname from '/business/hooks/useServerSidePathname';
+import useServerSidePathname from '../../../../../business/hook/useServerSidePathname';
 
 import ProfileBar from './profile-bar/ProfileBar';
 import Categories from './categories/Categories';

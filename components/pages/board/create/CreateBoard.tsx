@@ -82,8 +82,10 @@ const CreateBoard = () => {
             content="취소"
             size="sm"
             type="button"
+            width={160}
+            height={66}
           />
-          <Button content="게시글 등록" />
+          <Button content="게시글 등록" width={240} height={66} />
         </div>
       </form>
     </main>
