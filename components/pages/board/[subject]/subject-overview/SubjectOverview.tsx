@@ -11,11 +11,11 @@ import Radio from '/components/atoms/radio/Radio';
 
 import { FILED_CONST } from '/business/const/field-const';
 
-import style from './FiledDetailOverview.module.scss';
+import style from './SubjectOverview.module.scss';
 
 const cx = classNames.bind(style);
 
-const FieldDetailOverview = () => {
+const SubjectOverview = () => {
   const {
     searchParams: { category },
   } = useServerSideSearchParams();
@@ -68,4 +68,4 @@ const FieldDetailOverview = () => {
   );
 };
 
-export default FieldDetailOverview;
+export default SubjectOverview;

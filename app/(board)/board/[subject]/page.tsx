@@ -1,20 +1,20 @@
 import classNames from 'classnames/bind';
 
-import FieldDetailOverview from '/components/pages/field/[id]/field-detail-overview/FieldDetailOverview';
-import PostCardContainer from '/components/pages/field/[id]/post-card-container/PostCardContainer';
+import SubjectOverview from '/components/pages/board/[subject]/subject-overview/SubjectOverview';
+import PostCardContainer from '/components/pages/board/[subject]/post-card-container/PostCardContainer';
 import Pagination from '/components/atoms/pagination/Pagination';
 
 import style from './subject.module.scss';
 
 const cx = classNames.bind(style);
 
-const FieldDetailPage = () => {
+const Page = () => {
   return (
-    <main className={cx('field-detail-wrapper')}>
-      <article className={cx('field-detail-top')}>
-        <FieldDetailOverview />
+    <main className={cx('subject-wrapper')}>
+      <article className={cx('subject-top')}>
+        <SubjectOverview />
       </article>
-      <article className={cx('field-detail-bottom')}>
+      <article className={cx('subject-bottom')}>
         <PostCardContainer />
         <div className={cx('pagination-container')}>
           <Pagination />
@@ -24,4 +24,4 @@ const FieldDetailPage = () => {
   );
 };
 
-export default FieldDetailPage;
+export default Page;
