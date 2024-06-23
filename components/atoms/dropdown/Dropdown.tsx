@@ -120,7 +120,7 @@ const Dropdown = ({
     [value, onChange, findOptionValueRecursive],
   );
 
-  const setStatusLeave = useCallback(
+  const changeStatus = useCallback(
     async (status: 'triggered' | 'leave') => {
       setStatus(status);
 
@@ -137,17 +137,17 @@ const Dropdown = ({
     }
 
     if (status === 'leave-done') {
-      setStatusLeave('triggered');
+      changeStatus('triggered');
     } else {
-      setStatusLeave('leave');
+      changeStatus('leave');
     }
-  }, [status, setStatusLeave]);
+  }, [status, changeStatus]);
 
   useClickOutside({
     ref: dropdownWrapperRef.current,
     callback: async () => {
       if (status === 'triggered-done') {
-        setStatusLeave('leave');
+        changeStatus('leave');
       }
     },
   });
