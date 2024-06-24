@@ -1,9 +1,10 @@
 const URL_CONST = {
-  SIGN_UP: '/signup',
-  SIGN_IN: '/signin',
-  FIND_PW: '/findpw',
-  RESET_PW: '/resetpw',
-
+  AUTH: {
+    SIGN_UP: '/auth/signup',
+    SIGN_IN: '/auth/signin',
+    FIND_PW: '/auth/findpw',
+    RESET_PW: '/auth/resetpw',
+  },
   BOARD: {
     DEPT: '/board/dept',
     ARTS: '/board/arts',
