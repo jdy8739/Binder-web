@@ -3,10 +3,10 @@
 import classNames from 'classnames/bind';
 import { useCallback, useState } from 'react';
 
-import Button from '../../../components/atoms/button/Button';
-import SignInput from '../../../components/atoms/sign-input/SignInput';
-import Radio from '../../../components/atoms/radio/Radio';
-import CheckBox from '../../../components/atoms/check-box/CheckBox';
+import Button from '../../../../components/atoms/button/Button';
+import SignInput from '../../../../components/atoms/sign-input/SignInput';
+import Radio from '../../../../components/atoms/radio/Radio';
+import CheckBox from '../../../../components/atoms/check-box/CheckBox';
 
 import style from './Signup.module.scss';
 

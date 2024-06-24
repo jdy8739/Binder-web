@@ -5,13 +5,14 @@ import classNames from 'classnames/bind';
 
 import { usePathname } from 'next/navigation';
 
+import { FILED_CONST } from '/business/const/field-const';
+import { URL_CONST } from '/business/const';
+
 import SearchInput from '/components/atoms/search-input/SearchInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import AlarmOption from '/components/atoms/option/AlarmOption';
 import LinkOption from '../../atoms/option/LinkOption';
 import { Bell, Pen, Profile } from '/assets/svg';
-
-import { FILED_CONST } from '/business/const/index';
 
 import style from './NormalNavBar.module.scss';
 
@@ -142,15 +143,15 @@ const NormalNavBar = () => {
           </ul>
         </span>
       </div>
-      <nav className={cx('categories')}>
+      <nav className={cx('option-nav')}>
         <ul>
           <li>
             <Dropdown
-              className={cx('category-dropdown')}
+              className={cx('field-option')}
               trigger={
                 <span
-                  className={cx('category-option', {
-                    primary: pathname.includes('field'),
+                  className={cx('board-option', {
+                    primary: pathname.endsWith('field'),
                   })}
                 >
                   필드별
@@ -162,13 +163,37 @@ const NormalNavBar = () => {
             />
           </li>
           <li>
-            <Link href="/#">직무 게시판</Link>
+            <Link href={URL_CONST.BOARD.DEPT}>
+              <span
+                className={cx('board-option', {
+                  primary: pathname.endsWith('dept'),
+                })}
+              >
+                직무 게시판
+              </span>
+            </Link>
           </li>
           <li>
-            <Link href="/#">학술 게시판</Link>
+            <Link href={URL_CONST.BOARD.ARTS}>
+              <span
+                className={cx('board-option', {
+                  primary: pathname.endsWith('arts'),
+                })}
+              >
+                학술 게시판
+              </span>
+            </Link>
           </li>
           <li>
-            <Link href="/#">취업이직 게시판</Link>
+            <Link href={URL_CONST.BOARD.JOBS}>
+              <span
+                className={cx('board-option', {
+                  primary: pathname.endsWith('jobs'),
+                })}
+              >
+                취업이직 게시판
+              </span>
+            </Link>
           </li>
         </ul>
       </nav>

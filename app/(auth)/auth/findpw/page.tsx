@@ -2,8 +2,8 @@
 
 import classNames from 'classnames/bind';
 
-import Button from '../../../components/atoms/button/Button';
-import SignInput from '../../../components/atoms/sign-input/SignInput';
+import Button from '../../../../components/atoms/button/Button';
+import SignInput from '../../../../components/atoms/sign-input/SignInput';
 
 import style from './Findpw.module.scss';
 

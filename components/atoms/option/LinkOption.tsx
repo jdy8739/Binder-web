@@ -7,16 +7,18 @@ import style from './LinkOption.module.scss';
 
 const cx = classNames.bind(style);
 
+type LinkOptionType = BasicOption & { link: string };
+
 interface LinkOptionProps {
   className?: string;
-  option: BasicOption;
+  option: LinkOptionType;
 }
 
 const LinkOption = ({ className, option }: LinkOptionProps) => {
   return (
-    <div className={cx('wrapper', className)}>
-      <Link href={`/field/${option.value}`}>
-        <div className={cx('label')}>
+    <div className={cx('link-option-wrapper', className)}>
+      <Link href={option.link || '/'}>
+        <div className={cx('link-option-label')}>
           <Option option={option} />
         </div>
       </Link>
@@ -27,3 +29,4 @@ const LinkOption = ({ className, option }: LinkOptionProps) => {
 LinkOption.displayName = 'Option';
 
 export default LinkOption;
+export type { LinkOptionType };

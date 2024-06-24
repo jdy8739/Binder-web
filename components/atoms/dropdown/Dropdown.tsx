@@ -12,7 +12,7 @@ import React, {
   useState,
 } from 'react';
 import classNames from 'classnames/bind';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 import useClickOutside from '../../../business/hook/useClickOutside';
 import { wait } from '/business/helper/utils';
@@ -36,7 +36,7 @@ interface BaseProps {
     option: BasicOption | ExtendedOption;
     chosen?: boolean;
   }>;
-  optionList?: ExtendedOption[];
+  optionList?: BasicOption[] | ExtendedOption[];
   duration?: number;
   effect?: 'rolling' | 'fade';
   rotateTrigger?: boolean;
@@ -74,6 +74,8 @@ const Dropdown = ({
   onChange,
 }: DropdownProps) => {
   const pathname = usePathname();
+
+  const searchParams = useSearchParams();
 
   const dropdownWrapperRef = useRef<HTMLElement>(null);
 
@@ -155,7 +157,7 @@ const Dropdown = ({
 
   useEffect(() => {
     setStatus('leave-done');
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   return (
     <section

@@ -9,7 +9,7 @@ const cx = classNames.bind(style);
 const ProfileBar = () => {
   return (
     <figure>
-      <div className={cx('field-detail-top-profile')}>
+      <div className={cx('subject-top-profile')}>
         <div className={cx('profile')}>
           <div>
             <div className={cx('profile-pic')}>
