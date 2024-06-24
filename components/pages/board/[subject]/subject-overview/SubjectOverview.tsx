@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import classNames from 'classnames/bind';
 
 import useServerSideSearchParams from '/business/hook/useServerSideSearchParams';
+import useServerSidePathname from '/business/hook/useServerSidePathname';
 
 import ProfileBar from './profile-bar/ProfileBar';
 import SubjectButtons from './subject-buttons/SubjectButtons';
@@ -15,7 +16,15 @@ import style from './SubjectOverview.module.scss';
 
 const cx = classNames.bind(style);
 
+const SUBJECT_CONST = {
+  dept: '직무',
+  arts: '학술',
+  jobs: '취업이직',
+} as const;
+
 const SubjectOverview = () => {
+  const { lastPathnameString = '' } = useServerSidePathname();
+
   const {
     searchParams: { category },
   } = useServerSideSearchParams();
@@ -28,21 +37,28 @@ const SubjectOverview = () => {
 
   return (
     <>
-      <ProfileBar />
-      <figure>
-        <div className={cx('title')}>
-          <span>&apos;{currentField}&apos;</span>
-          <span>필드 태그 검색결과</span>
-        </div>
-      </figure>
-      <SubjectButtons />
-      <figure>
-        <div className={cx('total-count')}>
-          <span>직무게시판</span>
-          <span>1,999</span>
-          <span>건</span>
-        </div>
-      </figure>
+      {lastPathnameString === 'field' ? (
+        <>
+          <figure>
+            <div className={cx('title')}>
+              <span>&apos;{currentField}&apos;</span>
+              <span>필드 태그 검색결과</span>
+            </div>
+          </figure>
+          <SubjectButtons />
+        </>
+      ) : (
+        <ProfileBar />
+      )}
+      {lastPathnameString !== 'field' && (
+        <figure>
+          <div className={cx('total-count')}>
+            <span>{`${SUBJECT_CONST[lastPathnameString]}게시판`}</span>
+            <span>1,999</span>
+            <span>건</span>
+          </div>
+        </figure>
+      )}
       <figure>
         <div className={cx('filter-radio')}>
           <div>
