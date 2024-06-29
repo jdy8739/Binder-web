@@ -37,9 +37,9 @@ const Modal = () => {
 
   const popModal = useCallback(() => {
     setModalList((current) => {
-      const tobe = [...current];
-      tobe.pop();
-      return tobe;
+      const toBe = [...current];
+      toBe.pop();
+      return toBe;
     });
   }, []);
 
