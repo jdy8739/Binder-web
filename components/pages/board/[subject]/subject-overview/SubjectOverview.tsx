@@ -26,13 +26,17 @@ const SubjectOverview = () => {
   const { lastPathnameString = '' } = useServerSidePathname();
 
   const {
-    searchParams: { category },
-  } = useServerSideSearchParams();
+    searchParams: { category, subject },
+  } = useServerSideSearchParams<{ category: string; subject: string }>();
 
-  const currentField = useMemo(
-    () =>
-      FILED_CONST.find((field) => field.value === category)?.label || category,
-    [category],
+  const { currentField, currentSubject } = useMemo(
+    () => ({
+      currentField:
+        FILED_CONST.find((field) => field.value === category)?.label ||
+        category,
+      currentSubject: SUBJECT_CONST[subject],
+    }),
+    [category, subject],
   );
 
   return (
@@ -50,10 +54,10 @@ const SubjectOverview = () => {
       ) : (
         <ProfileBar />
       )}
-      {lastPathnameString !== 'field' && (
+      {lastPathnameString === 'field' && currentSubject && (
         <figure>
           <div className={cx('total-count')}>
-            <span>{`${SUBJECT_CONST[lastPathnameString]}게시판`}</span>
+            <span>{`${currentSubject}게시판`}</span>
             <span>1,999</span>
             <span>건</span>
           </div>
