@@ -1,7 +1,7 @@
-import { ModalType } from '/components/common/modal/Modal';
+import { AddModalType, ModalType } from '/components/common/modal/Modal';
 
 class ModalController {
-  public addModal: (modal: ModalType) => void;
+  public addModal: AddModalType;
 
   public resetModal: () => void;
 

@@ -10,11 +10,19 @@ import { usePathname } from 'next/navigation';
 
 import modalController from '/business/class/ModalController';
 
+type PropsOf<T> = T extends FunctionComponent<infer P> ? P : never;
+
 type ModalType = {
   component: FunctionComponent;
   id?: string | number;
-  // props:
+  props?: PropsOf<FunctionComponent>;
 };
+
+type AddModalType = <T extends FunctionComponent>(modal: {
+  component: T;
+  id?: string | number;
+  props?: PropsOf<T>;
+}) => void;
 
 const Modal = () => {
   const pathname = usePathname();
@@ -23,7 +31,7 @@ const Modal = () => {
 
   const getModalListLength = useCallback(() => modalList.length, [modalList]);
 
-  const addModal = useCallback((modal: ModalType) => {
+  const addModal: AddModalType = useCallback((modal) => {
     setModalList((current) => {
       if (current.some((currentModal) => currentModal.id === modal.id)) {
         return current;
@@ -65,11 +73,14 @@ const Modal = () => {
   return (
     <>
       {modalList.map((modal) => {
-        return React.createElement(modal.component, { key: modal.id });
+        return React.createElement(modal.component, {
+          key: modal.id,
+          ...(modal.props || {}),
+        });
       })}
     </>
   );
 };
 
 export default Modal;
-export type { ModalType };
+export type { ModalType, AddModalType };

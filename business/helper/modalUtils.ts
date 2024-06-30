@@ -1,10 +1,10 @@
-import { ModalType } from '/components/common/modal/Modal';
+import { AddModalType } from '/components/common/modal/Modal';
 
 import modalController from '../class/ModalController';
 
 import { freezeWindowScroll, releaseWindowScroll } from './domUtils';
 
-const addModal = (modal: ModalType) => {
+const addModal: AddModalType = (modal) => {
   modalController.addModal(modal);
 
   freezeWindowScroll();
