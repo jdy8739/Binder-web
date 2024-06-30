@@ -1,8 +1,8 @@
 'use client';
 
 import classNames from 'classnames/bind';
-
 import { useState } from 'react';
+
 import style from './Pagination.module.scss';
 
 const cx = classNames.bind(style);
@@ -15,6 +15,7 @@ type PaginationProps = {
 
 const Pagination = ({ start, end, length = 10 }: PaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <div className={cx('pagination-wrapper')}>
       <button type="button">이전</button>

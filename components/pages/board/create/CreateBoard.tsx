@@ -3,11 +3,14 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
+import { addModal } from '../../../../business/helper/modalUtils';
+
 import Input from '/components/atoms/input/Input';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import Option from '/components/atoms/option/Option';
 import Button from '/components/atoms/button/Button';
 import TextEditor from '/components/atoms/text-editor/TextEditor';
+import InterestModal from '/components/common/modal/interest-modal/InterestModal';
 
 import { NavDown } from '/assets/svg';
 
@@ -71,6 +74,7 @@ const CreateBoard = () => {
             <Input
               className={cx('create-input', 'hashtag')}
               placeholder="#태그를 선택하세요(최대3개)"
+              onClick={() => addModal({ component: InterestModal })}
             />
           </div>
         </div>

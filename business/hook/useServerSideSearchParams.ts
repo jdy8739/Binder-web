@@ -1,11 +1,11 @@
 import { headers } from 'next/headers';
 
-const useServerSideSearchParams = () => {
+const useServerSideSearchParams = <T extends Record<string, string>>() => {
   const headersList = headers();
 
   const headerSearchParams = headersList.get('search-params') || '';
 
-  const searchParams: Record<string, string> = JSON.parse(headerSearchParams);
+  const searchParams: T = JSON.parse(headerSearchParams);
 
   return {
     searchParams,
