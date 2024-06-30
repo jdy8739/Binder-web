@@ -21,6 +21,8 @@ const Modal = () => {
 
   const [modalList, setModalList] = useState<ModalType[]>([]);
 
+  const getModalListLength = useCallback(() => modalList.length, [modalList]);
+
   const addModal = useCallback((modal: ModalType) => {
     setModalList((current) => {
       if (current.some((currentModal) => currentModal.id === modal.id)) {
@@ -48,8 +50,13 @@ const Modal = () => {
   }, []);
 
   useEffect(() => {
-    modalController.initializeMethods({ addModal, resetModal, popModal });
-  }, [addModal, popModal, resetModal]);
+    modalController.initializeMethods({
+      addModal,
+      resetModal,
+      popModal,
+      getModalListLength,
+    });
+  }, [addModal, popModal, resetModal, getModalListLength]);
 
   useEffect(() => {
     resetModal();
