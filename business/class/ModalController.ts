@@ -7,18 +7,23 @@ class ModalController {
 
   public popModal: () => void;
 
+  public getModalListLength: () => number;
+
   public initializeMethods({
     addModal,
     resetModal,
     popModal,
+    getModalListLength,
   }: {
     addModal: (modal: ModalType) => void;
     resetModal: () => void;
     popModal: () => void;
+    getModalListLength: () => number;
   }) {
     this.addModal = addModal;
     this.resetModal = resetModal;
     this.popModal = popModal;
+    this.getModalListLength = getModalListLength;
   }
 }
 
