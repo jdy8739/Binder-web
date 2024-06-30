@@ -34,12 +34,12 @@ const freezeWindowScroll = () => {
     const { htmlWidth: storagedWidth, htmlHeight: storagedHeight } =
       getInSesstionStorage('htmlWidth', 'htmlHeight');
 
-    const { width: htmlWidth, height: htmlHeight } = getHtmlStyle(
-      'width',
-      'height',
-    );
-
     if (!storagedWidth && !storagedHeight) {
+      const { width: htmlWidth, height: htmlHeight } = getHtmlStyle(
+        'width',
+        'height',
+      );
+
       setInSesstionStorage({ htmlWidth, htmlHeight });
     }
 
