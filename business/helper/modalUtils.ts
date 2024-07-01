@@ -4,10 +4,10 @@ import modalController from '../class/ModalController';
 
 import { freezeWindowScroll, releaseWindowScroll } from './domUtils';
 
-const addModal: AddModalType = (modal) => {
-  modalController.addModal(modal);
-
+const addModal: AddModalType = async (modal) => {
   freezeWindowScroll();
+
+  return modalController.addModal(modal);
 };
 
 const resetModal = () => {
@@ -26,4 +26,12 @@ const popModal = () => {
   }
 };
 
-export { addModal, resetModal, popModal };
+const storeCloseFunction = (callback: () => void) => {
+  modalController.pushCloseFunction(callback);
+};
+
+const closeModal = () => {
+  modalController.closeModal();
+};
+
+export { addModal, resetModal, popModal, storeCloseFunction, closeModal };

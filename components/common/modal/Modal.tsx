@@ -14,6 +14,7 @@ import { usePathname } from 'next/navigation';
 import classNames from 'classnames/bind';
 
 import modalController from '/business/class/ModalController';
+import { closeModal } from '/business/helper/modalUtils';
 
 import style from './Modal.module.scss';
 
@@ -21,17 +22,22 @@ const cx = classNames.bind(style);
 
 type PropsOf<T> = T extends FunctionComponent<infer P> ? P : never;
 
+type ModalTerminators = {
+  resolveModal: (result: unknown) => void;
+  closeModal: () => void;
+};
+
 type ModalType = {
   component: FunctionComponent;
   id?: string | number;
   props?: PropsOf<FunctionComponent>;
-};
+} & ModalTerminators;
 
 type AddModalType = <T extends FunctionComponent>(modal: {
   component: T;
   id?: string | number;
   props?: PropsOf<T>;
-}) => void;
+}) => Promise<unknown>;
 
 const Modal = () => {
   const pathname = usePathname();
@@ -42,25 +48,41 @@ const Modal = () => {
 
   const getModalListLength = useCallback(() => modalList.length, [modalList]);
 
-  const addModal: AddModalType = useCallback((modal) => {
-    setModalList((current) => {
-      if (current.some((currentModal) => currentModal.id === modal.id)) {
-        return current;
-      }
-
-      if (!modal.id) {
-        return [...current, { ...modal, id: Math.random() }];
-      }
-
-      return [...current, modal];
-    });
-  }, []);
-
   const popModal = useCallback(() => {
     setModalList((current) => {
       const toBe = [...current];
       toBe.pop();
       return toBe;
+    });
+  }, []);
+
+  const addModal: AddModalType = useCallback((modal) => {
+    return new Promise((resolve) => {
+      setModalList((current) => {
+        if (current.some((currentModal) => currentModal.id === modal.id)) {
+          return current;
+        }
+
+        const modalTerminators = {
+          resolveModal: (result: unknown) => {
+            resolve(result);
+            closeModal();
+          },
+
+          closeModal: () => {
+            closeModal();
+          },
+        };
+
+        if (!modal.id) {
+          return [
+            ...current,
+            { ...modal, id: Math.random(), ...modalTerminators },
+          ];
+        }
+
+        return [...current, { ...modal, ...modalTerminators }];
+      });
     });
   }, []);
 
@@ -94,7 +116,7 @@ const Modal = () => {
           {modalList.map((modal) => {
             return React.createElement(modal.component, {
               key: modal.id,
-              ...(modal.props || {}),
+              ...modal,
             });
           })}
         </aside>
@@ -104,4 +126,4 @@ const Modal = () => {
 };
 
 export default Modal;
-export type { ModalType, AddModalType };
+export type { ModalType, AddModalType, ModalTerminators };
