@@ -3,7 +3,6 @@
   box-sizing: border-box;
   /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: "Pretendard Variable";
-  transform: rotate(0.04deg);
 }
 html,
 body,
