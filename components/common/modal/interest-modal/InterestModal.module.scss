@@ -1,0 +1,12 @@
+.interest-modal {
+  :global {
+    .modal-template-inner {
+      width: 520px;
+      height: 390px;
+      padding: 28px;
+      border-radius: 16px;
+      margin-top: 100px;
+      background-color: $gray-05;
+    }
+  }
+}

@@ -1,9 +1,30 @@
+import classNames from 'classnames/bind';
+import { ModalTerminators } from '../Modal';
+
 import ModalTemplate from '/components/atoms/modal-template/ModalTemplate';
 
-const InterestModal = () => {
+import Button from '/components/atoms/button/Button';
+
+import style from './InterestModal.module.scss';
+
+const cx = classNames.bind(style);
+
+type Props = {
+  //
+} & ModalTerminators;
+
+const InterestModal = ({ resolveModal, closeModal }: Props) => {
   return (
-    <ModalTemplate>
-      <div>interest</div>
+    <ModalTemplate className={cx('interest-modal')}>
+      <div>
+        <div>
+          <h2>관심 태그를 선택해 주세요.</h2>
+          <p>최대 3개까지 선택하실 수 있습니다.</p>
+        </div>
+        <div>
+          <Button content="확인" onClick={() => resolveModal('11')} />
+        </div>
+      </div>
     </ModalTemplate>
   );
 };
