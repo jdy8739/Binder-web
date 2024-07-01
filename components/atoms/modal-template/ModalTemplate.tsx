@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
-import { popModal } from '/business/helper/modalUtils';
+import { popModal, storeCloseFunction } from '/business/helper/modalUtils';
 
 import style from './ModalTemplate.module.scss';
 
@@ -21,7 +23,7 @@ const ModalTemplate = ({ className, children, header, footer }: Props) => {
     'opened',
   );
 
-  const handleOnDimClick = useCallback(() => {
+  const closeModal = useCallback(() => {
     if (!timeoutIDRef.current) {
       setModalState('closing');
 
@@ -38,12 +40,19 @@ const ModalTemplate = ({ className, children, header, footer }: Props) => {
     }, 300);
   }, []);
 
+  useEffect(() => {
+    storeCloseFunction(closeModal);
+  }, [closeModal]);
+
   return (
     <div
       className={cx('modal-template-wrapper', 'dim', modalState, className)}
-      onClick={handleOnDimClick}
+      onClick={closeModal}
     >
-      <article className={cx('modal-template-inner')}>
+      <article
+        className={cx('modal-template-inner', 'modal-body')}
+        onClick={(e) => e.stopPropagation()}
+      >
         {header && <div className={cx('modal-template-header')}>{header}</div>}
         {children}
         {footer && <div className={cx('modal-template-footer')}>{footer}</div>}

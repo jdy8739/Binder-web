@@ -1,4 +1,4 @@
-import { AddModalType, ModalType } from '/components/common/modal/Modal';
+import { AddModalType } from '/components/common/modal/Modal';
 
 class ModalController {
   public addModal: AddModalType;
@@ -9,13 +9,25 @@ class ModalController {
 
   public getModalListLength: () => number;
 
+  private closeFunctionList: Array<() => void> = [];
+
+  public pushCloseFunction = (callback: () => void) => {
+    this.closeFunctionList.push(callback);
+  };
+
+  public closeModal = () => {
+    const closeFunction = this.closeFunctionList.pop();
+
+    closeFunction?.();
+  };
+
   public initializeMethods({
     addModal,
     resetModal,
     popModal,
     getModalListLength,
   }: {
-    addModal: (modal: ModalType) => void;
+    addModal: AddModalType;
     resetModal: () => void;
     popModal: () => void;
     getModalListLength: () => number;
