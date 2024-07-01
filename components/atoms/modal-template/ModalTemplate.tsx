@@ -50,7 +50,7 @@ const ModalTemplate = ({ className, children, header, footer }: Props) => {
       onClick={closeModal}
     >
       <article
-        className={cx('modal-template-inner')}
+        className={cx('modal-template-inner', 'modal-body')}
         onClick={(e) => e.stopPropagation()}
       >
         {header && <div className={cx('modal-template-header')}>{header}</div>}
