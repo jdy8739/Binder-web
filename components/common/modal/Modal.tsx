@@ -15,6 +15,7 @@ import classNames from 'classnames/bind';
 
 import modalController from '/business/class/ModalController';
 import { closeModal } from '/business/helper/modalUtils';
+import { releaseWindowScroll } from '/business/helper/domUtils';
 
 import style from './Modal.module.scss';
 
@@ -101,6 +102,8 @@ const Modal = () => {
 
   useEffect(() => {
     resetModal();
+
+    releaseWindowScroll();
   }, [pathname, resetModal]);
 
   useLayoutEffect(() => {
