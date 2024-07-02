@@ -34,4 +34,30 @@ const closeModal = () => {
   modalController.closeModal();
 };
 
-export { addModal, resetModal, popModal, storeCloseFunction, closeModal };
+const initializeMethods = ({
+  addModal,
+  resetModal,
+  popModal,
+  getModalListLength,
+}: {
+  addModal: AddModalType;
+  resetModal: () => void;
+  popModal: () => void;
+  getModalListLength: () => number;
+}) => {
+  modalController.initializeMethods({
+    addModal,
+    resetModal,
+    popModal,
+    getModalListLength,
+  });
+};
+
+export {
+  addModal,
+  resetModal,
+  popModal,
+  storeCloseFunction,
+  closeModal,
+  initializeMethods,
+};

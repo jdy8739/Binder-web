@@ -13,8 +13,7 @@ import React, {
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames/bind';
 
-import modalController from '/business/class/ModalController';
-import { closeModal } from '/business/helper/modalUtils';
+import { closeModal, initializeMethods } from '/business/helper/modalUtils';
 import { releaseWindowScroll } from '/business/helper/domUtils';
 
 import style from './Modal.module.scss';
@@ -92,7 +91,7 @@ const Modal = () => {
   }, []);
 
   useEffect(() => {
-    modalController.initializeMethods({
+    initializeMethods({
       addModal,
       resetModal,
       popModal,
