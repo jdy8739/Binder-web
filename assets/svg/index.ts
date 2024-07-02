@@ -23,8 +23,10 @@ import SpeechBallon from './speech-ballon.svg';
 import PostCheck from './post-check.svg';
 import Bookmark from './bookmark.svg';
 import NavDown from './nav_down.svg';
+import Close from './close.svg';
 
 export {
+  Close,
   PwHidden,
   PwVisible,
   Instagram,
