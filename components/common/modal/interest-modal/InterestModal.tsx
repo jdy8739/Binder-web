@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { ModalTerminators } from '../Modal';
+import { ModalTerminators } from '../../modal';
 
 import ModalTemplate from '/components/atoms/modal-template/ModalTemplate';
 
@@ -10,10 +10,10 @@ import style from './InterestModal.module.scss';
 const cx = classNames.bind(style);
 
 type Props = {
-  //
+  test: number;
 } & ModalTerminators;
 
-const InterestModal = ({ resolveModal, closeModal }: Props) => {
+const InterestModal = ({ test, resolveModal, closeModal }: Props) => {
   return (
     <ModalTemplate className={cx('interest-modal')}>
       <div>

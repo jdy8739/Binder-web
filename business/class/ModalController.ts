@@ -1,4 +1,4 @@
-import { AddModalType } from '/components/common/modal/Modal';
+import { AddModalType } from '/components/common/modal';
 
 class ModalController {
   public addModal: AddModalType;
