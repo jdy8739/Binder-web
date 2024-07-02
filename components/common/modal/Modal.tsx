@@ -3,7 +3,6 @@
 'use client';
 
 import React, {
-  FunctionComponent,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -12,33 +11,14 @@ import React, {
 } from 'react';
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames/bind';
+import { AddModalType, ModalType } from '../modal';
 
-import modalController from '/business/class/ModalController';
-import { closeModal } from '/business/helper/modalUtils';
+import { closeModal, initializeMethods } from '/business/helper/modalUtils';
 import { releaseWindowScroll } from '/business/helper/domUtils';
 
 import style from './Modal.module.scss';
 
 const cx = classNames.bind(style);
-
-type PropsOf<T> = T extends FunctionComponent<infer P> ? P : never;
-
-type ModalTerminators = {
-  resolveModal: (result: unknown) => void;
-  closeModal: () => void;
-};
-
-type ModalType = {
-  component: FunctionComponent;
-  id?: string | number;
-  props?: PropsOf<FunctionComponent>;
-} & ModalTerminators;
-
-type AddModalType = <T extends FunctionComponent>(modal: {
-  component: T;
-  id?: string | number;
-  props?: PropsOf<T>;
-}) => Promise<unknown>;
 
 const Modal = () => {
   const pathname = usePathname();
@@ -92,7 +72,7 @@ const Modal = () => {
   }, []);
 
   useEffect(() => {
-    modalController.initializeMethods({
+    initializeMethods({
       addModal,
       resetModal,
       popModal,
@@ -129,4 +109,3 @@ const Modal = () => {
 };
 
 export default Modal;
-export type { ModalType, AddModalType, ModalTerminators };

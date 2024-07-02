@@ -1,4 +1,4 @@
-import { AddModalType } from '/components/common/modal/Modal';
+import { AddModalType } from '/components/common/modal';
 
 import modalController from '../class/ModalController';
 
@@ -34,4 +34,30 @@ const closeModal = () => {
   modalController.closeModal();
 };
 
-export { addModal, resetModal, popModal, storeCloseFunction, closeModal };
+const initializeMethods = ({
+  addModal,
+  resetModal,
+  popModal,
+  getModalListLength,
+}: {
+  addModal: AddModalType;
+  resetModal: () => void;
+  popModal: () => void;
+  getModalListLength: () => number;
+}) => {
+  modalController.initializeMethods({
+    addModal,
+    resetModal,
+    popModal,
+    getModalListLength,
+  });
+};
+
+export {
+  addModal,
+  resetModal,
+  popModal,
+  storeCloseFunction,
+  closeModal,
+  initializeMethods,
+};
