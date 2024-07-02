@@ -36,7 +36,7 @@ type ModalType = {
 type AddModalType = <T extends FunctionComponent>(modal: {
   component: T;
   id?: string | number;
-  props?: PropsOf<T>;
+  props?: Omit<PropsOf<T>, 'resolveModal' | 'closeModal'>;
 }) => Promise<unknown>;
 
 const Modal = () => {
