@@ -11,7 +11,9 @@ import style from './InterestModal.module.scss';
 
 const cx = classNames.bind(style);
 
-type Props = ModalTerminators;
+type Props = {
+  chosenTagList: string[];
+} & ModalTerminators;
 
 const TEST_BUTTONS = [
   '#태그11111111111',
@@ -26,8 +28,9 @@ const TEST_BUTTONS = [
   '#태그00',
 ];
 
-const InterestModal = ({ resolveModal, closeModal }: Props) => {
-  const [chosenTagList, setChosenTagList] = useState<string[]>([]);
+const InterestModal = ({ chosenTagList, resolveModal, closeModal }: Props) => {
+  const [currentChosenList, setChosenTagList] =
+    useState<string[]>(chosenTagList);
 
   const toggleTagButton = useCallback((tag: string) => {
     setChosenTagList((current) => {
@@ -44,10 +47,10 @@ const InterestModal = ({ resolveModal, closeModal }: Props) => {
   }, []);
 
   const handleOnConfirmClick = useCallback(() => {
-    if (chosenTagList.length !== 0) {
-      resolveModal(chosenTagList);
+    if (currentChosenList.length <= 3) {
+      resolveModal(currentChosenList);
     }
-  }, [chosenTagList, resolveModal]);
+  }, [currentChosenList, resolveModal]);
 
   return (
     <ModalTemplate className={cx('interest-modal')}>
@@ -67,7 +70,7 @@ const InterestModal = ({ resolveModal, closeModal }: Props) => {
           {TEST_BUTTONS.map((value) => (
             <span key={value}>
               <button
-                className={cx({ chosen: chosenTagList.includes(value) })}
+                className={cx({ chosen: currentChosenList.includes(value) })}
                 type="button"
                 onClick={() => toggleTagButton(value)}
               >
@@ -80,7 +83,7 @@ const InterestModal = ({ resolveModal, closeModal }: Props) => {
           <Button
             content="확인"
             onClick={handleOnConfirmClick}
-            disabled={chosenTagList.length === 0}
+            disabled={currentChosenList.length > 3}
           />
         </div>
       </div>

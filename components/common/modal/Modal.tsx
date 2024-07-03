@@ -99,6 +99,7 @@ const Modal = () => {
           {modalList.map((modal) => {
             return React.createElement(modal.component, {
               key: modal.id,
+              ...(modal.props || {}),
               ...modal,
             });
           })}
