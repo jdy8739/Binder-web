@@ -12,7 +12,7 @@ import Button from '/components/atoms/button/Button';
 import TextEditor from '/components/atoms/text-editor/TextEditor';
 import InterestModal from '/components/common/modal/interest-modal/InterestModal';
 
-import { NavDown } from '/assets/svg';
+import { ChipClose, NavDown } from '/assets/svg';
 
 import style from './CreateBoard.module.scss';
 
@@ -28,6 +28,8 @@ const BOARD_OPTIONS: { value: BoardType; label: string }[] = [
 
 const CreateBoard = () => {
   const [boardType, setBoardType] = useState<BoardType>('jobs');
+
+  const [chosenTagList, setChosenTagList] = useState<string[]>([]);
 
   return (
     <main className={cx('create-board')}>
@@ -70,12 +72,36 @@ const CreateBoard = () => {
           <div>
             <span className={cx('hashtag-input-title')}>#해시태그 입력</span>
           </div>
-          <div>
+          <div className={cx('hashtag-input-body')}>
             <Input
               className={cx('create-input', 'hashtag')}
-              placeholder="#태그를 선택하세요(최대3개)"
-              onClick={() => addModal({ component: InterestModal })}
+              placeholder={`${chosenTagList.length === 0 ? '#태그를 선택하세요(최대3개)' : ''}`}
+              onClick={async () => {
+                const newChosenList = await addModal({
+                  component: InterestModal,
+                  props: { chosenTagList: [...chosenTagList] },
+                });
+
+                setChosenTagList(newChosenList as string[]);
+              }}
             />
+            <div className={cx('hashtag-input-chips')}>
+              {chosenTagList.map((tag) => (
+                <span key={tag} className={cx('tag-chip')}>
+                  {tag}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setChosenTagList((current) =>
+                        current.filter((el) => el !== tag),
+                      )
+                    }
+                  >
+                    <ChipClose />
+                  </button>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
