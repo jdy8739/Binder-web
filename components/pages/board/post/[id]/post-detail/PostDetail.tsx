@@ -1,7 +1,12 @@
+'use client';
+
 /* eslint-disable react/no-danger */
 
 import classNames from 'classnames/bind';
 
+import { addModal } from '/business/helper/modalUtils';
+
+import ReportModal from '/components/common/modal/report-modal/ReportModal';
 import ProfileAvatar from '/components/atoms/profile/ProfileAvatar';
 import Button from '/components/atoms/button/Button';
 import { Bookmark, PostThumb, Profile } from '/assets/svg';
@@ -24,7 +29,12 @@ const PostDetail = () => {
         <div className={cx('card', 'content-wrapper')}>
           <div className={cx('title-area')}>
             <span>게시글 타이틀입니다.</span>
-            <button type="button">신고</button>
+            <button
+              type="button"
+              onClick={() => addModal({ component: ReportModal })}
+            >
+              신고
+            </button>
           </div>
           <div className={cx('subject')}>
             <span>직무 게시판</span>
