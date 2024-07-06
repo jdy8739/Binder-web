@@ -1,0 +1,55 @@
+.profile-avatar-wrapper {
+  display: flex;
+  align-items: center;
+
+  .profile-pic {
+    position: relative;
+    margin-right: 12px;
+
+    .status-ball {
+      position: absolute;
+      right: -6px;
+      bottom: 3px;
+      border-radius: 50%;
+      background-color: $primary;
+
+      &.lg {
+        width: 24px;
+        height: 24px;
+      }
+
+      &.md {
+        width: 20px;
+        height: 20px;
+      }
+
+      &.sm {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  .profile-info {
+    display: flex;
+    gap: 6px;
+
+    span {
+      &:first-child {
+        font-size: 18px;
+        font-weight: $font-bolder;
+        line-height: 28.8px;
+      }
+
+      &:last-child {
+        padding: 3px 8px;
+        border: 1px solid $primary;
+        border-radius: 16px;
+        color: $primary;
+        font-size: 14px;
+        font-weight: $font-normal;
+        line-height: 20px;
+      }
+    }
+  }
+}
