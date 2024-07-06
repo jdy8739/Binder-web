@@ -26,11 +26,17 @@ const NormalFooter = () => {
         </ul>
         <div>COPYRIGHT &copy; Bindu ALL RIGHT RESERVED.</div>
       </div>
-      <aside>
-        <Blof />
-        <Facebook />
-        <Instagram />
-      </aside>
+      <div className={cx('svg-icons')}>
+        <button type="button">
+          <Blof />
+        </button>
+        <button type="button">
+          <Facebook />
+        </button>
+        <button type="button">
+          <Instagram />
+        </button>
+      </div>
     </footer>
   );
 };
