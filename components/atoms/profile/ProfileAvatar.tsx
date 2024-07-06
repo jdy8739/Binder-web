@@ -11,6 +11,7 @@ const cx = classNames.bind(style);
 type ProfileSize = 'lg' | 'md' | 'sm';
 
 type Props = {
+  className?: string;
   size?: ProfileSize;
 };
 
@@ -20,9 +21,9 @@ const PROFILE_SVG: Record<ProfileSize, ReactNode> = {
   sm: <Profile />,
 } as const;
 
-const ProfileAvatar = ({ size = 'lg' }: Props) => {
+const ProfileAvatar = ({ className, size = 'lg' }: Props) => {
   return (
-    <div className={cx('profile-avatar-wrapper')}>
+    <div className={cx('profile-avatar-wrapper', className)}>
       <div className={cx('profile-pic')}>
         <div>{PROFILE_SVG[size]}</div>
         <div className={cx('status-ball', size)} />
