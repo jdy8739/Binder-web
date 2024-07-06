@@ -2,6 +2,7 @@
 
 import classNames from 'classnames/bind';
 
+import ProfileAvatar from '/components/atoms/profile/ProfileAvatar';
 import Button from '/components/atoms/button/Button';
 import { Bookmark, PostThumb, Profile } from '/assets/svg';
 
@@ -10,6 +11,8 @@ import style from './PostDetail.module.scss';
 const cx = classNames.bind(style);
 
 const PostDetail = () => {
+  const isLogin = true;
+
   return (
     <div className={cx('container')}>
       <article>
@@ -57,7 +60,13 @@ const PostDetail = () => {
         </div>
         <div className={cx('card', 'answer')}>
           <div className={cx('answer-left')}>
-            <span>게시글의 답변을 달고 뱃지를 휙득해보세요.</span>
+            {isLogin ? (
+              <ProfileAvatar size="md" />
+            ) : (
+              <span className={cx('get-badges')}>
+                게시글의 답변을 달고 뱃지를 휙득해보세요.
+              </span>
+            )}
           </div>
           <div>
             <Button width={160} height={50}>
