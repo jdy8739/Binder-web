@@ -1,5 +1,7 @@
 'use client';
 
+import { ReactNode } from 'react';
+
 import classNames from 'classnames/bind';
 
 import { useRouter } from 'next/navigation';
@@ -8,7 +10,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BasicProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   link?: string;
   size?: 'lg' | 'sm';
@@ -16,8 +18,21 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   height?: number;
 }
 
+interface ChildrenProps extends BasicProps {
+  children: ReactNode;
+  content?: never;
+}
+
+interface ContentProps extends BasicProps {
+  children?: never;
+  content: React.ButtonHTMLAttributes<HTMLButtonElement>['content'];
+}
+
+type ButtonProps = ChildrenProps | ContentProps;
+
 const Button = ({
   className,
+  children,
   content,
   link,
   size = 'lg',
@@ -35,11 +50,14 @@ const Button = ({
       className={cx('button-wrapper', size, className)}
       onClick={(e) => {
         onClick?.(e);
-        if (link) router.push(link);
+
+        if (link) {
+          router.push(link);
+        }
       }}
       {...rest}
     >
-      {content}
+      {content || children}
     </button>
   );
 };
