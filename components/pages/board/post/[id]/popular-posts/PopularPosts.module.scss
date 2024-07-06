@@ -1,5 +1,6 @@
 .container {
   padding: 0 320px;
+  border-top: 1px solid $gray-05;
 
   :global {
     .post-slide-container {
