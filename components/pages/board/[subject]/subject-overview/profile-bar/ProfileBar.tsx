@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { ProfileBig } from '/assets/svg';
+import ProfileAvatar from '/components/atoms/profile/ProfileAvatar';
 
 import style from './ProfileBar.module.scss';
 
@@ -11,16 +11,7 @@ const ProfileBar = () => {
     <figure>
       <div className={cx('subject-top-profile')}>
         <div className={cx('profile')}>
-          <div>
-            <div className={cx('profile-pic')}>
-              <ProfileBig />
-            </div>
-            <div className={cx('status-ball')} />
-          </div>
-          <div>
-            <span>닉네임</span>
-            <span>뱃지 이름</span>
-          </div>
+          <ProfileAvatar />
           <div>
             <span>직무</span>
             <span>대학원생</span>

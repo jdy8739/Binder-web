@@ -12,48 +12,12 @@
   .profile {
     display: flex;
     align-items: center;
+    gap: 20px;
 
     > div {
       &:not(&:first-child) {
         display: flex;
         gap: 6px;
-      }
-
-      &:first-child {
-        position: relative;
-        margin-right: 12px;
-
-        .status-ball {
-          position: absolute;
-          right: -6px;
-          bottom: 0;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background-color: $primary;
-        }
-      }
-
-      &:nth-child(2) {
-        margin-right: 20px;
-
-        > span {
-          &:first-child {
-            font-size: 18px;
-            font-weight: $font-bolder;
-            line-height: 28.8px;
-          }
-
-          &:last-child {
-            padding: 3px 8px;
-            border: 1px solid $primary;
-            border-radius: 16px;
-            color: $primary;
-            font-size: 14px;
-            font-weight: $font-normal;
-            line-height: 20px;
-          }
-        }
       }
 
       &:last-child {
