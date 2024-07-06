@@ -9,7 +9,11 @@ import style from './PostAnswerPending.module.scss';
 
 const cx = classNames.bind(style);
 
-const PostAnswerPending = () => {
+type Props = {
+  toggleAnswering: () => void;
+};
+
+const PostAnswerPending = ({ toggleAnswering }: Props) => {
   const isLogin = true;
 
   return (
@@ -24,7 +28,7 @@ const PostAnswerPending = () => {
         )}
       </div>
       <div>
-        <Button width={160} height={50}>
+        <Button width={160} height={50} onClick={toggleAnswering}>
           답변하기
         </Button>
       </div>
