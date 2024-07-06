@@ -1,0 +1,36 @@
+.report-modal {
+  :global {
+    .modal-template-inner {
+      width: 433px;
+      height: 203px;
+      border-radius: 16px;
+      margin-top: 100px;
+      background-color: $gray-13;
+      color: $white;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 37px;
+    line-height: 28px;
+  }
+
+  .bottom-button {
+    display: grid;
+    height: 70px;
+    grid-template-columns: repeat(2, 1fr);
+
+    button {
+      background-color: transparent;
+      color: $white;
+      font-size: 18px;
+      line-height: 18px;
+
+      &:last-child {
+        color: $error;
+      }
+    }
+  }
+}

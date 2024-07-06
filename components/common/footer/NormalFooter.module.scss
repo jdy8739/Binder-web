@@ -13,6 +13,7 @@
     display: flex;
     margin-bottom: 8px;
     font-weight: $font-normal;
+
     li {
       padding: 0 16px;
       border-right: 1px solid $gray-07;
@@ -32,6 +33,16 @@
     }
     &:nth-child(3) {
       margin-bottom: 25px;
+    }
+  }
+
+  .svg-icons {
+    display: flex;
+    gap: 15px;
+
+    button {
+      height: fit-content;
+      background-color: $gray-03;
     }
   }
 }

@@ -25,8 +25,10 @@ import Bookmark from './bookmark.svg';
 import NavDown from './nav_down.svg';
 import Close from './close.svg';
 import ChipClose from './chip-close.svg';
+import ProfileMedium from './profile-md.svg';
 
 export {
+  ProfileMedium,
   ChipClose,
   Close,
   PwHidden,
