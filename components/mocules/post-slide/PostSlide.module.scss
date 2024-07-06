@@ -1,0 +1,22 @@
+.container {
+  .posts-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    > span {
+      font-size: 22px;
+      font-weight: $font-bolder;
+    }
+
+    > a {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+  }
+
+  .posts-body {
+    height: 294px;
+  }
+}
