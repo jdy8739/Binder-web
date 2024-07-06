@@ -1,3 +1,27 @@
 .container {
-  //
+  background-color: $gray-02;
+
+  > article {
+    padding: 56px 320px 76px;
+
+    .card {
+      border: 1px solid $gray-05;
+      border-radius: 8px;
+      background-color: white;
+    }
+
+    .content {
+      padding: 32px;
+      margin-top: 20px;
+    }
+
+    .answer {
+      padding: 24px 40px;
+      margin-top: 32px;
+    }
+
+    .back-button {
+      padding: 10px 12px;
+    }
+  }
 }

@@ -9,9 +9,13 @@ import style from './PostSlide.module.scss';
 
 const cx = classNames.bind(style);
 
-const PostSlide = () => {
+type Props = {
+  className?: string;
+};
+
+const PostSlide = ({ className }: Props) => {
   return (
-    <div className={cx('container')}>
+    <div className={cx('container', className)}>
       <div className={cx('posts-head')}>
         <span>최신글</span>
         <Link href="/#">더보기</Link>

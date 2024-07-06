@@ -1,3 +1,9 @@
 .container {
-  // 
+  padding: 0 320px;
+
+  :global {
+    .post-slide-container {
+      padding: 40px 0 120px;
+    }
+  }
 }

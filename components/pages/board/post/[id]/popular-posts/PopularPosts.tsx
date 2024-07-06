@@ -9,7 +9,7 @@ const cx = classNames.bind(style);
 const PopularPosts = () => {
   return (
     <section className={cx('container')}>
-      <PostSlide />
+      <PostSlide className={cx('post-slide-container')} />
     </section>
   );
 };
