@@ -13,13 +13,14 @@ import style from './HashTagInput.module.scss';
 const cx = classNames.bind(style);
 
 type Props = {
+  className?: string;
   tagList: string[];
   onChange?: (tagList: string[] | ((tagList: string[]) => string[])) => void;
 };
 
-const HashTagInput = ({ tagList, onChange }: Props) => {
+const HashTagInput = ({ className, tagList, onChange }: Props) => {
   return (
-    <div className={cx('hashtag-input-wrapper')}>
+    <div className={cx('hashtag-input-wrapper', className)}>
       <Input
         className={cx('hashtag-input')}
         placeholder={`${tagList.length === 0 ? '#태그를 선택하세요(최대3개)' : ''}`}
