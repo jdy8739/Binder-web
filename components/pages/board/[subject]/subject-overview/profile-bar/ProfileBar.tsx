@@ -10,12 +10,8 @@ const ProfileBar = () => {
   return (
     <figure>
       <div className={cx('subject-top-profile')}>
-        <div className={cx('profile')}>
+        <div>
           <ProfileAvatar />
-          <div>
-            <span>직무</span>
-            <span>대학원생</span>
-          </div>
         </div>
         <div className={cx('tags')}>
           <span>#태그</span>

@@ -14,6 +14,7 @@ type Props = {
   className?: string;
   size?: ProfileSize;
   afterNickname?: string;
+  showField?: boolean;
 };
 
 const PROFILE_SVG: Record<ProfileSize, ReactNode> = {
@@ -26,6 +27,7 @@ const ProfileAvatar = ({
   className,
   size = 'lg',
   afterNickname = '',
+  showField = true,
 }: Props) => {
   return (
     <div className={cx('profile-avatar-wrapper', className)}>
@@ -37,6 +39,12 @@ const ProfileAvatar = ({
         <span>{`닉네임${afterNickname}`}</span>
         <span>뱃지 이름</span>
       </div>
+      {showField && (
+        <div className={cx('profile-field')}>
+          <span>직무</span>
+          <span>대학원생</span>
+        </div>
+      )}
     </div>
   );
 };

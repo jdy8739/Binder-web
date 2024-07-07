@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
 
+  > div {
+    display: flex;
+    gap: 6px;
+  }
+
   .profile-pic {
     position: relative;
     margin-right: 12px;
@@ -31,9 +36,6 @@
   }
 
   .profile-info {
-    display: flex;
-    gap: 6px;
-
     span {
       &:first-child {
         font-size: 18px;
@@ -49,6 +51,20 @@
         font-size: 14px;
         font-weight: $font-normal;
         line-height: 20px;
+      }
+    }
+  }
+
+  .profile-field {
+    margin-left: 20px;
+
+    > span {
+      &:first-child {
+        font-weight: $font-bold;
+      }
+
+      &:last-child {
+        color: $primary;
       }
     }
   }

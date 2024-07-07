@@ -1,0 +1,15 @@
+.card {
+  @extend %answer-card;
+}
+
+.answer {
+  padding: 24px 32px;
+  margin-top: 32px;
+}
+
+.profile-card {
+  padding: 14px 16px;
+  border: 1px solid $gray-05;
+  border-radius: 8px;
+  background-color: $gray-02;
+}

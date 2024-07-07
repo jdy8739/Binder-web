@@ -9,32 +9,6 @@
   border-radius: 8px;
   background-color: $gray-02;
 
-  .profile {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    > div {
-      &:not(&:first-child) {
-        display: flex;
-        gap: 6px;
-      }
-
-      &:last-child {
-
-        > span {
-          &:first-child {
-            font-weight: $font-bold;
-          }
-
-          &:last-child {
-            color: $primary;
-          }
-        }
-      }
-    }
-  }
-
   .tags {
     display: flex;
     gap: 6px;
