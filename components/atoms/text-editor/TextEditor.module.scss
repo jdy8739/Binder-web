@@ -16,15 +16,6 @@
       border-left: none;
     }
 
-    .ql-editor {
-      min-height: 500px;
-
-      &::before {
-        color: $gray-07;
-        font-style: normal;
-      }
-    }
-
     .ql-length {
       position: absolute;
       right: 0;
@@ -43,6 +34,15 @@
         &:last-child {
           color: $primary;
         }
+      }
+    }
+
+    .ql-editor {
+      min-height: 500px;
+
+      &::before {
+        color: $gray-07;
+        font-style: normal;
       }
     }
   }
