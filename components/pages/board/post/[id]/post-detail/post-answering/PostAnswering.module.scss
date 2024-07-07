@@ -1,0 +1,26 @@
+.card {
+  @extend %answer-card;
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.answer {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px;
+  margin-top: 32px;
+}
+
+.answer-editor {
+  border-top: none;
+  background-color: $white;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  :global {
+    .ql-editor {
+      min-height: 270px;
+    }
+  }
+}

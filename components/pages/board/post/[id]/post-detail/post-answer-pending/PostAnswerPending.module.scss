@@ -1,7 +1,5 @@
 .card {
-  border: 1px solid $gray-05;
-  border-radius: 8px;
-  background-color: white;
+  @extend %answer-card;
 }
 
 .answer {
