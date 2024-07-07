@@ -62,6 +62,21 @@
     }
   }
 
+  .create-input {
+    height: 50px;
+    border-radius: 8px;
+
+    :global {
+      .input-target {
+        padding: 13px 24px;
+
+        &::placeholder {
+          color: $gray-07;
+        }
+      }
+    }
+  }
+
   .create-button {
     display: flex;
     justify-content: flex-end;
