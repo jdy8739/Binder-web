@@ -3,16 +3,14 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
-import { addModal } from '../../../../business/helper/modalUtils';
-
 import Input from '/components/atoms/input/Input';
+import HashTagInput from '/components/atoms/hashtag-input/HashTagInput';
 import Dropdown from '/components/atoms/dropdown/Dropdown';
 import Option from '/components/atoms/option/Option';
 import Button from '/components/atoms/button/Button';
 import TextEditor from '/components/atoms/text-editor/TextEditor';
-import InterestModal from '/components/common/modal/interest-modal/InterestModal';
 
-import { ChipClose, NavDown } from '/assets/svg';
+import { NavDown } from '/assets/svg';
 
 import style from './CreateBoard.module.scss';
 
@@ -73,35 +71,7 @@ const CreateBoard = () => {
             <span className={cx('hashtag-input-title')}>#해시태그 입력</span>
           </div>
           <div className={cx('hashtag-input-body')}>
-            <Input
-              className={cx('create-input', 'hashtag')}
-              placeholder={`${chosenTagList.length === 0 ? '#태그를 선택하세요(최대3개)' : ''}`}
-              onClick={async () => {
-                const newChosenList = await addModal({
-                  component: InterestModal,
-                  props: { chosenTagList: [...chosenTagList] },
-                });
-
-                setChosenTagList(newChosenList as string[]);
-              }}
-            />
-            <div className={cx('hashtag-input-chips')}>
-              {chosenTagList.map((tag) => (
-                <span key={tag} className={cx('tag-chip')}>
-                  {tag}
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setChosenTagList((current) =>
-                        current.filter((el) => el !== tag),
-                      )
-                    }
-                  >
-                    <ChipClose />
-                  </button>
-                </span>
-              ))}
-            </div>
+            <HashTagInput tagList={chosenTagList} onChange={setChosenTagList} />
           </div>
         </div>
 
