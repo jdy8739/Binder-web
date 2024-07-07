@@ -13,6 +13,7 @@ const cx = classNames.bind(style);
 type TextEditorProps = {
   className?: string;
   maxLength?: number;
+  placeholder?: string;
 };
 
 type QuillEditor = {
@@ -23,7 +24,7 @@ type QuillEditor = {
   };
 };
 
-const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
+const TextEditor = ({ className, maxLength, placeholder }: TextEditorProps) => {
   const quillRef = useRef<ReactQuill & QuillEditor>(null);
 
   const [editorLength, setEditorLength] = useState(0);
@@ -34,19 +35,21 @@ const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
     if (quill) {
       quill.editor.root.setAttribute('spellcheck', 'false');
 
-      const quillEditor = quill.getEditor();
+      if (maxLength) {
+        const quillEditor = quill.getEditor();
 
-      quillEditor.on('text-change', () => {
-        const length = quillEditor.getLength() - 1;
+        quillEditor.on('text-change', () => {
+          const length = quillEditor.getLength() - 1;
 
-        if (length > maxLength) {
-          quillEditor.deleteText(maxLength, length);
-        } else {
-          setEditorLength(length);
-        }
-      });
+          if (length > maxLength) {
+            quillEditor.deleteText(maxLength, length);
+          } else {
+            setEditorLength(length);
+          }
+        });
 
-      setEditorLength(0);
+        setEditorLength(0);
+      }
     }
   }, [maxLength]);
 
@@ -57,18 +60,20 @@ const TextEditor = ({ className, maxLength = 1000 }: TextEditorProps) => {
         ref={quillRef as unknown as LegacyRef<ReactQuill>}
         className={cx('ql-container')}
         theme="snow"
-        placeholder="내용을 입력해주세요."
+        placeholder={placeholder || '내용을 입력해주세요.'}
         modules={{
           toolbar: {
             container: '#toolbar-container',
           },
         }}
       />
-      <div className={cx('ql-length')}>
-        <span>{editorLength}</span>
-        <span> / </span>
-        <span>{maxLength}</span>
-      </div>
+      {Boolean(maxLength) && (
+        <div className={cx('ql-length')}>
+          <span>{editorLength}</span>
+          <span> / </span>
+          <span>{maxLength}</span>
+        </div>
+      )}
     </div>
   );
 };
