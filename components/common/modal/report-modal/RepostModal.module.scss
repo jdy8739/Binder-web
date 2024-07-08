@@ -20,6 +20,7 @@
   .bottom-button {
     display: grid;
     height: 70px;
+    border-top: 1px solid $gray-11;
     grid-template-columns: repeat(2, 1fr);
 
     button {
@@ -29,6 +30,7 @@
       line-height: 18px;
 
       &:last-child {
+        border-left: 1px solid $gray-11;
         color: $error;
       }
     }

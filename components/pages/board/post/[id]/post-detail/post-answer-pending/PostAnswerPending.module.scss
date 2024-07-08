@@ -1,0 +1,20 @@
+.card {
+  @extend %answer-card;
+}
+
+.answer {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px;
+  margin-top: 32px;
+
+  .answer-left {
+    display: flex;
+    align-items: center;
+
+    .get-badges {
+      color: $gray-08;
+      font-size: 16px;
+    }
+  }
+}

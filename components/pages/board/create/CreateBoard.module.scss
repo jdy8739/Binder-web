@@ -28,38 +28,6 @@
       font-size: 20px;
       font-weight: $font-bolder;
     }
-
-    .hashtag-input-body {
-      position: relative;
-
-      .hashtag-input-chips {
-        position: absolute;
-        top: 50%;
-        display: flex;
-        padding: 13px 24px;
-        gap: 10px;
-        transform: translate(0%, -50%);
-
-        .tag-chip {
-          display: flex;
-          height: 32px;
-          align-items: center;
-          padding: 4px 8px;
-          border-radius: 8px;
-          background-color: $gray-03;
-          color: $gray-08;
-          font-size: 16px;
-          font-weight: 500;
-          gap: 6px;
-          line-height: 24px;
-
-          > button {
-            height: 20px;
-            background-color: inherit;
-          }
-        }
-      }
-    }
   }
 
   .options-dropdown {
@@ -106,10 +74,6 @@
           color: $gray-07;
         }
       }
-    }
-
-    &.hashtag {
-      height: 72px;
     }
   }
 
