@@ -1,0 +1,28 @@
+.sidebar {
+  width: 180px;
+  height: 100%;
+  gap: 0px;
+  border-radius: 8px 0px 0px 0px;
+  border: 1px solid #DFDFDF;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+
+  ul {
+    li {
+      &:first-child {
+        background: #F7F7F7;
+      }
+      gap: 10px;
+      padding: 15px 20px;
+      background-color: #fff;
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
+}
+
