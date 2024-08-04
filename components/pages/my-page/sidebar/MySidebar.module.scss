@@ -1,23 +1,23 @@
 .sidebar {
-  width: 180px;
-  height: 100%;
-  gap: 0px;
-  border-radius: 8px 0px 0px 0px;
-  border: 1px solid #DFDFDF;
-
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  text-align: left;
+  height: fit-content;
 
   ul {
+    width: 180px;
+    border-radius: 8px;
+    border: 1px solid $gray-06;
+    background-color: #fff;
+    overflow: hidden;
+
     li {
-      &:first-child {
-        background: #F7F7F7;
-      }
       gap: 10px;
       padding: 15px 20px;
-      background-color: #fff;
+      font-weight: 600;
+      text-align: left;
+
+      &.selected {
+        background: #F0F0F0;
+      }
+
       a {
         text-decoration: none;
         color: #333;
@@ -25,4 +25,3 @@
     }
   }
 }
-
