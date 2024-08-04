@@ -26,6 +26,8 @@ import NavDown from './nav_down.svg';
 import Close from './close.svg';
 import ChipClose from './chip-close.svg';
 import ProfileMedium from './profile-md.svg';
+import Read from './icon_read.svg';
+import Unread from './icon_unread.svg';
 
 export {
   ProfileMedium,
@@ -56,4 +58,6 @@ export {
   PostCheck,
   Bookmark,
   NavDown,
+  Read,
+  Unread,
 };
