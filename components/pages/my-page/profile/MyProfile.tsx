@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './MyProfile.module.scss';
-import { Profile } from '/assets/svg';
+import { ProfileBig } from '/assets/svg';
 import Hashtag from '/components/atoms/hashtag/Hashtag';
 
 const cx = classNames.bind(styles);
@@ -10,8 +10,8 @@ const MyProfile = () => {
   return (
     <div className={cx('container')}>
         <div className={cx('upper-box')}>
-          <span>
-            <Profile />
+          <span className={cx('profile-picture')}>
+            <ProfileBig />
           </span>
           <span>
             <div>
