@@ -1,0 +1,16 @@
+.scrap-likes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  > p {
+      font-weight: 700;
+      font-size: 28px;
+  }
+}
+
+.scrap-like-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 20px;
+}
