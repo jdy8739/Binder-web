@@ -1,43 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames/bind';
-import styles from './Contents.module.scss'
+import styles from './Contents.module.scss';
+import { boards } from './mock-data'; 
 const cx = classNames.bind(styles);
 
-import ContentBox from '/components/atoms/content-box/ContentBox'
 
 const Contents = () => {
+    const [selectedContents, setSelectedContents] = useState('my-posts')
+
   return (
-    <div className={cx('contents')}>
-      <p>나의 콘텐츠</p>
-      <div className={cx('content-boxes')}>
-          <ContentBox
-              title="나의 글"
-              subtitle1="나의 질문이 없어요"
-              subtitle2="나를 성장시켜줄 새로운 지식을 탐구해보세요"
-              buttonText="나의 질문 전체보기"
-              buttonLink="/"
-              buttonWidth={305}
-              buttonSize="lg"
-          />
-          <ContentBox
-              title="나의 답변"
-              subtitle1="나의 답변이 없어요"
-              subtitle2="나를 성장시켜줄 새로운 지식을 탐구해보세요"
-              buttonText="나의 답변 전체보기"
-              buttonLink="/"
-              buttonWidth={305}
-              buttonSize="lg"
-          />
-          <ContentBox
-              title="나의 댓글"
-              subtitle1="나의 댓글이 없어요"
-              subtitle2="나를 성장시켜줄 새로운 지식을 탐구해보세요"
-              buttonText="나의 댓글 전체보기"
-              buttonLink="/"
-              buttonWidth={305}
-              buttonSize="lg"
-          />
-      </div>
+    <div className={cx('container')}>
+        <div className={cx('header')}>
+            <p>
+              나의 콘텐츠
+            </p>
+            <div className={cx('my-contents')}>
+                <div className={cx({selected: selectedContents === 'my-posts'})} onClick={() => setSelectedContents('my-posts')}>
+                    <span>나의 글</span>
+                    <span>{boards.length}</span>
+                </div>
+                <div className={cx({selected: selectedContents === 'my-answers'})} onClick={() => setSelectedContents('my-answers')}>
+                    <span>나의 답변</span>
+                    <span>{boards.length}</span>
+                </div>
+                <div className={cx({selected: selectedContents === 'my-comments'})} onClick={() => {setSelectedContents('my-comments')}}>
+                    <span>나의 댓글</span>
+                    <span>{boards.length}</span>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }

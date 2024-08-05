@@ -1,0 +1,16 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  > p {
+      font-weight: $font-bolder;
+      font-size: 28px;
+  }
+}
+
+.content-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 20px;
+}
