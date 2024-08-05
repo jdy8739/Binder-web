@@ -9,7 +9,7 @@
 }
 
 .title {
-    font-weight: 700;
+    font-weight: $font-bolder;
     font-size: 20px;
     color: #000000
 }
@@ -23,13 +23,13 @@
 }
 
 .subtitle1 {
-    font-weight: 700;
+    font-weight: $font-bolder;
     font-size: 18px;
     color: #6f6f6f
 }
 
 .subtitle2 {
-    font-weight: 500;
+    font-weight: $font-medium;
     font-size: 16px;
     color: $gray-06
 }
