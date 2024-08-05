@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames/bind';
-import styles from './Hashtag.module.css';
+import styles from './Hashtag.module.scss';
 const cx = classNames.bind(styles);
 
 
