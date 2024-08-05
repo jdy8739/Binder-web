@@ -10,6 +10,8 @@ import Contents from '/components/pages/my-page/contents/Contents';
 import ScrapLikes from '/components/pages/my-page/scrap-likes/ScrapLikes';
 import Notifications from '/components/pages/my-page/notifications/Notifications';
 import CheckBox from '/components/atoms/check-box/CheckBox';
+import ContentsOverview from '/components/pages/my-page/contents/ContentsOverview';
+import ScrapLikesOverview from '/components/pages/my-page/scrap-likes/ScrapLikesOverview';
 
 const cx = classNames.bind(styles);
 
@@ -26,8 +28,8 @@ const MyPage = () => {
               <Badge />
             </div>
             <div className={cx('rest-boxes')}>
-              <Contents />
-              <ScrapLikes />
+              <ContentsOverview />
+              <ScrapLikesOverview />
             </div>
           </>
         );
