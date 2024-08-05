@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import classNames from 'classnames/bind';
 import styles from './Contents.module.scss';
-import { boards } from './mock-data'; 
+import { boards } from './mock-data';
+import CheckBox from '/components/atoms/check-box/CheckBox';
 const cx = classNames.bind(styles);
 
 
@@ -28,6 +29,45 @@ const Contents = () => {
                     <span>{boards.length}</span>
                 </div>
             </div>
+            <div>
+                <div className={cx('actions')}>
+                    <div className={cx('post-sorter')}>
+                        <div>
+                            <CheckBox /> 
+                            <span>최신순</span>
+                        </div>
+                        <div>
+                            <CheckBox /> 
+                            <span>추천순</span>
+                        </div>
+                        <div>
+                            <CheckBox /> 
+                            <span>조회순</span>
+                        </div>
+                    </div>
+                    <button>삭제</button>
+                </div>
+            </div>
+            {boards.map((board) => (
+            <div className={cx('board-list')}>
+                <div>{board.boardType}</div>
+                <div>
+                    <span>{board.title}</span>
+                    <CheckBox />
+                </div>
+                <div>{board.content}</div>
+                <div>
+                    <div>
+                        <span>공감 {board.likes.length}</span>
+                        <span>댓글 {board.commnets.length}</span>
+                        <span>조회 {board.views}</span>
+                    </div>
+                    <div>
+                        <span>{board.createdAt} 작성</span>
+                    </div>
+                </div>
+            </div>
+            ))}
         </div>
     </div>
   )

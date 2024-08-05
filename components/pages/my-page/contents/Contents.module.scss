@@ -59,3 +59,26 @@
 
     }
 }
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+.post-sorter {
+display: flex;
+gap: 10px;
+
+    > div {
+        display: flex;
+    }
+}
+
+.board-list {
+    > div:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
