@@ -1,8 +1,8 @@
-export const boards = [
+export const answers = [
     {
         boardType: '직무게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -17,7 +17,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -40,8 +40,8 @@ export const boards = [
     },
     {
         boardType: '직무게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -56,7 +56,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -79,8 +79,8 @@ export const boards = [
     },
     {
         boardType: '직무게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -95,7 +95,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -118,8 +118,8 @@ export const boards = [
     },
     {
         boardType: '학술게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -134,7 +134,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -157,8 +157,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -173,7 +173,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -196,8 +196,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -212,7 +212,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -235,8 +235,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -251,7 +251,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -274,8 +274,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -290,7 +290,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -313,8 +313,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -329,7 +329,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -352,8 +352,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -368,7 +368,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -391,8 +391,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -407,7 +407,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
@@ -430,8 +430,8 @@ export const boards = [
     },
     {
         boardType: '취직-이직게시판',
-        title: '게시글 제목',
-        content: '게시글 작성곤간입니다. 게시글 작성공간입니다. 게시글 작성공간입니다.',
+        title: '답변 제목',
+        content: '답변 작성곤간입니다. 답변 작성공간입니다. 답변 작성공간입니다.',
         likes: [
             {
                 id: 'hello',
@@ -446,7 +446,7 @@ export const boards = [
                 id: 'hello',
             }
         ],
-        commnets: [
+        comments: [
             {
                 id: 'hello',
                 content: 'blah blah...',
