@@ -1,29 +1,69 @@
-import React from 'react';
+import { ReactNode } from 'react';
+import { SideBarMenuType } from '/app/(auth)/auth/[username]/page';
+
 import classNames from 'classnames/bind';
+
 import styles from './MySidebar.module.scss';
+
 const cx = classNames.bind(styles);
 
-const MySidebar = ({ selectedMenu, setSelectedMenu }) => {
+const SideBarItem = ({
+  className,
+  children,
+  onClick,
+}: {
+  className: string;
+  children: ReactNode;
+  onClick: () => void;
+}) => (
+  <li className={className}>
+    <button type="button" onClick={onClick}>
+      {children}
+    </button>
+  </li>
+);
+
+type Props = {
+  sideBarMenu: SideBarMenuType;
+  setMenu: (menu: SideBarMenuType) => void;
+};
+
+const MySidebar = ({ sideBarMenu, setMenu }: Props) => {
   return (
-    <nav className={cx('sidebar')}>
+    <aside className={cx('sidebar')}>
       <ul>
-        <li className={cx({ selected: selectedMenu === 'home' })}>
-          <a href="#" onClick={() => setSelectedMenu('home')}>MY 홈</a>
-        </li>
-        <li className={cx({ selected: selectedMenu === 'contents' })}>
-          <a href="#" onClick={() => setSelectedMenu('contents')}>나의 콘텐츠</a>
-        </li>
-        <li className={cx({ selected: selectedMenu === 'scrap-likes' })}>
-          <a href="#" onClick={() => setSelectedMenu('scrap-likes')}>스크랩/좋아요</a>
-        </li>
-        <li className={cx({ selected: selectedMenu === 'profile-edit' })}>
-          <a href="#" onClick={() => setSelectedMenu('profile-edit')}>개인정보 수정</a>
-        </li>
-        <li className={cx({ selected: selectedMenu === 'notifications' })}>
-          <a href="#" onClick={() => setSelectedMenu('notifications')}>나의 알림</a>
-        </li>
+        <SideBarItem
+          className={cx({ selected: sideBarMenu === 'home' })}
+          onClick={() => setMenu('home')}
+        >
+          MY 홈
+        </SideBarItem>
+        <SideBarItem
+          className={cx({ selected: sideBarMenu === 'contents' })}
+          onClick={() => setMenu('contents')}
+        >
+          나의 콘텐츠
+        </SideBarItem>
+        <SideBarItem
+          className={cx({ selected: sideBarMenu === 'scrap-likes' })}
+          onClick={() => setMenu('scrap-likes')}
+        >
+          스크랩/좋아요
+        </SideBarItem>
+        <SideBarItem
+          className={cx({ selected: sideBarMenu === 'profile-edit' })}
+          onClick={() => setMenu('profile-edit')}
+        >
+          개인정보 수정
+        </SideBarItem>
+        <SideBarItem
+          className={cx({ selected: sideBarMenu === 'notifications' })}
+          onClick={() => setMenu('notifications')}
+        >
+          나의 알림
+        </SideBarItem>
       </ul>
-    </nav>
+    </aside>
   );
 };
 
