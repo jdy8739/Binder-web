@@ -16,11 +16,9 @@ const SideBarItem = ({
   children: ReactNode;
   onClick: () => void;
 }) => (
-  <li className={className}>
-    <button type="button" onClick={onClick}>
-      {children}
-    </button>
-  </li>
+  <button type="button" onClick={onClick} className={className}>
+    <li>{children}</li>
+  </button>
 );
 
 type Props = {

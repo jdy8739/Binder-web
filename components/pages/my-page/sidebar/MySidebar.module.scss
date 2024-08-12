@@ -1,29 +1,32 @@
 .sidebar {
   height: fit-content;
+}
 
-  ul {
-    width: 180px;
-    border-radius: 8px;
-    border: 1px solid $gray-06;
-    background-color: #fff;
-    overflow: hidden;
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  border-radius: 8px;
+  border: 1px solid $gray-06;
+  background-color: #fff;
+  overflow: hidden;
+}
 
-    li {
-      gap: 10px;
-      padding: 15px 20px;
-      font-weight: $font-bold;
-      text-align: left;
+.sidebar ul button {
+  gap: 10px;
+  padding: 15px 20px;
+  font-weight: $font-bold;
+  text-align: left;
+}
 
-      a {
-        color: #333
-      }
+.sidebar ul button a {
+  color: #333;
+}
 
-      &.selected {
-        background: #CCEFDC;
-        a {
-          color: $primary;
-        }
-      }
-    }
+.sidebar ul button.selected {
+  background: #CCEFDC;
+
+  a {
+    color: $primary;
   }
 }
