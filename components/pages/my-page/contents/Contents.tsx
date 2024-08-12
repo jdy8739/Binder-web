@@ -1,4 +1,4 @@
-import React, { Key, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Contents.module.scss';
 import CheckBox from '/components/atoms/check-box/CheckBox';
@@ -29,9 +29,13 @@ const Contents = () => {
     return filteredData.sort((a, b) => {
       switch (sortOrder) {
         case 'newest':
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
         case 'mostLiked':
-          return (b.likes ? b.likes.length : 0) - (a.likes ? a.likes.length : 0);
+          return (
+            (b.likes ? b.likes.length : 0) - (a.likes ? a.likes.length : 0)
+          );
         case 'mostViewed':
           return (b.views ? b.views : 0) - (a.views ? a.views : 0);
         default:
@@ -47,15 +51,24 @@ const Contents = () => {
       <div className={cx('header')}>
         <p>나의 콘텐츠</p>
         <div className={cx('my-contents')}>
-          <div className={cx({ selected: selectedContents === 'my-posts' })} onClick={() => setSelectedContents('my-posts')}>
+          <div
+            className={cx({ selected: selectedContents === 'my-posts' })}
+            onClick={() => setSelectedContents('my-posts')}
+          >
             <span>나의 글</span>
             <span>{boards.length}</span>
           </div>
-          <div className={cx({ selected: selectedContents === 'my-answers' })} onClick={() => setSelectedContents('my-answers')}>
+          <div
+            className={cx({ selected: selectedContents === 'my-answers' })}
+            onClick={() => setSelectedContents('my-answers')}
+          >
             <span>나의 답변</span>
             <span>{answers.length}</span>
           </div>
-          <div className={cx({ selected: selectedContents === 'my-comments' })} onClick={() => setSelectedContents('my-comments')}>
+          <div
+            className={cx({ selected: selectedContents === 'my-comments' })}
+            onClick={() => setSelectedContents('my-comments')}
+          >
             <span>나의 댓글</span>
             <span>{comments.length}</span>
           </div>
@@ -76,11 +89,11 @@ const Contents = () => {
                 <span>조회순</span>
               </div>
             </div>
-            <button>삭제</button>
+            <button type="button">삭제</button>
           </div>
         </div>
-        {filteredData.map((item, index: Key) => (
-          <div className={cx('board-list')} key={index}>
+        {filteredData.map((item) => (
+          <div className={cx('board-list')} key={item.id}>
             <div className={cx('board-type')}>{item.boardType}</div>
             <div className={cx('board-title-box')}>
               <span>{item.title}</span>
